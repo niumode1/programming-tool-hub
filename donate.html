@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捐赠支持 - CodeStart Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 新增：优化捐赠链接样式和二维码排版 */
+        .donate-option a {
+            color: #007bff;
+            text-decoration: none;
+            word-break: break-all; /* 适配长链接换行 */
+        }
+        .donate-option a:hover {
+            text-decoration: underline;
+        }
+        .donate-option img {
+            margin: 10px 15px 10px 0; /* 二维码之间增加间距，避免重叠 */
+            vertical-align: middle;
+        }
+        /* 响应式适配：移动端二维码缩小 */
+        @media (max-width: 768px) {
+            .donate-option img {
+                width: 180px;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html">软件库</a></li>
+                    <li><a href="commands.html">命令行助手</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="donate.html" class="active">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>支持我们</h1>
+        <p>感谢您对 CodeStart Hub 的关注！本网站旨在为编程初学者提供便利，所有内容均为免费分享。</p>
+        <p>如果您觉得这个网站对您有帮助，欢迎通过以下方式进行捐赠，您的支持是我们持续维护和改进的动力：</p>
+
+        <div class="donate-options">
+            <div class="donate-option">
+                <h3>PayPal</h3>
+                <p>通过 PayPal 进行捐赠。</p>
+                <p>
+                    <a href="https://www.paypal.com/ncp/payment/VC2DQT6NY7WL2" target="_blank" rel="noopener noreferrer">
+                        https://www.paypal.com/ncp/payment/VC2DQT6NY7WL2
+                    </a>
+                </p>
+            </div>
+            <div class="donate-option">
+                <h3>微信/支付宝</h3>
+                <p>扫描下方二维码进行捐赠。</p>
+                <img src="./images/wx.jpg" alt="微信捐赠二维码" width="256" height="348">
+                <img src="./images/zfb.jpg" alt="支付宝捐赠二维码" width="252" height="378">
+            </div>
+            <div class="donate-option">
+                <h3>加密货币</h3>
+                <p>比特币地址: <code>-暂无</code></p>
+                <p><em>感谢您的心意</em></p>
+            </div>
+        </div>
+
+        <p>再次感谢您的慷慨支持！</p>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

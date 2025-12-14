@@ -1,0 +1,122 @@
+[
+    {
+        "name": "MDN Web Docs",
+        "description": "Web 开发领域权威官方文档，全面覆盖 HTML、CSS、JavaScript、Web API 等核心技术，内容由开发者编写并严格遵循 W3C 标准，实时更新前沿特性（如 CSS 自定义高亮 API、Server-Timing 性能指标），兼具基础教程与深度技术解析，是前端开发者必备的查询与学习工具。",
+        "url": "https://developer.mozilla.org/zh-CN/",
+        "category": "Documentation"
+    },
+    {
+        "name": "GitHub",
+        "description": "全球最大的开源代码托管与协作平台，汇聚数千万优质开源项目（如 Vue、React、Spring Boot），支持 Git 版本控制。开发者可学习真实项目的代码结构、规范与协作流程，参与开源贡献（修复 Bug、提交 PR），同时搭建个人技术作品集，是提升实战能力与建立行业影响力的核心平台。",
+        "url": "https://github.com/",
+        "category": "Open Source & Collaboration"
+    },
+    {
+        "name": "LeetCode（力扣）",
+        "description": "专注算法与编程能力提升的实战平台，包含海量国内外大厂面试真题（覆盖数组、链表、动态规划等经典题型），支持 C++、Java、Python 等 20+ 编程语言提交。提供「LeetBook 专题学习路径」「周赛/双周赛」等功能，帮助开发者夯实算法基础、锻炼解题思维，是求职大厂技术岗的核心刷题工具。",
+        "url": "https://leetcode.cn/",
+        "category": "Coding Practice & Interview"
+    },
+    {
+        "name": "菜鸟教程",
+        "description": "零基础友好的中文编程学习平台，涵盖 HTML、CSS、JavaScript、Python、Java、MySQL 等主流技术栈，内容简洁易懂且配套在线代码运行工具（无需本地配置环境），支持「即学即练」。同时提供实战案例（如在线建站、接口调用），适合新手快速入门编程语法与基础应用。",
+        "url": "https://www.runoob.com/",
+        "category": "Tutorials"
+    },
+    {
+        "name": "Stack Overflow",
+        "description": "全球最大的程序员技术问答社区，覆盖 90% 以上的编程问题（如语法报错、逻辑漏洞、框架使用），回答由资深开发者撰写且经过社区筛选，质量权威可靠。支持按标签检索（如 JavaScript、Python、Docker），是开发者解决技术瓶颈、获取实战经验的核心渠道。",
+        "url": "https://stackoverflow.com/",
+        "category": "Q&A & Problem Solving"
+    },
+    {
+        "name": "慕课网（IMOOC）",
+        "description": "国内专注 IT 实战学习的平台，课程由一线大厂技术专家研发，覆盖前端、Java、Python、AI、云计算等领域，分为「免费入门课」「实战项目课」「体系化岗位课」三类。配套问答社区、作业批改、源码下载等服务，适合从零基础到进阶的开发者系统提升技能，部分课程可对接企业内推。",
+        "url": "https://www.imooc.com/",
+        "category": "Systematic Courses"
+    },
+    {
+        "name": "掘金",
+        "description": "国内高质量技术社区，聚集大量一线工程师，内容以「实战经验」「源码解析」「行业动态」为主（如 Vue3 源码解读、微服务架构设计、性能优化方案）。提供「技术专题」「沸点交流」「直播讲座」等功能，帮助开发者拓展技术视野、紧跟行业趋势，同时支持个人博客创作，沉淀技术成果。",
+        "url": "https://juejin.cn/",
+        "category": "Tech Community & Knowledge Sharing"
+    },
+    {
+        "name": "牛客网",
+        "description": "聚焦 IT 求职的综合平台，核心功能包括「大厂笔试题库」（腾讯、阿里、字节等历年真题）、「在线模拟面试」、「面经分享」、「名企内推」。同时提供算法刷题、编程竞赛等模块，适合应届生或转行开发者熟悉招聘流程、针对性提升求职竞争力，是连接学习者与企业的关键桥梁。",
+        "url": "https://www.nowcoder.com/",
+        "category": "Job Preparation & Interview"
+    },
+    {
+        "name": "CSDN",
+        "description": "国内老牌程序员社区，内容覆盖编程教程、技术博客、资源下载（如代码包、SDK、项目模板），同时提供 GitCode 开源托管、技术问答等服务。虽部分内容需积分获取，但沉淀了大量经典教程与疑难问题解决方案，适合开发者查询基础资料、下载实用资源，是入门阶段的常用工具。",
+        "url": "https://www.csdn.net/",
+        "category": "Comprehensive Tech Resource"
+    },
+    {
+        "name": "Codecademy",
+        "description": "国外知名交互式编程学习平台，主打「边学边练」模式，无需本地配置环境，网页端即可实时编写代码并获取反馈。课程覆盖 Python、JavaScript、Java、SQL 等语言，从基础语法到实战项目（如搭建网站、开发小游戏）循序渐进，适合零基础用户培养「代码手感」，部分基础课程免费。",
+        "url": "https://www.codecademy.com/",
+        "category": "Interactive Learning"
+    },
+    {
+        "name": "GeeksforGeeks",
+        "description": "专注计算机科学深度知识的平台，内容涵盖算法、数据结构、操作系统、计算机网络等底层理论，同时提供大厂面试题解析（Google、Amazon 等）。讲解逻辑严谨，配套大量代码示例与图解，适合开发者夯实计算机基础、应对高阶技术面试，支持多语言（C++、Java、Python）学习。",
+        "url": "https://www.geeksforgeeks.org/",
+        "category": "Computer Science Fundamentals"
+    },
+    {
+        "name": "Coursera",
+        "description": "全球顶级在线课程平台，汇聚斯坦福、MIT、哈佛等名校的计算机课程（如「计算机科学导论」「机器学习」），部分课程免费旁听，付费可获取证书。课程体系完整，侧重理论与实践结合，适合希望系统学习计算机专业知识、提升学历背书的开发者，支持碎片化学习（视频可倍速、离线观看）。",
+        "url": "https://www.coursera.org/",
+        "category": "University-Level Courses"
+    },
+    {
+        "name": "InfoQ",
+        "description": "聚焦全球技术趋势与前沿实践的专业平台，内容由技术专家、架构师撰写，覆盖 AI、云计算、微服务、大数据等领域的深度分析（如 Kubernetes 最新特性、大模型落地案例）。提供「技术大会直播」「案例研究」「架构师指南」等栏目，帮助中高级开发者把握技术方向、解决复杂工程问题。",
+        "url": "https://www.infoq.cn/",
+        "category": "Tech Trends & Advanced Practice"
+    },
+    {
+        "name": "W3Schools",
+        "description": "全球知名的 Web 开发入门教程平台，以简洁清晰的图文教程著称，覆盖 HTML、CSS、JavaScript、SQL、Python 等核心技术，配套在线代码编辑器（可实时预览效果）。支持多语言切换（含中文），内容更新及时，适合零基础用户快速掌握编程基础语法，是国际上公认的入门优质资源。",
+        "url": "https://www.w3schools.com/",
+        "category": "Tutorials"
+    },
+    {
+        "name": "GitLab",
+        "description": "开源的代码托管与 DevOps 协作平台，功能类似 GitHub，支持 Git 版本控制、CI/CD 流水线配置、项目管理等。可搭建私有仓库（适合企业内部项目协作），也可参与公共开源项目，同时提供免费的社区版与付费的企业版，是开发者学习 DevOps 流程、团队协作的重要工具。",
+        "url": "https://gitlab.com/",
+        "category": "Open Source & DevOps"
+    },
+    {
+        "name": "字节跳动技术博客",
+        "description": "字节跳动官方技术分享平台，内容由内部工程师撰写，聚焦实际业务场景中的技术难题与解决方案（如高并发系统设计、性能优化、AI 应用落地）。涵盖前端、后端、客户端、AI 等多个领域，案例真实且技术深度足，适合开发者学习大厂工程实践、提升架构设计能力。",
+        "url": "https://juejin.cn/user/1835927778398503",
+        "category": "Enterprise Tech Practice"
+    },
+    {
+        "name": "极客时间",
+        "description": "国内高品质 IT 知识服务平台，课程由知名技术专家（如左耳朵耗子、陈皓）打造，以「体系化、深度化」为特色，覆盖程序员成长、架构设计、云原生、AI 等领域。形式包括音频课、视频课、专栏文章，配套社群答疑、作业打卡，适合工作 1-5 年的开发者突破技术瓶颈、实现进阶成长。",
+        "url": "https://time.geekbang.org/",
+        "category": "Advanced Tech Learning"
+    },
+    {
+        "name": "HackerRank",
+        "description": "全球知名的编程竞赛与技能评估平台，包含算法、数据结构、数据库、Shell 等多个模块的练习题，支持 30+ 编程语言。提供「企业技能测试」「招聘专场」等功能，部分大厂（如 Google、Microsoft）会通过该平台筛选候选人，适合开发者提升实战能力与对接国际职场。",
+        "url": "https://www.hackerrank.com/",
+        "category": "Coding Competition & Skill Assessment"
+    },
+    {
+        "name": "V2EX",
+        "description": "国内多元化技术社区，除技术讨论外，还涵盖职场交流、资源分享、工具推荐等内容。技术板块聚焦编程问题排查、框架使用经验、行业动态点评，氛围轻松且互动性强，适合开发者拓展人脉、获取非技术类职场信息（如薪资行情、公司评价）。",
+        "url": "https://www.v2ex.com/",
+        "category": "Tech Community & Lifestyle"
+    },
+    {
+        "name": "Apache 官方文档",
+        "description": "Apache 软件基金会官方技术文档平台，涵盖 Tomcat、Hadoop、Spark、Kafka 等主流开源项目的详细使用指南、配置说明与源码解析。文档权威且细节丰富，适合开发者深入学习分布式系统、大数据处理等技术的底层原理与实践配置，是后端/大数据开发者的核心参考资料。",
+        "url": "https://httpd.apache.org/docs/",
+        "category": "Open Source Documentation"
+    }
+]

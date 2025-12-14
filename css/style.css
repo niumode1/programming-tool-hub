@@ -1,0 +1,491 @@
+/* 基础重置和排版 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 注：detail.html 引入了 Noto Sans SC，可以考虑优先使用它 */
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+
+.btn-secondary {
+     background-color: #6c757d;
+     color: white;
+}
+
+.btn-secondary:hover {
+     background-color: #545b62;
+}
+
+
+/* 头部 */
+header {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 a {
+    color: #333;
+    font-size: 1.5rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin-left: 20px;
+}
+
+nav a {
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 3px;
+}
+
+nav a:hover, nav a.active {
+    background-color: #e9ecef;
+    text-decoration: none;
+}
+
+
+/* 主体内容区 */
+main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 120px - 100px); /* 粗略计算，减去 header/footer 高度 */
+    background-color: #fff;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* 首页英雄区 */
+#hero {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#hero h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+#hero p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* 工具卡片网格 */
+#tools-grid, #all-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.tool-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #fafafa;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tool-card img {
+    max-width: 50px;
+    max-height: 50px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tool-card h3 {
+    margin-bottom: 5px;
+}
+
+.tool-card p {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.tool-card .os-tags {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.tool-card .os-tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+
+/* 软件详情页样式 */
+.tool-header {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.tool-icon {
+    width: 120px;
+    height: 120px;
+    object-fit: contain; /* 保持宽高比 */
+    margin-right: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+}
+
+.tool-info {
+    flex-grow: 1;
+}
+
+.tool-description {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.tool-meta {
+    margin-bottom: 20px;
+}
+
+.tool-meta > div {
+    margin-bottom: 8px;
+}
+
+/* 徽章 (Badges) */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 5px;
+    color: white;
+}
+.badge-windows { background-color: #0078d7; } /* Windows 蓝 */
+.badge-macos { background-color: #000000; }   /* macOS 黑 */
+.badge-linux { background-color: #FCC017; color: black; } /* Linux 黄 */
+
+
+/* 标签 (Tags) */
+.tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    padding: 3px 7px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.tag-category { background-color: #cce5ff; }
+.tag-language { background-color: #d4edda; }
+
+/* 价格标签 */
+.price-tag {
+    padding: 3px 7px;
+    border-radius: 3px;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* 操作按钮 */
+.tool-actions {
+    margin-top: 15px;
+}
+.tool-actions .btn {
+    margin-right: 10px;
+}
+
+/* 工具各部分内容区域 */
+.tool-sections {
+    /* 可以添加一些间距 */
+}
+
+.tool-section {
+    margin-bottom: 2rem;
+}
+
+.tool-section h2 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+/* 手风琴 Accordion */
+.accordion {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #eee;
+}
+
+.accordion-item:last-child {
+    border-bottom: none;
+}
+
+.accordion-header {
+    background-color: #f8f9fa;
+    color: #333;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    font-weight: bold;
+}
+
+.accordion-header:hover, .accordion-header.active {
+    background-color: #e9ecef;
+}
+
+/* 使用伪元素添加 +/- 符号 */
+.accordion-header::after {
+    content: '\002B'; /* Unicode 字符 '+' */
+    float: right;
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active::after {
+    content: '\2212'; /* Unicode 字符 '−' (减号)，看起来比旋转的'-'更好 */
+    /* transform: rotate(45deg); */ /* 不再需要旋转 */
+}
+
+.accordion-content {
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #fff;
+}
+
+.accordion-content pre {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+
+/* 软件详情页旧样式 (可删除，已被新样式替代) */
+/*
+#tool-detail img {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#tool-detail::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+*/
+
+/* 软件库筛选器 */
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* 元素之间的间距 */
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.filter-group select,
+#search-box { /* 确保搜索框样式一致 */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* 命令行助手 */
+.tabs {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tab-button {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: -1px; /* 与底部边框重叠 */
+    border-radius: 5px 5px 0 0;
+}
+
+.tab-button.active {
+    background-color: #fff;
+    border-bottom: 1px solid #fff; /* 覆盖底部边框 */
+    font-weight: bold;
+}
+
+#commands-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#commands-content li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+#commands-content code {
+    background-color: #e9ecef;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 学习资源 */
+.resource-item {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.resource-item:last-child {
+    border-bottom: none;
+}
+
+.resource-item h3 {
+    margin-bottom: 8px;
+}
+
+.resource-item small {
+    color: #666;
+}
+
+/* 捐赠页面 */
+.donate-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 响应式列 */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.donate-option {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #fafafa;
+}
+
+.donate-option h3 {
+    margin-top: 0;
+}
+
+.donate-option code {
+    word-break: break-all; /* 长地址自动换行 */
+    background-color: #e9ecef;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+/* 代码块通用样式 (补充) */
+pre {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 5px;
+    padding: 10px;
+    overflow-x: auto;
+    white-space: pre-wrap; /* 允许换行 */
+}
+
+/* 页脚 */
+footer {
+    background-color: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: auto; /* 配合 body min-height */
+}
+
+/* ... (之前的CSS代码) ... */
+
+/* 添加淡入动画 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 应用到主要内容区 */
+main {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 工具卡片悬停效果已包含 */
+/* 按钮悬停效果已包含 */
+
+
+/* ... (页脚和其他CSS保持不变) ... */

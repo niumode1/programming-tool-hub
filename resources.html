@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学习资源 - CodeStart Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html">软件库</a></li>
+                    <li><a href="commands.html">命令行助手</a></li>
+                    <li><a href="resources.html" class="active">学习资源</a></li>
+                    <li><a href="donate.html">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>精选学习资源</h1>
+        <p>这里汇集了一些优质的编程学习网站和平台。</p>
+        <div id="resources-list">
+            <!-- 资源列表将由 JS 动态插入 -->
+        </div>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data-loader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            loadResources().then(resources => {
+                const listContainer = document.getElementById('resources-list');
+                resources.forEach(resource => {
+                    const resItem = document.createElement('div');
+                    resItem.className = 'resource-item';
+                    resItem.innerHTML = `
+                        <h3><a href="${resource.url}" target="_blank">${resource.name}</a></h3>
+                        <p>${resource.description}</p>
+                        <small>类别: ${resource.category}</small>
+                    `;
+                    listContainer.appendChild(resItem);
+                });
+            }).catch(error => {
+                 console.error('加载资源失败:', error);
+                 document.getElementById('resources-list').innerHTML = '<p>加载资源失败。</p>';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件库 - CodeStart Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html" class="active">软件库</a></li>
+                    <li><a href="commands.html">命令行助手</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="donate.html">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+		<h1>所有工具</h1>
+		<!-- 筛选器 -->
+		<div class="filters">
+			<div class="filter-group">
+				<label for="os-filter">系统:</label>
+				<select id="os-filter">
+					<option value="">全部</option>
+					<option value="Windows">Windows</option>
+					<option value="macOS">macOS</option>
+					<option value="Linux">Linux</option>
+				</select>
+			</div>
+
+			<div class="filter-group">
+				<label for="type-filter">类型:</label>
+				<select id="type-filter">
+					<option value="">全部</option>
+					<!-- 选项将在 JS 中动态生成 -->
+				</select>
+			</div>
+
+			<div class="filter-group">
+				<label for="lang-filter">语言:</label>
+				<select id="lang-filter">
+					<option value="">全部</option>
+					<!-- 选项将在 JS 中动态生成 -->
+				</select>
+			</div>
+
+			<div class="filter-group">
+				<label for="price-filter">价格:</label>
+				<select id="price-filter">
+					<option value="">全部</option>
+					<option value="免费">免费</option>
+					<option value="付费">付费</option>
+					<option value="开源">开源</option>
+				</select>
+			</div>
+		</div>
+
+		<input type="text" id="search-box" placeholder="搜索软件名称或描述..." style="width: 100%; padding: 10px; margin-bottom: 20px;">
+
+		<div id="all-tools-grid">
+			<!-- 所有工具卡片将由 JS 动态插入 -->
+		</div>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data-loader.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let allToolsCache = []; // 缓存所有工具数据
+
+            // --- 修复：应用所有筛选条件（适配数组字段+正确字段名）---
+            function applyFilters(toolsList) {
+                let filtered = [...toolsList]; // 深拷贝避免修改原数组
+
+                // 1. 操作系统筛选（适配数组）
+                const selectedOS = document.getElementById('os-filter').value;
+                if (selectedOS) {
+                    filtered = filtered.filter(tool => {
+                        const toolOS = tool.os || [];
+                        return toolOS.includes(selectedOS);
+                    });
+                }
+
+                // 2. 类型筛选（修复：category是数组，判断包含关系）
+                const selectedType = document.getElementById('type-filter').value;
+                if (selectedType) {
+                    filtered = filtered.filter(tool => {
+                        const toolCategory = tool.category || [];
+                        return toolCategory.includes(selectedType);
+                    });
+                }
+
+                // 3. 语言筛选（修复：字段名是languages，且是数组）
+                const selectedLang = document.getElementById('lang-filter').value;
+                if (selectedLang) {
+                    filtered = filtered.filter(tool => {
+                        const toolLanguages = tool.languages || [];
+                        return toolLanguages.includes(selectedLang);
+                    });
+                }
+
+                // 4. 价格筛选（修复：字段名是pricing，适配多值场景）
+                const selectedPrice = document.getElementById('price-filter').value;
+                if (selectedPrice) {
+                    filtered = filtered.filter(tool => {
+                        const toolPricing = tool.pricing || '';
+                        // 兼容多值格式（如"免费, 基础版"），只要包含选中值就匹配
+                        return toolPricing.includes(selectedPrice);
+                    });
+                }
+
+                // 5. 文本搜索（增强：处理空值，避免报错）
+                const searchTerm = document.getElementById('search-box').value.trim().toLowerCase();
+                if (searchTerm) {
+                    filtered = filtered.filter(tool => {
+                        const toolName = (tool.name || '').toLowerCase();
+                        const toolDesc = (tool.description || '').toLowerCase();
+                        return toolName.includes(searchTerm) || toolDesc.includes(searchTerm);
+                    });
+                }
+
+                return filtered;
+            }
+
+            // --- 修复：显示工具（增加空数据提示）---
+            function displayTools(toolsToShow) {
+                 const grid = document.getElementById('all-tools-grid');
+                 grid.innerHTML = ''; // 清空现有内容
+                 
+                 // 无匹配结果时提示
+                 if (toolsToShow.length === 0) {
+                     grid.innerHTML = '<p style="grid-column: 1 / -1; text-align:center; padding: 20px;">没有找到匹配的工具</p>';
+                     return;
+                 }
+
+                 toolsToShow.forEach(tool => {
+                    const toolCard = createToolCard(tool);
+                    grid.appendChild(toolCard);
+                 });
+            }
+
+            // --- 修复：填充类型和语言下拉框（适配数组字段）---
+            function populateFilters(tools) {
+                // 收集所有类型（扁平化数组，去重）
+                const allTypes = [];
+                tools.forEach(tool => {
+                    const categories = tool.category || [];
+                    categories.forEach(cat => cat && allTypes.push(cat));
+                });
+                const uniqueTypes = [...new Set(allTypes)].sort();
+
+                // 收集所有语言（扁平化数组，去重）
+                const allLangs = [];
+                tools.forEach(tool => {
+                    const languages = tool.languages || [];
+                    languages.forEach(lang => lang && allLangs.push(lang));
+                });
+                const uniqueLangs = [...new Set(allLangs)].sort();
+
+                const typeSelect = document.getElementById('type-filter');
+                const langSelect = document.getElementById('lang-filter');
+
+                // 填充类型选项
+                uniqueTypes.forEach(type => {
+                    const option = document.createElement('option');
+                    option.value = type;
+                    option.textContent = type;
+                    typeSelect.appendChild(option);
+                });
+
+                // 填充语言选项
+                uniqueLangs.forEach(lang => {
+                    const option = document.createElement('option');
+                    option.value = lang;
+                    option.textContent = lang;
+                    langSelect.appendChild(option);
+                });
+            }
+
+            // --- 核心逻辑：加载数据并绑定事件 ---
+            loadTools().then(tools => {
+                allToolsCache = tools; // 缓存数据
+                populateFilters(tools); // 填充下拉菜单
+
+                // 检查URL参数 q 并设置搜索框
+                const urlParams = new URLSearchParams(window.location.search);
+                const initialSearchTerm = urlParams.get('q');
+                if (initialSearchTerm) {
+                    document.getElementById('search-box').value = initialSearchTerm;
+                }
+
+                // 初始显示（应用所有筛选条件）
+                displayTools(applyFilters(allToolsCache));
+
+                // 绑定筛选器事件（简化写法）
+                ['os-filter', 'type-filter', 'lang-filter', 'price-filter'].forEach(id => {
+                    const el = document.getElementById(id);
+                    el && el.addEventListener('change', () => {
+                        displayTools(applyFilters(allToolsCache));
+                    });
+                });
+
+                // 搜索框防抖（避免频繁触发）
+                let searchTimer;
+                document.getElementById('search-box').addEventListener('input', () => {
+                    clearTimeout(searchTimer);
+                    searchTimer = setTimeout(() => {
+                        displayTools(applyFilters(allToolsCache));
+                    }, 300); // 300ms防抖
+                });
+
+            }).catch(error => {
+                console.error('加载工具失败:', error);
+                document.getElementById('all-tools-grid').innerHTML = '<p style="text-align:center; padding: 20px;">加载工具失败，请刷新重试</p>';
+            });
+        });
+    </script>
+</body>
+</html>

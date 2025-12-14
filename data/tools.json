@@ -1,0 +1,1272 @@
+[
+  {
+    "id": "vscode",
+    "name": "Visual Studio Code",
+    "description": "轻量级但功能强大的源代码编辑器，支持多种编程语言，拥有庞大的插件生态系统。",
+    "officialUrl": "https://code.visualstudio.com/",
+    "downloadUrl": "https://code.visualstudio.com/download",
+    "icon": "images/vscode-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编辑器", "IDE"],
+    "languages": ["JavaScript", "TypeScript", "Python", "Java", "C++", "Go", "Rust", "PHP", "C#", "HTML/CSS"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 访问官网下载 Windows 版本的安装包 (.exe)。\n2. 双击下载的文件，按照安装向导提示完成安装。",
+      "macOS": "1. 访问官网下载 macOS 版本的压缩包 (.zip) 或安装包 (.dmg)。\n2. 解压后拖拽 Visual Studio Code.app 到 Applications 文件夹。",
+      "Linux": "1. 推荐使用包管理器安装，例如 Ubuntu: `sudo snap install code --classic` 或 `sudo apt install code`。\n2. 也可从官网下载 .deb 或 .tar.gz 包手动安装。"
+    },
+    "basicConfig": "1. 打开 VSCode。\n2. 通过菜单 File > Preferences > Settings (或快捷键 Ctrl/Cmd + ,) 进入设置。\n3. 可以在此处修改字体大小、主题、自动保存等选项。",
+    "chineseConfig": "1. 打开 VSCode。\n2. 按 Ctrl+Shift+P (Windows/Linux) 或 Cmd+Shift+P (macOS) 打开命令面板。\n3. 输入 'Configure Display Language' 并选择。\n4. 选择 'zh-cn' (简体中文) 或 'zh-tw' (繁体中文)。\n5. 重启 VSCode 使语言更改生效。"
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "description": "分布式版本控制系统，用于跟踪代码变更历史，协调多人开发工作。",
+    "officialUrl": "https://git-scm.com/",
+    "downloadUrl": "https://git-scm.com/downloads",
+    "icon": "images/git-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["版本控制"],
+    "languages": ["Shell", "Bash", "PowerShell"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 访问官网下载 Git for Windows 安装包。\n2. 运行安装程序，推荐接受大部分默认设置，注意勾选 'Add Git to PATH' 以便在命令行中使用。",
+      "macOS": "1. 使用 Homebrew: `brew install git` (推荐)。\n2. 或者访问官网下载 macOS 安装包 (.dmg) 并安装。",
+      "Linux": "1. Debian/Ubuntu: `sudo apt update && sudo apt install git`\n2. Red Hat/CentOS/Fedora: `sudo dnf install git` (较新版本) 或 `sudo yum install git` (较老版本)"
+    },
+    "basicConfig": "首次使用前需要配置用户名和邮箱，以便知道是谁提交的更改：\n1. 打开终端或命令提示符。\n2. 运行 `git config --global user.name \"Your Name\"`\n3. 运行 `git config --global user.email \"youremail@example.com\"`",
+    "chineseConfig": "Git 命令行工具本身不提供图形界面。其输出信息通常是英文。用户可以查阅中文文档或社区翻译。"
+  },
+  {
+    "id": "python",
+    "name": "Python",
+    "description": "一种高级、解释型、通用编程语言。以其简洁易读的语法和强大的标准库著称。",
+    "officialUrl": "https://www.python.org/",
+    "downloadUrl": "https://www.python.org/downloads/",
+    "icon": "images/python-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编程语言", "运行时环境"],
+    "languages": ["Python"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 访问官网下载适用于 Windows 的最新稳定版安装包 (.exe)。\n2. 运行安装程序，务必勾选 'Add Python to PATH' 选项，然后点击 'Install Now'。",
+      "macOS": "1. macOS 通常预装了 Python 2.7，建议安装 Python 3。使用 Homebrew: `brew install python` (推荐)。\n2. 或者从官网下载 macOS 安装包 (.pkg) 并安装。",
+      "Linux": "1. 大多数 Linux 发行版都自带 Python。更新版本可通过包管理器安装：\n   - Ubuntu/Debian: `sudo apt update && sudo apt install python3`\n   - Red Hat/CentOS/Fedora: `sudo dnf install python3`"
+    },
+    "basicConfig": "1. 打开终端或命令提示符。\n2. 输入 `python --version` 或 `python3 --version` 检查是否安装成功及版本号。\n3. 可以通过 `pip` (Python 包管理器) 安装第三方库，例如 `pip install requests`。",
+    "chineseConfig": "Python 语言本身不区分语言环境。其标准库和文档有官方中文翻译。"
+  },
+  {
+    "id": "nodejs",
+    "name": "Node.js",
+    "description": "基于 Chrome V8 引擎构建的 JavaScript 运行时环境，允许在服务器端运行 JavaScript。",
+    "officialUrl": "https://nodejs.org/",
+    "downloadUrl": "https://nodejs.org/en/download/",
+    "icon": "images/nodejs-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["运行时环境"],
+    "languages": ["JavaScript", "TypeScript"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 访问官网下载 Windows 安装包 (.msi)。\n2. 运行安装程序，接受许可协议并选择安装路径，推荐勾选 'Automatically install the necessary tools...' 选项以安装构建工具。\n3. 安装完成后重启终端或命令提示符。",
+      "macOS": "1. 使用 Homebrew: `brew install node` (推荐)。\n2. 或者从官网下载 macOS 安装包 (.pkg) 并安装。",
+      "Linux": "1. 使用包管理器安装 (推荐 NodeSource 提供的仓库以获得最新版本):\n   - Ubuntu/Debian: 参考官网指南或使用 `curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs`\n   - Red Hat/CentOS/Fedora: `curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash - && sudo dnf install -y nodejs`"
+    },
+    "basicConfig": "1. 打开终端或命令提示符。\n2. 输入 `node --version` 检查 Node.js 版本。\n3. 输入 `npm --version` 检查 npm (Node Package Manager) 版本。\n4. 使用 `npm install <package-name>` 安装包，`npm init` 初始化项目。",
+    "chineseConfig": "Node.js 运行时和 npm 包管理器本身界面为英文。其生态中的工具和文档有大量中文资源。"
+  },
+  {
+    "id": "intellijidea",
+    "name": "IntelliJ IDEA",
+    "description": "JetBrains 开发的功能强大的 Java IDE，也支持 Kotlin、Groovy、Scala 等 JVM 语言。",
+    "officialUrl": "https://www.jetbrains.com/idea/",
+    "downloadUrl": "https://www.jetbrains.com/idea/download/",
+    "icon": "images/intellij-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["IDE"],
+    "languages": ["Java", "Kotlin", "Groovy", "Scala"],
+    "pricing": "社区版 (免费), 终极版 (付费)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 (.exe)。\n2. 运行安装程序，按照向导完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 IntelliJ IDEA.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz)。\n2. 解压到目标目录，运行 bin/idea.sh 启动。可考虑使用 Toolbox App 管理。"
+    },
+    "basicConfig": "首次启动会引导你进行初始设置，包括导入设置、选择主题等。之后可以在 File > Settings (Windows/Linux) 或 IntelliJ IDEA > Preferences (macOS) 中进行详细配置。",
+    "chineseConfig": "1. 打开 IDEA。\n2. 进入 Settings/Preferences。\n3. 找到 Plugins。\n4. 在 Marketplace 搜索 'Chinese (Simplified) Language Pack'。\n5. 安装插件并重启 IDEA。"
+  },
+  {
+    "id": "pycharm",
+    "name": "PyCharm",
+    "description": "JetBrains 开发的专为 Python 开发打造的 IDE，提供智能代码补全、调试、测试等功能。",
+    "officialUrl": "https://www.jetbrains.com/pycharm/",
+    "downloadUrl": "https://www.jetbrains.com/pycharm/download/",
+    "icon": "images/pycharm-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["IDE"],
+    "languages": ["Python"],
+    "pricing": "社区版 (免费), 专业版 (付费)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 (.exe)。\n2. 运行安装程序，按照向导完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 PyCharm.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz)。\n2. 解压到目标目录，运行 bin/pycharm.sh 启动。可考虑使用 Toolbox App 管理。"
+    },
+    "basicConfig": "首次启动会引导你进行初始设置。可在 File > Settings (Windows/Linux) 或 PyCharm > Preferences (macOS) 中配置解释器、代码风格等。",
+    "chineseConfig": "同 IntelliJ IDEA，通过安装 'Chinese (Simplified) Language Pack' 插件实现。"
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "description": "开源的应用容器引擎，让开发者可以打包他们的应用以及依赖包到一个可移植的容器中，然后发布到任何流行的 Linux 机器或 Windows 上。",
+    "officialUrl": "https://www.docker.com/",
+    "downloadUrl": "https://docs.docker.com/get-docker/",
+    "icon": "images/docker-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["容器化"],
+    "languages": [],
+    "pricing": "社区版 (免费), 企业版 (付费)",
+    "installationGuide": {
+      "Windows": "1. 下载 Docker Desktop for Windows。\n2. 运行安装程序，遵循安装向导。需要启用 WSL 2 或 Hyper-V。",
+      "macOS": "1. 下载 Docker Desktop for Mac。\n2. 将 Docker.dmg 拖拽到 Applications 文件夹。\n3. 启动 Docker 应用并按指示操作。",
+      "Linux": "1. 根据具体发行版参考官网指南安装 Docker Engine。例如 Ubuntu:\n   - `sudo apt update`\n   - `sudo apt install ca-certificates curl gnupg lsb-release`\n   - 添加 Docker 官方 GPG key\n   - 添加仓库\n   - `sudo apt update`\n   - `sudo apt install docker-ce docker-ce-cli containerd.io`"
+    },
+    "basicConfig": "安装后启动 Docker Desktop (Windows/macOS) 或确保 Docker daemon 正在运行 (Linux)。在终端运行 `docker --version` 验证安装。",
+    "chineseConfig": "Docker CLI 和 GUI 工具 (如 Docker Desktop) 支持多语言，包括中文。"
+  },
+  {
+    "id": "postman",
+    "name": "Postman",
+    "description": "API 开发协作平台，用于 API 的设计、测试、开发和文档化。",
+    "officialUrl": "https://www.postman.com/",
+    "downloadUrl": "https://www.postman.com/downloads/",
+    "icon": "images/postman-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["API 测试"],
+    "languages": [],
+    "pricing": "免费, 基础版, 专业版, 企业版 (付费等级)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 (.exe)。\n2. 运行安装程序，按照提示完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.zip)。\n2. 解压后将 Postman.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz)。\n2. 解压到目标目录，运行解压后的 `Postman` 可执行文件。"
+    },
+    "basicConfig": "首次运行需要登录或注册账户。可以通过界面创建 Collection 和 Request 来开始测试 API。",
+    "chineseConfig": "Postman 界面支持切换语言。在 Settings > General > Language 中可以选择中文。"
+  },
+  {
+    "id": "sublimetext",
+    "name": "Sublime Text",
+    "description": "一款轻量、可扩展、跨平台的文本编辑器，以其速度快和强大的插件系统闻名。",
+    "officialUrl": "https://www.sublimetext.com/",
+    "downloadUrl": "https://www.sublimetext.com/download",
+    "icon": "images/sublime-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编辑器"],
+    "languages": ["HTML/CSS", "JavaScript", "Python", "Java", "C++", "Go", "PHP", "Rust", "Markdown"],
+    "pricing": "试用免费, 持续使用需付费授权",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 (.exe)。\n2. 运行安装程序，按照提示完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 Sublime Text.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.xz)。\n2. 解压到目标目录，运行其中的可执行文件。\n3. 或者添加官方仓库并通过包管理器安装。"
+    },
+    "basicConfig": "通过 Preferences > Settings 打开用户设置文件进行配置。可通过 Package Control 安装插件。",
+    "chineseConfig": "Sublime Text 本身界面为英文。可通过安装 'ChineseLocalization' 等社区插件实现部分中文化。"
+  },
+  {
+    "id": "atom",
+    "name": "Atom",
+    "description": "GitHub 开发的免费、开源、高度可定制的文本编辑器。基于 Electron 构建。",
+    "officialUrl": "https://github.blog/2022-06-08-sunsetting-atom/",
+    "downloadUrl": "https://github.com/atom/atom/releases/tag/v1.60.0",
+    "icon": "images/atom-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编辑器"],
+    "languages": ["HTML/CSS", "JavaScript", "Python", "Java", "C++", "Go", "PHP", "Rust", "Markdown"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从 GitHub Releases 下载 Windows 版本 (.exe)。\n2. 运行安装程序，按照提示完成安装。",
+      "macOS": "1. 从 GitHub Releases 下载 macOS 版本 (.zip)。\n2. 解压后将 Atom.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从 GitHub Releases 下载 Linux 版本 (.deb 或 .rpm 或 .tar.gz)。\n2. 根据格式使用对应包管理器安装或解压运行。"
+    },
+    "basicConfig": "通过 File > Settings (Windows/Linux) 或 Atom > Preferences (macOS) 进行配置。可通过 Settings > Install 安装社区包。",
+    "chineseConfig": "Atom 界面和设置支持国际化。可在 Settings > Editor > Preferred Languages 中添加 'zh-CN'。"
+  },
+  {
+    "id": "vim",
+    "name": "Vim",
+    "description": "一个高度可配置的文本编辑器，旨在高效地创建和更改任何类型的文本。是 vi 编辑器的增强版本。",
+    "officialUrl": "https://www.vim.org/",
+    "downloadUrl": "https://www.vim.org/download.php",
+    "icon": "images/vim-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["编辑器"],
+    "languages": ["Shell", "Bash", "C", "C++", "Python", "Perl", "Ruby", "Go"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 可通过 Chocolatey: `choco install vim` 或 Scoop: `scoop install vim` 安装 (推荐)。\n2. 或从官网下载 gvim.exe 安装包安装图形界面版本。",
+      "macOS": "1. 使用 Homebrew: `brew install vim` (推荐)。\n2. macOS 通常自带 vi，vim 可能需要安装。",
+      "Linux": "1. 大多数 Linux 发行版默认包含 vim。如未安装：\n   - Ubuntu/Debian: `sudo apt update && sudo apt install vim`\n   - Red Hat/CentOS/Fedora: `sudo dnf install vim`"
+    },
+    "basicConfig": "配置文件通常位于用户主目录下的 `.vimrc` 文件。可以通过编辑此文件来自定义快捷键、主题、插件等。",
+    "chineseConfig": "Vim 本身是纯文本界面，其帮助文档和消息通常是英文。用户可以查阅中文文档或社区资源。"
+  },
+  {
+    "id": "eclipse",
+    "name": "Eclipse",
+    "description": "一个开放源代码的、基于 Java 的可扩展开发平台。主要用于 Java 开发，但也支持 C/C++, PHP, Perl, Python 等。",
+    "officialUrl": "https://www.eclipse.org/",
+    "downloadUrl": "https://www.eclipse.org/downloads/",
+    "icon": "images/eclipse-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["IDE"],
+    "languages": ["Java", "C/C++", "PHP", "Python", "JavaScript"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Eclipse Installer (.exe)。\n2. 运行安装程序，选择所需的 Eclipse 包 (如 Eclipse IDE for Java Developers)，然后安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 Eclipse.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz)。\n2. 解压到目标目录，运行其中的 `eclipse` 可执行文件。"
+    },
+    "basicConfig": "首次启动需要选择工作空间 (Workspace) 路径。之后可通过 Help > Eclipse Marketplace 安装插件，Window > Preferences 进行设置。",
+    "chineseConfig": "Eclipse 社区提供中文语言包。可通过 Help > Install New Software... 添加语言包更新站点进行安装。"
+  },
+  {
+    "id": "notepadplusplus",
+    "name": "Notepad++",
+    "description": "运行在 Microsoft Windows 环境下的免费源代码编辑器。支持多种编程语言。",
+    "officialUrl": "https://notepad-plus-plus.org/",
+    "downloadUrl": "https://notepad-plus-plus.org/downloads/",
+    "icon": "images/notepadplusplus-icon.png",
+    "os": ["Windows"],
+    "category": ["编辑器"],
+    "languages": ["HTML/CSS", "JavaScript", "Python", "Java", "C++", "PHP", "SQL", "XML", "Markdown"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.exe)。\n2. 运行安装程序，按照向导完成安装。"
+    },
+    "basicConfig": "通过 Settings > Preferences 进行常规设置。可通过 Plugins > Plugins Admin 安装插件。",
+    "chineseConfig": "1. 打开 Notepad++。\n2. 菜单栏选择 Settings > Preferences > General > Localization。\n3. 选择 'Chinese (Simplified)' 或 'Chinese (Traditional)'。\n4. 重启 Notepad++。"
+  },
+  {
+    "id": "mysqlworkbench",
+    "name": "MySQL Workbench",
+    "description": "MySQL 官方的可视化数据库设计工具，支持数据库建模、SQL 开发和数据库管理。",
+    "officialUrl": "https://www.mysql.com/products/workbench/",
+    "downloadUrl": "https://dev.mysql.com/downloads/workbench/",
+    "icon": "images/mysqlworkbench-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["数据库工具"],
+    "languages": [],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从 MySQL 官网下载 Windows (x86, 64-bit), MSI Installer 版本。\n2. 运行 .msi 安装程序，按照向导完成安装。",
+      "macOS": "1. 从 MySQL 官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 MySQLWorkbench.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从 MySQL 官网下载对应 Linux 发行版的包 (.deb, .rpm) 或使用包管理器安装。\n   - Ubuntu/Debian: `sudo apt install mysql-workbench`"
+    },
+    "basicConfig": "首次启动需配置数据库连接。可通过 Database > Manage Connections 添加新的 MySQL 服务器连接。",
+    "chineseConfig": "MySQL Workbench 界面支持多语言。可在 Edit > Preferences > General > Language 中选择中文。"
+  },
+  {
+    "id": "dbeaver",
+    "name": "DBeaver",
+    "description": "免费的通用数据库工具和 SQL 客户端，支持几乎所有主流数据库系统。",
+    "officialUrl": "https://dbeaver.io/",
+    "downloadUrl": "https://dbeaver.io/download/",
+    "icon": "images/dbeaver-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["数据库工具"],
+    "languages": [],
+    "pricing": "社区版 (免费), 企业版 (付费)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.exe)。\n2. 运行安装程序，按照向导完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 DBeaver.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz) 解压运行，或下载 .deb/.rpm 包使用包管理器安装。"
+    },
+    "basicConfig": "启动后可通过 Database > New Database Connection 向导添加数据库驱动和连接信息。",
+    "chineseConfig": "DBeaver 界面支持国际化。可在 Preferences > User Interface > Appearance > Language 中选择 'zh'。"
+  },
+  {
+    "id": "typora",
+    "name": "Typora",
+    "description": "所见即所得的 Markdown 编辑器，提供简洁直观的写作体验。",
+    "officialUrl": "https://typora.io/",
+    "downloadUrl": "https://typora.io/#download",
+    "icon": "images/typora-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编辑器", "文档工具"],
+    "languages": ["Markdown"],
+    "pricing": "Beta期间免费, 正式发布后付费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.exe)。\n2. 运行安装程序，按照提示完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 Typora.app 拖入 Applications 文件夹。",
+      "Linux": "1. 从官网下载 Linux 版本 (.deb 或 .rpm 或 tar.xz)。\n2. 使用对应包管理器安装或解压运行。"
+    },
+    "basicConfig": "通过 文件 > 偏好设置 (Windows/Linux) 或 Typora > Preferences (macOS) 进行配置。",
+    "chineseConfig": "1. 打开 Typora。\n2. 进入偏好设置 > 通用 > 语言。\n3. 选择 '简体中文' 或 '繁體中文'。\n4. 重启 Typora。"
+  },
+  {
+    "id": "visualstudio",
+    "name": "Visual Studio",
+    "description": "Microsoft 开发的集成开发环境 (IDE)，主要用于 Windows 平台上的 .NET 和 C++ 开发。",
+    "officialUrl": "https://visualstudio.microsoft.com/",
+    "downloadUrl": "https://visualstudio.microsoft.com/downloads/",
+    "icon": "images/visualstudio-icon.png",
+    "os": ["Windows", "macOS"],
+    "category": ["IDE"],
+    "languages": [".NET", "C#", "C++", "F#", "VB.NET", "Python", "JavaScript"],
+    "pricing": "社区版 (免费), 专业版 (付费), 企业版 (付费)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Visual Studio Installer (.exe)。\n2. 运行安装程序，选择所需的工作负载 (Workloads) 如 '.NET desktop development', 'Desktop development with C++' 等。\n3. 点击安装，安装程序会下载并安装所选组件。",
+      "macOS": "1. 下载 Visual Studio for Mac 安装包 (.dmg)。\n2. 挂载 dmg 文件并将 Visual Studio.app 拖入 Applications 文件夹。\n3. 首次运行时选择要安装的组件。"
+    },
+    "basicConfig": "首次启动会引导进行基本设置。可通过 Tools > Options (Windows) 或 Visual Studio > Preferences (macOS) 进行详细配置。",
+    "chineseConfig": "Visual Studio 安装程序和 IDE 本身支持多语言。安装时可选择语言包，或在 IDE 内通过 Tools > Options > Environment > International Settings 更改。"
+  },
+  {
+    "id": "xampp",
+    "name": "XAMPP",
+    "description": "Apache Friends 提供的一个易于安装的 Apache 发行版，包含 MariaDB、PHP 和 Perl，方便快速搭建本地 Web 开发环境。",
+    "officialUrl": "https://www.apachefriends.org/index.html",
+    "downloadUrl": "https://www.apachefriends.org/download.html",
+    "icon": "images/xampp-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["Web服务器套件"],
+    "languages": ["PHP", "Perl"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.exe)。\n2. 以管理员身份运行安装程序，按照向导完成安装。",
+      "macOS": "1. 从官网下载 macOS 版本安装包 (.dmg)。\n2. 挂载 dmg 文件并运行其中的安装器 (.pkg)。",
+      "Linux": "1. 从官网下载 Linux 版本压缩包 (.tar.gz)。\n2. 解压到 /opt 目录 (例如 `sudo tar xvfz Downloads/xampp-linux-*-installer.run -C /opt`)。\n3. 运行安装脚本 (例如 `sudo /opt/lampp/install`，具体路径可能不同)。"
+    },
+    "basicConfig": "安装完成后，通过 XAMPP Control Panel 启动 Apache 和 MySQL 服务。将网站文件放入 htdocs 目录即可通过 http://localhost/ 访问。",
+    "chineseConfig": "XAMPP 控制面板界面支持多语言。可在 GUI 设置中选择语言。"
+  },
+  {
+    "id": "androidstudio",
+    "name": "Android Studio",
+    "description": "Google 官方推出的 Android 应用集成开发环境 (IDE)，基于 IntelliJ IDEA。",
+    "officialUrl": "https://developer.android.com/studio",
+    "downloadUrl": "https://developer.android.com/studio#downloads",
+    "icon": "images/androidstudio-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["IDE"],
+    "languages": ["Java", "Kotlin", "C++", "Java (Android)"],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.exe)。\n2. 运行安装程序，按照向导完成安装。安装过程中会自动下载 Android SDK。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并将 Android Studio.app 拖入 Applications 文件夹。\n3. 首次运行时会引导下载 Android SDK。",
+      "Linux": "1. 从官网下载 Linux 版本 (.tar.gz)。\n2. 解压到目标目录 (如 ~/android-studio)。\n3. 运行 bin/studio.sh 启动安装向导，下载 Android SDK。"
+    },
+    "basicConfig": "首次启动会引导配置 SDK 和模拟器。可通过 File > Settings (Windows/Linux) 或 Android Studio > Preferences (macOS) 进行配置。",
+    "chineseConfig": "Android Studio 基于 IntelliJ IDEA，同样可以通过安装 'Chinese (Simplified) Language Pack' 插件实现中文化。"
+  },
+  {
+    "id": "virtualbox",
+    "name": "Oracle VM VirtualBox",
+    "description": "一款开源的虚拟机软件，允许在一台计算机上安装并运行多个操作系统。",
+    "officialUrl": "https://www.virtualbox.org/",
+    "downloadUrl": "https://www.virtualbox.org/wiki/Downloads",
+    "icon": "images/virtualbox-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Solaris"],
+    "category": ["虚拟化"],
+    "languages": [],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows hosts 版本安装包 (.exe)。\n2. 以管理员身份运行安装程序，按照向导完成安装。",
+      "macOS": "1. 从官网下载 OS X hosts 版本安装包 (.dmg)。\n2. 挂载 dmg 文件并运行其中的安装器 (.pkg)。",
+      "Linux": "1. 从官网下载对应 Linux 发行版的包 (.deb 或 .rpm) 或使用包管理器安装。\n   - Ubuntu/Debian: `sudo apt install virtualbox`"
+    },
+    "basicConfig": "安装后启动 VirtualBox。通过 '新建' 创建虚拟机，分配内存和硬盘，然后加载操作系统安装镜像 (ISO) 即可开始安装。",
+    "chineseConfig": "VirtualBox 界面支持多语言。可在 File > Preferences > Language 中选择语言。"
+  },
+  {
+    "id": "wireshark",
+    "name": "Wireshark",
+    "description": "世界上最广泛使用的网络协议分析器。它让你可以看到流经网络的实时数据包数据。",
+    "officialUrl": "https://www.wireshark.org/",
+    "downloadUrl": "https://www.wireshark.org/#download",
+    "icon": "images/wireshark-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["网络工具"],
+    "languages": [],
+    "pricing": "免费",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows Installer (.exe)。\n2. 运行安装程序，推荐安装 WinPcap/Npcap 驱动以捕获数据包。",
+      "macOS": "1. 从官网下载 macOS 版本 (.dmg)。\n2. 挂载 dmg 文件并运行其中的安装器 (.pkg)。",
+      "Linux": "1. 使用包管理器安装 (推荐):\n   - Ubuntu/Debian: `sudo apt update && sudo apt install wireshark`\n   安装过程中可能会询问是否允许非超级用户捕获数据包，建议选择 'Yes'。"
+    },
+    "basicConfig": "首次运行可能需要选择网络接口进行抓包。可通过 Capture > Options 配置抓包选项。",
+    "chineseConfig": "Wireshark 界面支持多语言。可在 Edit > Preferences > Appearance > Language 中选择语言。"
+  },
+  {
+    "id": "nginx",
+    "name": "Nginx",
+    "description": "一个高性能的 HTTP 和反向代理 web 服务器，也是一个 IMAP/POP3/SMTP 代理服务器。",
+    "officialUrl": "https://nginx.org/",
+    "downloadUrl": "https://nginx.org/en/download.html",
+    "icon": "images/nginx-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["Web服务器"],
+    "languages": [],
+    "pricing": "开源, Plus (商业支持)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 zip 包。\n2. 解压到目标目录。\n3. 以管理员身份运行命令提示符，进入解压目录，执行 `start nginx` 启动。",
+      "macOS": "1. 使用 Homebrew: `brew install nginx` (推荐)。\n2. 或者从官网下载源码编译安装。",
+      "Linux": "1. 使用包管理器安装 (推荐):\n   - Ubuntu/Debian: `sudo apt update && sudo apt install nginx`\n   - Red Hat/CentOS/Fedora: `sudo dnf install nginx`"
+    },
+    "basicConfig": "主要配置文件通常位于 `/etc/nginx/nginx.conf` (Linux/macOS via package manager) 或解压目录下的 `conf/nginx.conf` (Windows)。修改配置后需重载服务：`sudo systemctl reload nginx` (Linux) 或 `nginx -s reload` (Windows)。",
+    "chineseConfig": "Nginx 本身是命令行服务，无图形界面。其配置文件和日志为英文。"
+  },
+  {
+    "id": "redis",
+    "name": "Redis",
+    "description": "一个开源的、基于键值对存储的 NoSQL 数据库。它支持多种类型的数据结构，如字符串、哈希、列表、集合等。",
+    "officialUrl": "https://redis.io/",
+    "downloadUrl": "https://redis.io/download/",
+    "icon": "images/redis-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["数据库", "缓存"],
+    "languages": [],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. Microsoft Archive 提供了 Windows 版本，但已不再积极维护。推荐使用 WSL (Windows Subsystem for Linux) 安装 Linux 版本。\n2. 或使用 Docker 运行 Redis。",
+      "macOS": "1. 使用 Homebrew: `brew install redis` (推荐)。",
+      "Linux": "1. 使用包管理器安装 (推荐):\n   - Ubuntu/Debian: `sudo apt update && sudo apt install redis-server`\n   - Red Hat/CentOS/Fedora: `sudo dnf install redis`"
+    },
+    "basicConfig": "主要配置文件通常位于 `/etc/redis/redis.conf` (Linux via package manager)。可通过 `redis-cli` 命令行客户端连接和管理 Redis 实例。启动服务：`sudo systemctl start redis` (Linux)。",
+    "chineseConfig": "Redis 本身是命令行服务，无图形界面。其命令和输出信息为英文。"
+  },
+  {
+    "id": "go",
+    "name": "Go (Golang)",
+    "description": "Google 开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。",
+    "officialUrl": "https://golang.org/",
+    "downloadUrl": "https://golang.org/dl/",
+    "icon": "images/go-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编程语言", "运行时环境"],
+    "languages": ["Go"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本安装包 (.msi)。\n2. 运行安装程序，按照向导完成安装。默认会设置 GOPATH 和将 Go 添加到 PATH。",
+      "macOS": "1. 使用 Homebrew: `brew install go` (推荐)。\n2. 或者从官网下载 macOS 版本包 (.tar.gz) 解压并手动配置环境变量。",
+      "Linux": "1. 从官网下载 Linux 版本包 (.tar.gz)。\n2. 解压到 `/usr/local` (例如 `sudo tar -C /usr/local -xzf go*.linux-amd64.tar.gz`)。\n3. 将 `/usr/local/go/bin` 添加到 PATH 环境变量中。"
+    },
+    "basicConfig": "验证安装：打开终端运行 `go version`。设置工作区 (Go Modules 推荐): 在项目根目录下使用 `go mod init your_project_name`。",
+    "chineseConfig": "Go 语言本身不区分语言环境。其标准库和文档有官方中文翻译。"
+  },
+  {
+    "id": "rust",
+    "name": "Rust",
+    "description": "一种系统编程语言，专注于速度、内存安全和并发性。",
+    "officialUrl": "https://www.rust-lang.org/",
+    "downloadUrl": "https://www.rust-lang.org/tools/install",
+    "icon": "images/rust-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["编程语言", "编译器"],
+    "languages": ["Rust"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 推荐使用 Rustup 安装管理器。下载 `rustup-init.exe` 并运行。\n2. 按照提示操作，默认选项通常即可。可能需要安装 Visual Studio C++ Build tools。",
+      "macOS": "1. 使用 Rustup (推荐): 在终端运行 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`。\n2. 按照提示操作。",
+      "Linux": "1. 使用 Rustup (推荐): 在终端运行 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`。\n2. 按照提示操作。可能需要先安装 build-essential (Ubuntu/Debian) 或 Development Tools (Red Hat/CentOS)。"
+    },
+    "basicConfig": "安装后重启终端。验证安装：`rustc --version` 和 `cargo --version`。Cargo 是 Rust 的包管理器和构建系统。",
+    "chineseConfig": "Rust 工具链和编译器本身界面为英文。其文档和社区有大量中文资源。"
+  },
+  {
+    "id": "jenkins",
+    "name": "Jenkins",
+    "description": "一个开源自动化服务器，用于实现持续集成和持续部署 (CI/CD)。",
+    "officialUrl": "https://www.jenkins.io/",
+    "downloadUrl": "https://www.jenkins.io/download/",
+    "icon": "images/jenkins-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["CI/CD"],
+    "languages": ["Java"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 确保已安装 Java Runtime Environment (JRE) 或 Java Development Kit (JDK)。\n2. 下载 Jenkins Windows 安装包 (.msi)。\n3. 运行安装程序，按照向导完成安装。它会被安装为 Windows 服务。",
+      "macOS": "1. 确保已安装 Java。\n2. 使用 Homebrew: `brew install jenkins` (推荐)。\n3. 或者下载通用的 `jenkins.war` 文件，通过 `java -jar jenkins.war` 运行。",
+      "Linux": "1. 确保已安装 Java。\n2. 使用包管理器安装 (推荐):\n   - Ubuntu/Debian: 参考官网指南添加仓库后 `sudo apt update && sudo apt install jenkins`\n3. 或者下载 `jenkins.war` 文件运行。"
+    },
+    "basicConfig": "安装后通过浏览器访问 `http://localhost:8080` 进行初始设置。需要解锁 Jenkins 并安装推荐插件。",
+    "chineseConfig": "Jenkins 界面支持插件国际化。可通过安装 'Locale' 插件并在 Configure System 中设置 'Default Language' 为 'zh_CN' 来实现。"
+  },
+  {
+    "id": "terraform",
+    "name": "Terraform",
+    "description": "HashiCorp 开发的基础设施即代码 (IaC) 工具，用于安全高效地构建、更改和版本化基础设施。",
+    "officialUrl": "https://www.terraform.io/",
+    "downloadUrl": "https://www.terraform.io/downloads.html",
+    "icon": "images/terraform-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Solaris", "FreeBSD", "OpenBSD"],
+    "category": ["基础设施即代码"],
+    "languages": [],
+    "pricing": "开源, Terraform Cloud (免费/付费等级)",
+    "installationGuide": {
+      "Windows": "1. 从官网下载 Windows 版本 zip 包。\n2. 解压并将其中的 `terraform.exe` 文件所在目录添加到系统 PATH 环境变量中。",
+      "macOS": "1. 使用 Homebrew: `brew tap hashicorp/tap && brew install hashicorp/tap/terraform` (推荐)。\n2. 或者下载 macOS 版本 zip 包解压并手动添加到 PATH。",
+      "Linux": "1. 从官网下载 Linux 版本 zip 包。\n2. 解压并将 `terraform` 可执行文件移动到系统 PATH 中的目录 (如 `/usr/local/bin`)：`sudo mv terraform /usr/local/bin/`"
+    },
+    "basicConfig": "验证安装：打开终端运行 `terraform version`。通过编写 `.tf` 配置文件来定义基础设施，然后使用 `terraform init`, `terraform plan`, `terraform apply` 等命令管理。",
+    "chineseConfig": "Terraform CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+  },
+  {
+    "id": "ansible",
+    "name": "Ansible",
+    "description": "红帽公司开发的自动化运维工具，通过 SSH 协议管理节点，无需在被管节点安装客户端。",
+    "officialUrl": "https://www.ansible.com/",
+    "downloadUrl": "https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html",
+    "icon": "images/ansible-icon.png",
+    "os": ["Windows", "macOS", "Linux", "Unix"],
+    "category": ["自动化运维"],
+    "languages": ["YAML", "Python"],
+    "pricing": "开源, 自动化控制器 (付费)",
+    "installationGuide": {
+      "Windows": "1. Ansible 控制节点不能是 Windows。需要在 WSL (Windows Subsystem for Linux) 或 Linux 虚拟机中安装。\n2. 在 WSL/Linux 中，推荐使用 pip 安装：`pip install ansible`。",
+      "macOS": "1. 使用 pip 安装 (推荐): `pip3 install ansible`。\n2. 或使用 Homebrew: `brew install ansible`。",
+      "Linux": "1. 使用包管理器安装 (推荐):\n   - Ubuntu/Debian: `sudo apt update && sudo apt install ansible`\n   - Red Hat/CentOS/Fedora: `sudo dnf install ansible`"
+    },
+    "basicConfig": "验证安装：`ansible --version`。配置 Inventory 文件 (默认 `/etc/ansible/hosts`) 定义被管主机，编写 Playbook (YAML 文件) 定义任务，使用 `ansible-playbook playbook.yml` 执行。",
+    "chineseConfig": "Ansible CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+  },
+  {
+    "id": "kubernetes",
+    "name": "Kubernetes (K8s)",
+    "description": "一个开源的容器编排平台，用于自动化容器化应用程序的部署、扩展和管理。",
+    "officialUrl": "https://kubernetes.io/",
+    "downloadUrl": "https://kubernetes.io/releases/download/",
+    "icon": "images/kubernetes-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["容器编排"],
+    "languages": [],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 使用 Minikube: 下载 `minikube-windows-amd64.exe`，重命名为 `minikube.exe` 并加入 PATH。运行 `minikube start` 启动本地集群。\n2. 或使用 Docker Desktop 内置的 Kubernetes 功能。",
+      "macOS": "1. 使用 Minikube: `brew install minikube`。运行 `minikube start` 启动本地集群。\n2. 或使用 Docker Desktop 内置的 Kubernetes 功能。",
+      "Linux": "1. 使用 Minikube: 下载 `minikube-linux-amd64`，使其可执行并加入 PATH。运行 `minikube start` 启动本地集群。\n2. 或直接安装 kubectl: `curl -LO \"https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl\"` 然后 `chmod +x kubectl` 并移动到 PATH。"
+    },
+    "basicConfig": "Minikube 启动后，使用 `kubectl` 命令行工具与集群交互。例如 `kubectl get nodes` 查看节点。配置文件通常在 `~/.kube/config`。",
+    "chineseConfig": "Kubernetes CLI (kubectl) 和 Minikube 工具本身界面为英文。其文档和社区有大量中文资源。"
+  },
+  {
+    "id": "flutter",
+    "name": "Flutter",
+    "description": "Google 开源的 UI 软件开发工具包，用于构建跨平台的移动、Web 和桌面应用程序。",
+    "officialUrl": "https://flutter.dev/",
+    "downloadUrl": "https://flutter.dev/docs/get-started/install",
+    "icon": "images/flutter-icon.png",
+    "os": ["Windows", "macOS", "Linux"],
+    "category": ["框架", "SDK"],
+    "languages": ["Dart"],
+    "pricing": "开源",
+    "installationGuide": {
+      "Windows": "1. 下载 Flutter SDK Windows 版本 zip 包。\n2. 解压到目标文件夹 (例如 `C:\\src\\flutter`)。不要使用包含特殊字符或空格的路径。\n3. 将 `flutter\\bin` 目录添加到系统 PATH 环境变量中。\n4. 打开命令提示符或 PowerShell，运行 `flutter doctor` 检查依赖并按提示安装缺失项 (如 Android Studio SDK, cmdline-tools)。",
+      "macOS": "1. 下载 Flutter SDK macOS 版本 zip 包。\n2. 解压到目标文件夹 (例如 `~/development`)。\n3. 将 `flutter/bin` 目录添加到 PATH 环境变量中 (修改 `~/.zshrc` 或 `~/.bash_profile`)。\n4. 打开终端，运行 `flutter doctor` 检查依赖。",
+      "Linux": "1. 下载 Flutter SDK Linux 版本 tar.xz 包。\n2. 解压到目标文件夹 (例如 `~/development`)。\n3. 将 `flutter/bin` 目录添加到 PATH 环境变量中 (修改 `~/.bashrc` 或 `~/.zshrc`)。\n4. 打开终端，运行 `flutter doctor` 检查依赖。"
+    },
+    "basicConfig": "安装后重启终端。运行 `flutter --version` 验证。`flutter doctor` 是最重要的配置检查命令。使用 `flutter create my_app` 创建新项目。",
+    "chineseConfig": "Flutter SDK 工具本身界面为英文。其文档和社区有大量中文资源。"
+  },
+    {
+      "id": "maven",
+      "name": "Apache Maven",
+      "description": "一个项目管理和理解工具，主要用于 Java 项目的构建自动化。它通过一个项目对象模型（POM）来描述项目信息、依赖关系和构建过程。",
+      "officialUrl": "https://maven.apache.org/",
+      "downloadUrl": "https://maven.apache.org/download.cgi",
+      "icon": "images/maven-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["构建工具"],
+      "languages": ["Java"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 下载二进制 ZIP 包。\n2. 解压到目标目录（如 `C:\\apache-maven`）。\n3. 设置 `JAVA_HOME` 环境变量指向 JDK 安装目录。\n4. 将 `MAVEN_HOME`（或 `M2_HOME`）设置为 Maven 解压目录。\n5. 将 `%MAVEN_HOME%\\bin` 添加到 `PATH` 环境变量中。\n6. 打开命令提示符，输入 `mvn -v` 验证。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install maven`。\n2. 或者手动下载并解压，设置 `JAVA_HOME` 和 `M2_HOME` 环境变量，并将 `$M2_HOME/bin` 加入 `PATH`。\n3. 在终端运行 `mvn -v` 验证。",
+        "Linux": "1. 使用包管理器安装（推荐）：`sudo apt install maven` (Ubuntu/Debian) 或 `sudo dnf install maven` (Fedora)。\n2. 或者手动下载并解压，设置 `JAVA_HOME` 和 `M2_HOME` 环境变量，并将 `$M2_HOME/bin` 加入 `PATH`。\n3. 在终端运行 `mvn -v` 验证。"
+      },
+      "basicConfig": "Maven 的核心配置文件是 `pom.xml`。全局配置文件通常位于 `$M2_HOME/conf/settings.xml`，用户级配置文件位于 `~/.m2/settings.xml`。可以通过这些文件配置仓库地址、代理、认证信息等。",
+      "chineseConfig": "Maven 本身是命令行工具，输出为英文。其文档和社区有丰富的中文资源。"
+    },
+    {
+      "id": "gradle",
+      "name": "Gradle",
+      "description": "一个基于 Apache Ant 和 Apache Maven 概念的项目自动化构建工具。它使用一种基于 Groovy 或 Kotlin 的特定领域语言 (DSL) 来声明项目设置，而不是传统的 XML。",
+      "officialUrl": "https://gradle.org/",
+      "downloadUrl": "https://gradle.org/releases/",
+      "icon": "images/gradle-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["构建工具"],
+      "languages": ["Java", "Kotlin", "Groovy", "Scala"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 推荐使用 Gradle Wrapper (`gradlew.bat`) 来管理项目中的 Gradle 版本，无需全局安装。\n2. 如果需要全局安装：下载完整 ZIP 包，解压到目标目录。\n3. 设置 `JAVA_HOME` 环境变量。\n4. 将 `GRADLE_HOME` 设置为解压目录。\n5. 将 `%GRADLE_HOME%\\bin` 添加到 `PATH` 环境变量中。\n6. 打开命令提示符，输入 `gradle -v` 验证。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install gradle`。\n2. 或者手动下载并解压，设置 `JAVA_HOME` 和 `GRADLE_HOME` 环境变量，并将 `$GRADLE_HOME/bin` 加入 `PATH`。\n3. 在终端运行 `gradle -v` 验证。",
+        "Linux": "1. 使用包管理器安装（可能不是最新版）：`sudo apt install gradle` (Ubuntu/Debian) 或 `sudo dnf install gradle` (Fedora)。\n2. 或者手动下载并解压，设置 `JAVA_HOME` 和 `GRADLE_HOME` 环境变量，并将 `$GRADLE_HOME/bin` 加入 `PATH`。\n3. 在终端运行 `gradle -v` 验证。"
+      },
+      "basicConfig": "Gradle 项目的核心配置文件是 `build.gradle` (Groovy DSL) 或 `build.gradle.kts` (Kotlin DSL)。全局配置文件通常位于 `~/.gradle/gradle.properties`。可以配置仓库、代理、JVM 参数等。",
+      "chineseConfig": "Gradle 本身是命令行工具，输出为英文。其文档和社区有丰富的中文资源。"
+    },
+    {
+      "id": "webpack",
+      "name": "Webpack",
+      "description": "一个现代 JavaScript 应用程序的静态模块打包器。它会递归地构建一个依赖关系图 (dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。",
+      "officialUrl": "https://webpack.js.org/",
+      "downloadUrl": "https://webpack.js.org/guides/installation/",
+      "icon": "images/webpack-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["构建工具", "前端工具"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Webpack CLI（可选，推荐项目内安装）：`npm install webpack webpack-cli -g`。\n3. 在项目中初始化：`npm init -y`，然后安装到项目：`npm install webpack webpack-cli --save-dev`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Webpack CLI（可选，推荐项目内安装）：`npm install webpack webpack-cli -g`。\n3. 在项目中初始化：`npm init -y`，然后安装到项目：`npm install webpack webpack-cli --save-dev`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Webpack CLI（可选，推荐项目内安装）：`npm install webpack webpack-cli -g`。\n3. 在项目中初始化：`npm init -y`，然后安装到项目：`npm install webpack webpack-cli --save-dev`。"
+      },
+      "basicConfig": "Webpack 的核心配置文件是 `webpack.config.js`。在这个文件中，你可以定义入口 (entry)、输出 (output)、loader、plugin 等。通过 `npx webpack` 或在 `package.json` 的 scripts 中定义命令来运行。",
+      "chineseConfig": "Webpack CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "babel",
+      "name": "Babel",
+      "description": "一个 JavaScript 编译器，主要用于将 ECMAScript 2015+ 版本的代码转换为向后兼容的 JavaScript 语法，以便能够运行在当前和旧版本的浏览器或其他环境中。",
+      "officialUrl": "https://babeljs.io/",
+      "downloadUrl": "https://babeljs.io/setup#installation",
+      "icon": "images/babel-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["编译器", "前端工具"],
+      "languages": ["JavaScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Babel CLI 和核心包：`npm install @babel/core @babel/cli --save-dev`。\n4. 安装你需要的预设（presets），例如转换 ES6+：`npm install @babel/preset-env --save-dev`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Babel CLI 和核心包：`npm install @babel/core @babel/cli --save-dev`。\n4. 安装你需要的预设（presets），例如转换 ES6+：`npm install @babel/preset-env --save-dev`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Babel CLI 和核心包：`npm install @babel/core @babel/cli --save-dev`。\n4. 安装你需要的预设（presets），例如转换 ES6+：`npm install @babel/preset-env --save-dev`。"
+      },
+      "basicConfig": "Babel 的配置文件通常是 `.babelrc`、`babel.config.json` 或 `babel.config.js`。在配置文件中指定 `presets` 和 `plugins`。例如，在 `package.json` 的 scripts 中添加：`\"build\": \"babel src -d lib\"`。",
+      "chineseConfig": "Babel CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "eslint",
+      "name": "ESLint",
+      "description": "一个可插拔的 JavaScript 代码检查工具，用于识别和报告代码中的模式，目的是使代码更加一致并避免错误。",
+      "officialUrl": "https://eslint.org/",
+      "downloadUrl": "https://eslint.org/docs/user-guide/getting-started#installation-and-usage",
+      "icon": "images/eslint-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["代码质量", "前端工具"],
+      "languages": ["JavaScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 ESLint：`npm install eslint --save-dev`。\n4. 初始化配置文件：`npx eslint --init`，根据提示选择配置。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 ESLint：`npm install eslint --save-dev`。\n4. 初始化配置文件：`npx eslint --init`，根据提示选择配置。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 ESLint：`npm install eslint --save-dev`。\n4. 初始化配置文件：`npx eslint --init`，根据提示选择配置。"
+      },
+      "basicConfig": "ESLint 的配置文件通常是 `.eslintrc.js`、`.eslintrc.json` 或 `package.json` 中的 `eslintConfig` 字段。可以通过 `rules`、`extends`、`plugins` 等字段进行配置。运行检查：`npx eslint yourfile.js` 或 `npx eslint .`。",
+      "chineseConfig": "ESLint CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "prettier",
+      "name": "Prettier",
+      "description": "一个固执己见的代码格式化工具。它通过解析代码并重新打印出来，使其符合一套固定的规则，从而消除关于代码风格的争论。",
+      "officialUrl": "https://prettier.io/",
+      "downloadUrl": "https://prettier.io/docs/en/install.html",
+      "icon": "images/prettier-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["代码格式化", "前端工具"],
+      "languages": ["JavaScript", "TypeScript", "JSON", "CSS", "SCSS", "HTML", "Markdown", "GraphQL", "YAML"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Prettier：`npm install prettier --save-dev`。\n4. （可选）创建空配置文件：`echo {}> .prettierrc.json`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Prettier：`npm install prettier --save-dev`。\n4. （可选）创建空配置文件：`echo '{}' > .prettierrc.json`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Prettier：`npm install prettier --save-dev`。\n4. （可选）创建空配置文件：`echo '{}' > .prettierrc.json`。"
+      },
+      "basicConfig": "Prettier 的配置文件通常是 `.prettierrc`、`.prettierrc.json`、`.prettierrc.js` 或 `package.json` 中的 `prettier` 字段。可以配置缩进、换行符、引号等。运行格式化：`npx prettier --write .` 或针对特定文件。",
+      "chineseConfig": "Prettier CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "npm",
+      "name": "npm (Node Package Manager)",
+      "description": "Node.js 的默认包管理器。它是一个命令行客户端，也是托管 JavaScript 包的在线数据库。npm 使得 JavaScript 开发者能够共享和复用代码包，并且轻松地管理项目依赖。",
+      "officialUrl": "https://www.npmjs.com/",
+      "downloadUrl": "https://nodejs.org/ (npm 通常随 Node.js 一起安装)",
+      "icon": "images/npm-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["包管理器"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 最简单的方式是安装 Node.js，npm 会随附安装。\n2. 从 nodejs.org 下载 Windows 安装包 (.msi) 并运行安装程序。\n3. 安装完成后，在命令提示符中运行 `npm -v` 验证。",
+        "macOS": "1. 最简单的方式是安装 Node.js，npm 会随附安装。\n2. 使用 Homebrew 安装 Node.js（推荐）：`brew install node`。\n3. 或从 nodejs.org 下载 macOS 安装包 (.pkg) 并运行。\n4. 安装完成后，在终端运行 `npm -v` 验证。",
+        "Linux": "1. 最简单的方式是安装 Node.js，npm 会随附安装。\n2. 使用 NodeSource 提供的仓库安装 Node.js（推荐，以获取最新 LTS 版本）。\n3. 或使用包管理器安装（可能版本较旧）：`sudo apt install npm` (Ubuntu/Debian)。\n4. 安装完成后，在终端运行 `npm -v` 验证。"
+      },
+      "basicConfig": "npm 的配置文件是 `.npmrc`（项目级别或用户级别）。常用的命令包括 `npm install`、`npm uninstall`、`npm update`、`npm run`（执行 `package.json` 中定义的 scripts）。全局配置可以通过 `npm config set <key> <value>` 修改。",
+      "chineseConfig": "npm CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "yarn",
+      "name": "Yarn",
+      "description": "Facebook, Google, Exponent 和 Tilde 开发的快速、可靠、安全的依赖管理工具。它是 npm 的替代品，旨在解决早期 npm 的一些性能和安全性问题。",
+      "officialUrl": "https://yarnpkg.com/",
+      "downloadUrl": "https://classic.yarnpkg.com/en/docs/install/",
+      "icon": "images/yarn-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["包管理器"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 最简单的方法是使用 npm 安装：`npm install -g yarn`。\n2. 或者下载 Yarn 的 Windows 安装包 (.msi) 并运行安装程序。\n3. 安装完成后，在命令提示符中运行 `yarn --version` 验证。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install yarn`。\n2. 或者使用 npm 安装：`npm install -g yarn`。\n3. 安装完成后，在终端运行 `yarn --version` 验证。",
+        "Linux": "1. 使用包管理器安装（可能需要先添加仓库）：`curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -` 然后 `echo \"deb https://dl.yarnpkg.com/debian/ stable main\" | sudo tee /etc/apt/sources.list.d/yarn.list` 最后 `sudo apt update && sudo apt install yarn`。\n2. 或者使用 npm 安装：`npm install -g yarn`。\n3. 安装完成后，在终端运行 `yarn --version` 验证。"
+      },
+      "basicConfig": "Yarn 的配置文件是 `.yarnrc`。常用命令包括 `yarn install`、`yarn add`、`yarn remove`、`yarn upgrade`、`yarn run`。Yarn 2+ (Berry) 引入了新的配置方式和零安装特性。",
+      "chineseConfig": "Yarn CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "pnpm",
+      "name": "pnpm",
+      "description": "一个快速、节省磁盘空间的包管理器。它通过硬链接和符号链接来存储依赖，避免了重复下载和存储相同的包，从而大大减少了 node_modules 的体积。",
+      "officialUrl": "https://pnpm.io/",
+      "downloadUrl": "https://pnpm.io/installation",
+      "icon": "images/pnpm-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["包管理器"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 使用 npm 安装：`npm install -g pnpm`。\n2. 或使用独立脚本安装：`iwr https://get.pnpm.io/install.ps1 -useb | iex` (PowerShell)。\n3. 安装完成后，在命令提示符或 PowerShell 中运行 `pnpm --version` 验证。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install pnpm`。\n2. 或使用 npm 安装：`npm install -g pnpm`。\n3. 或使用独立脚本安装：`curl -fsSL https://get.pnpm.io/install.sh | sh -`。\n4. 安装完成后，在终端运行 `pnpm --version` 验证。",
+        "Linux": "1. 使用 npm 安装：`npm install -g pnpm`。\n2. 或使用独立脚本安装：`curl -fsSL https://get.pnpm.io/install.sh | sh -`。\n3. 或使用包管理器安装（如果可用）。\n4. 安装完成后，在终端运行 `pnpm --version` 验证。"
+      },
+      "basicConfig": "pnpm 的配置文件是 `.pnpmrc`。常用命令与 npm/yarn 类似：`pnpm install`、`pnpm add`、`pnpm remove`、`pnpm update`、`pnpm run`。",
+      "chineseConfig": "pnpm CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "jest",
+      "name": "Jest",
+      "description": "Facebook 开源的令人愉快的 JavaScript 测试框架，专注于简洁明快。它提供了包括断言、测试运行器和模拟在内的完整解决方案。",
+      "officialUrl": "https://jestjs.io/",
+      "downloadUrl": "https://jestjs.io/docs/getting-started",
+      "icon": "images/jest-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["测试框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Jest：`npm install --save-dev jest`。\n4. 在 `package.json` 的 `scripts` 中添加：`\"test\": \"jest\"`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Jest：`npm install --save-dev jest`。\n4. 在 `package.json` 的 `scripts` 中添加：`\"test\": \"jest\"`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Jest：`npm install --save-dev jest`。\n4. 在 `package.json` 的 `scripts` 中添加：`\"test\": \"jest\"`。"
+      },
+      "basicConfig": "Jest 的配置文件通常是 `jest.config.js` 或 `package.json` 中的 `jest` 字段。可以配置测试环境 (`testEnvironment`)、匹配模式 (`testMatch`)、覆盖率 (`collectCoverage`) 等。运行测试：`npm test` 或 `npx jest`。",
+      "chineseConfig": "Jest CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "cypress",
+      "name": "Cypress",
+      "description": "一个现代化的、面向开发者的前端测试工具。它可以用来做单元测试、集成测试和端到端 (E2E) 测试。它的特点是测试运行在真实的浏览器中，提供了强大的调试能力。",
+      "officialUrl": "https://www.cypress.io/",
+      "downloadUrl": "https://docs.cypress.io/guides/getting-started/installing-cypress",
+      "icon": "images/cypress-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["测试框架", "E2E 测试"],
+      "languages": ["JavaScript"],
+      "pricing": "开源, 商业版 (付费)",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Cypress：`npm install cypress --save-dev`。\n4. 打开 Cypress：`npx cypress open`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Cypress：`npm install cypress --save-dev`。\n4. 打开 Cypress：`npx cypress open`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目中初始化：`npm init -y`。\n3. 安装 Cypress：`npm install cypress --save-dev`。\n4. 打开 Cypress：`npx cypress open`。"
+      },
+      "basicConfig": "Cypress 的配置文件是 `cypress.config.js` (Cypress 10+) 或 `cypress.json`。可以配置基础 URL (`baseUrl`)、测试文件位置 (`specPattern`)、浏览器 (`browser`) 等。运行测试：`npx cypress run` (headless) 或 `npx cypress open` (GUI)。",
+      "chineseConfig": "Cypress CLI 和 GUI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "storybook",
+      "name": "Storybook",
+      "description": "一个用于 UI 组件开发的开源工具。它允许你在隔离的环境中构建和展示你的 UI 组件，并为其编写文档和示例。",
+      "officialUrl": "https://storybook.js.org/",
+      "downloadUrl": "https://storybook.js.org/docs/react/get-started/install",
+      "icon": "images/storybook-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["UI 开发", "文档工具"],
+      "languages": ["React", "Vue", "Angular", "Web Components", "Svelte", "Ember"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在已有项目中运行自动化安装脚本：`npx storybook init`。\n3. 安装完成后，运行 `npm run storybook` 启动 Storybook 服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在已有项目中运行自动化安装脚本：`npx storybook init`。\n3. 安装完成后，运行 `npm run storybook` 启动 Storybook 服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在已有项目中运行自动化安装脚本：`npx storybook init`。\n3. 安装完成后，运行 `npm run storybook` 启动 Storybook 服务器。"
+      },
+      "basicConfig": "Storybook 的配置文件通常在 `.storybook` 目录下，包括 `main.js` (或 `.ts`) 配置构建和插件，`preview.js` (或 `.ts`) 配置渲染环境和装饰器。故事文件通常命名为 `*.stories.js` (或 `.tsx`, `.mdx`)。",
+      "chineseConfig": "Storybook CLI 和界面本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "description": "一个 React 框架，用于生产环境的 React 应用程序。它提供了服务器端渲染 (SSR)、静态站点生成 (SSG)、API 路由、文件系统路由等开箱即用的功能。",
+      "officialUrl": "https://nextjs.org/",
+      "downloadUrl": "https://nextjs.org/docs/getting-started",
+      "icon": "images/nextjs-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-next-app` 快速创建项目：`npx create-next-app@latest my-next-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-next-app` 快速创建项目：`npx create-next-app@latest my-next-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-next-app` 快速创建项目：`npx create-next-app@latest my-next-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。"
+      },
+      "basicConfig": "Next.js 的配置文件是 `next.config.js`。可以在其中配置页面扩展名、环境变量、webpack 配置、图像优化等。项目结构遵循约定，如 `pages/` 目录存放页面组件。",
+      "chineseConfig": "Next.js 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "nuxtjs",
+      "name": "Nuxt.js",
+      "description": "一个基于 Vue.js 的更高层次的框架，旨在简化通用 Vue 应用程序的开发。它提供了服务器端渲染 (SSR)、静态站点生成 (SSG)、自动代码分割、中间件等强大功能。",
+      "officialUrl": "https://nuxt.com/",
+      "downloadUrl": "https://nuxt.com/docs/getting-started/installation",
+      "icon": "images/nuxtjs-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-nuxt-app` 快速创建项目：`npx create-nuxt-app@latest my-nuxt-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-nuxt-app` 快速创建项目：`npx create-nuxt-app@latest my-nuxt-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-nuxt-app` 快速创建项目：`npx create-nuxt-app@latest my-nuxt-app`。\n3. 进入项目目录并运行 `npm run dev` 启动开发服务器。"
+      },
+      "basicConfig": "Nuxt 3+ 的配置文件是 `nuxt.config.ts` (或 `.js`)。可以在其中配置应用元数据、模块、构建选项、运行时配置等。项目结构遵循约定，如 `pages/`、`components/`、`composables/` 目录。",
+      "chineseConfig": "Nuxt.js 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "expressjs",
+      "name": "Express.js",
+      "description": "一个简洁而灵活的 Node.js Web 应用框架，提供了一系列强大特性帮助你创建各种 Web 和移动设备应用。它是目前最流行的 Node.js 后端框架之一。",
+      "officialUrl": "https://expressjs.com/",
+      "downloadUrl": "https://expressjs.com/en/starter/installing.html",
+      "icon": "images/expressjs-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 创建项目目录并进入：`mkdir my-express-app && cd my-express-app`。\n3. 初始化项目：`npm init -y`。\n4. 安装 Express：`npm install express`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 创建项目目录并进入：`mkdir my-express-app && cd my-express-app`。\n3. 初始化项目：`npm init -y`。\n4. 安装 Express：`npm install express`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 创建项目目录并进入：`mkdir my-express-app && cd my-express-app`。\n3. 初始化项目：`npm init -y`。\n4. 安装 Express：`npm install express`。"
+      },
+      "basicConfig": "Express 应用通常从一个 `app.js` 或 `index.js` 文件开始，引入 express 模块，创建 app 实例，定义路由，最后监听端口。可以使用中间件 (`app.use()`) 来处理请求、日志、错误等。",
+      "chineseConfig": "Express.js 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "fastapi",
+      "name": "FastAPI",
+      "description": "一个现代、快速（高性能）的 Python Web 框架，用于构建 API。它基于标准的 Python 类型提示，并具有自动化的交互式 API 文档 (Swagger UI & ReDoc)。",
+      "officialUrl": "https://fastapi.tiangolo.com/",
+      "downloadUrl": "https://fastapi.tiangolo.com/tutorial/#installation",
+      "icon": "images/fastapi-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["Python"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Python 3.7+ 和 pip。\n2. 创建虚拟环境（推荐）：`python -m venv fastapi-env`。\n3. 激活虚拟环境：`fastapi-env\\Scripts\\activate` (CMD) 或 `fastapi-env\\Scripts\\Activate.ps1` (PowerShell)。\n4. 安装 FastAPI 和 ASGI server (如 uvicorn)：`pip install fastapi[all]` 或 `pip install fastapi uvicorn[standard]`。",
+        "macOS": "1. 确保已安装 Python 3.7+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv fastapi-env`。\n3. 激活虚拟环境：`source fastapi-env/bin/activate`。\n4. 安装 FastAPI 和 ASGI server (如 uvicorn)：`pip install fastapi[all]` 或 `pip install fastapi uvicorn[standard]`。",
+        "Linux": "1. 确保已安装 Python 3.7+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv fastapi-env`。\n3. 激活虚拟环境：`source fastapi-env/bin/activate`。\n4. 安装 FastAPI 和 ASGI server (如 uvicorn)：`pip install fastapi[all]` 或 `pip install fastapi uvicorn[standard]`。"
+      },
+      "basicConfig": "FastAPI 应用通常从一个 `main.py` 文件开始，导入 `FastAPI`，创建实例，定义路径操作（函数），并使用 `uvicorn` 运行。例如：`uvicorn main:app --reload`。",
+      "chineseConfig": "FastAPI 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "django",
+      "name": "Django",
+      "description": "一个高级的 Python Web 框架，鼓励快速开发和干净、实用的设计。它内置了许多功能，如 ORM、认证、URL 路由、模板引擎、表单处理等，被称为“包含电池”的框架。",
+      "officialUrl": "https://www.djangoproject.com/",
+      "downloadUrl": "https://www.djangoproject.com/download/",
+      "icon": "images/django-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["Python"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python -m venv django-env`。\n3. 激活虚拟环境：`django-env\\Scripts\\activate` (CMD) 或 `django-env\\Scripts\\Activate.ps1` (PowerShell)。\n4. 安装 Django：`pip install Django`。",
+        "macOS": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv django-env`。\n3. 激活虚拟环境：`source django-env/bin/activate`。\n4. 安装 Django：`pip install Django`。",
+        "Linux": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv django-env`。\n3. 激活虚拟环境：`source django-env/bin/activate`。\n4. 安装 Django：`pip install Django`。"
+      },
+      "basicConfig": "使用 `django-admin startproject mysite` 创建项目。项目结构包含 `manage.py`、`settings.py`、`urls.py` 等文件。使用 `python manage.py runserver` 启动开发服务器。通过 `python manage.py startapp myapp` 创建应用。",
+      "chineseConfig": "Django 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "flask",
+      "name": "Flask",
+      "description": "一个用 Python 编写的轻量级 Web 应用框架。它被设计为易于使用和扩展，被称为“微框架”，因为它不需要特定的工具或库，但可以根据需要添加扩展。",
+      "officialUrl": "https://flask.palletsprojects.com/",
+      "downloadUrl": "https://flask.palletsprojects.com/en/latest/installation/",
+      "icon": "images/flask-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["Python"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python -m venv flask-env`。\n3. 激活虚拟环境：`flask-env\\Scripts\\activate` (CMD) 或 `flask-env\\Scripts\\Activate.ps1` (PowerShell)。\n4. 安装 Flask：`pip install Flask`。",
+        "macOS": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv flask-env`。\n3. 激活虚拟环境：`source flask-env/bin/activate`。\n4. 安装 Flask：`pip install Flask`。",
+        "Linux": "1. 确保已安装 Python 3.8+ 和 pip。\n2. 创建虚拟环境（推荐）：`python3 -m venv flask-env`。\n3. 激活虚拟环境：`source flask-env/bin/activate`。\n4. 安装 Flask：`pip install Flask`。"
+      },
+      "basicConfig": "Flask 应用通常从一个简单的 Python 文件（如 `app.py`）开始，导入 `Flask`，创建实例，定义路由（使用装饰器），并调用 `app.run()`。也可以通过 `flask run` 命令运行（需要设置 `FLASK_APP` 环境变量）。",
+      "chineseConfig": "Flask 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "springboot",
+      "name": "Spring Boot",
+      "description": "Pivotal 团队提供的全新框架，其设计目的是用来简化 Spring 应用的初始搭建以及开发过程。该框架使用了特定的方式来进行配置，从而使开发人员不再需要定义样板化的配置。",
+      "officialUrl": "https://spring.io/projects/spring-boot",
+      "downloadUrl": "https://spring.io/projects/spring-boot#getting-started",
+      "icon": "images/springboot-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["Java", "Kotlin", "Groovy"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 JDK 8 或更高版本。\n2. 可以使用 Spring Initializr (https://start.spring.io/) 在线生成项目骨架并下载。\n3. 或者使用 IDE (如 IntelliJ IDEA, STS) 创建 Spring Boot 项目。\n4. 或者使用 Maven/Gradle 手动添加依赖。",
+        "macOS": "1. 确保已安装 JDK 8 或更高版本。\n2. 可以使用 Spring Initializr (https://start.spring.io/) 在线生成项目骨架并下载。\n3. 或者使用 IDE (如 IntelliJ IDEA, STS) 创建 Spring Boot 项目。\n4. 或者使用 Maven/Gradle 手动添加依赖。",
+        "Linux": "1. 确保已安装 JDK 8 或更高版本。\n2. 可以使用 Spring Initializr (https://start.spring.io/) 在线生成项目骨架并下载。\n3. 或者使用 IDE (如 IntelliJ IDEA, STS) 创建 Spring Boot 项目。\n4. 或者使用 Maven/Gradle 手动添加依赖。"
+      },
+      "basicConfig": "Spring Boot 项目的核心配置文件是 `application.properties` 或 `application.yml`。主要类是带有 `@SpringBootApplication` 注解的启动类。通过 `mvn spring-boot:run` 或 `./gradlew bootRun` 运行，或打包成 jar/war 运行。",
+      "chineseConfig": "Spring Boot 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "laravel",
+      "name": "Laravel",
+      "description": "一个基于 PHP 的 Web 应用框架，具有优美、简洁的语法。它旨在通过简化常见的任务（如身份验证、路由、会话和缓存）来使开发变得愉快和富有创造力。",
+      "officialUrl": "https://laravel.com/",
+      "downloadUrl": "https://laravel.com/docs/master/installation",
+      "icon": "images/laravel-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["后端框架"],
+      "languages": ["PHP"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 PHP 8.0+、Composer 和数据库 (MySQL, PostgreSQL, SQLite, SQL Server)。\n2. 使用 Composer 创建项目：`composer create-project laravel/laravel example-app`。\n3. 进入项目目录并使用 Artisan CLI 启动服务器：`cd example-app && php artisan serve`。",
+        "macOS": "1. 确保已安装 PHP 8.0+、Composer 和数据库。\n2. 使用 Composer 创建项目：`composer create-project laravel/laravel example-app`。\n3. 进入项目目录并使用 Artisan CLI 启动服务器：`cd example-app && php artisan serve`。",
+        "Linux": "1. 确保已安装 PHP 8.0+、Composer 和数据库。\n2. 使用 Composer 创建项目：`composer create-project laravel/laravel example-app`。\n3. 进入项目目录并使用 Artisan CLI 启动服务器：`cd example-app && php artisan serve`。"
+      },
+      "basicConfig": "Laravel 项目的主要配置文件在 `config/` 目录下。`.env` 文件用于环境特定的配置。使用 `php artisan` 命令行工具进行各种操作，如生成密钥 (`key:generate`)、迁移数据库 (`migrate`)、创建控制器 (`make:controller`) 等。",
+      "chineseConfig": "Laravel 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "description": "由 Facebook 开发的用于构建用户界面的 JavaScript 库。它采用组件化的开发方式，使得构建复杂的 UI 变得更容易。React 专注于视图层，可以与其他库或框架结合使用。",
+      "officialUrl": "https://react.dev/",
+      "downloadUrl": "https://react.dev/learn/installation",
+      "icon": "images/react-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端库"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-react-app` 脚手架快速创建项目（注意：官方推荐使用 Vite 等现代工具）：`npx create-react-app my-react-app`。\n3. 进入项目目录并运行 `npm start` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-react-app` 脚手架快速创建项目（注意：官方推荐使用 Vite 等现代工具）：`npx create-react-app my-react-app`。\n3. 进入项目目录并运行 `npm start` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-react-app` 脚手架快速创建项目（注意：官方推荐使用 Vite 等现代工具）：`npx create-react-app my-react-app`。\n3. 进入项目目录并运行 `npm start` 启动开发服务器。"
+      },
+      "basicConfig": "React 项目没有单一的配置文件，但构建工具（如 Webpack, Vite）会有自己的配置（如 `webpack.config.js`, `vite.config.js`）。组件是 React 应用的基本构建块，使用 JSX 语法。",
+      "chineseConfig": "React 库本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "vuejs",
+      "name": "Vue.js",
+      "description": "一套用于构建用户界面的渐进式 JavaScript 框架。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。核心库只关注视图层，易于学习，便于与第三方库或既有项目整合。",
+      "officialUrl": "https://vuejs.org/",
+      "downloadUrl": "https://vuejs.org/guide/quick-start.html",
+      "icon": "images/vuejs-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-vue` 脚手架（Vue 3 官方推荐）：`npm create vue@latest my-vue-app`。\n3. 按提示选择特性，进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-vue` 脚手架（Vue 3 官方推荐）：`npm create vue@latest my-vue-app`。\n3. 按提示选择特性，进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-vue` 脚手架（Vue 3 官方推荐）：`npm create vue@latest my-vue-app`。\n3. 按提示选择特性，进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。"
+      },
+      "basicConfig": "Vue 项目的配置文件通常是 `vite.config.js` (如果使用 Vite) 或 `vue.config.js` (Vue CLI)。单文件组件 (`.vue`) 是 Vue 开发的核心。使用 `<script setup>` (Vue 3.2+) 可以更简洁地编写组合式 API。",
+      "chineseConfig": "Vue.js 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "description": "由 Google 维护的一个基于 TypeScript 的开源 Web 应用框架。它提供了一整套解决方案，包括数据绑定、依赖注入、路由、表单处理等，适合构建大规模的企业级应用。",
+      "officialUrl": "https://angular.io/",
+      "downloadUrl": "https://angular.io/guide/setup-local",
+      "icon": "images/angular-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端框架"],
+      "languages": ["TypeScript", "JavaScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Angular CLI：`npm install -g @angular/cli`。\n3. 使用 CLI 创建新项目：`ng new my-angular-app`。\n4. 进入项目目录并运行 `ng serve` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Angular CLI：`npm install -g @angular/cli`。\n3. 使用 CLI 创建新项目：`ng new my-angular-app`。\n4. 进入项目目录并运行 `ng serve` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Angular CLI：`npm install -g @angular/cli`。\n3. 使用 CLI 创建新项目：`ng new my-angular-app`。\n4. 进入项目目录并运行 `ng serve` 启动开发服务器。"
+      },
+      "basicConfig": "Angular 项目的主要配置文件是 `angular.json`。TypeScript 配置在 `tsconfig.json`。模块 (`@NgModule`)、组件 (`@Component`)、服务 (`@Injectable`) 是其核心概念。使用 `ng generate` 命令生成代码。",
+      "chineseConfig": "Angular 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "svelte",
+      "name": "Svelte",
+      "description": "一种全新的构建用户界面的方法。传统框架如 React 和 Vue 在浏览器中做大量的工作来更新 DOM。而 Svelte 在构建/编译阶段将你的应用程序转换为理想的 vanilla JavaScript，从而消除了运行时开销。",
+      "officialUrl": "https://svelte.dev/",
+      "downloadUrl": "https://svelte.dev/docs#compile-time-svelte-cli",
+      "icon": "images/svelte-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["前端框架"],
+      "languages": ["JavaScript", "TypeScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-svelte` 脚手架快速创建项目：`npm create svelte@latest my-svelte-app`。\n3. 进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-svelte` 脚手架快速创建项目：`npm create svelte@latest my-svelte-app`。\n3. 进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 使用 `create-svelte` 脚手架快速创建项目：`npm create svelte@latest my-svelte-app`。\n3. 进入项目目录，安装依赖 `npm install`，然后运行 `npm run dev` 启动开发服务器。"
+      },
+      "basicConfig": "Svelte 项目通常使用 Vite 作为构建工具，配置文件是 `vite.config.js`。`.svelte` 文件包含了 HTML、CSS 和 JavaScript/TypeScript。编译发生在构建时，而非运行时。",
+      "chineseConfig": "Svelte 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "bootstrap",
+      "name": "Bootstrap",
+      "description": "世界上最受欢迎的响应式、移动设备优先的前端组件库。它提供了一套基于 HTML、CSS 和 JS 的设计模板，帮助开发者快速构建现代化的网页和 Web 应用。",
+      "officialUrl": "https://getbootstrap.com/",
+      "downloadUrl": "https://getbootstrap.com/docs/5.3/getting-started/download/",
+      "icon": "images/bootstrap-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["CSS 框架"],
+      "languages": ["HTML", "CSS", "JavaScript"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. **CDN 方式**：在 HTML 文件的 `<head>` 中引入 CSS：`<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">`，在 `</body>` 前引入 JS：`<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\"></script>`。\n2. **下载文件**：从官网下载编译好的 CSS 和 JS 文件，放到项目中并用 `<link>` 和 `<script>` 引入。\n3. **包管理器**：使用 npm 安装：`npm install bootstrap`，然后在项目中导入 CSS (`import 'bootstrap/dist/css/bootstrap.min.css';`) 和 JS (`import 'bootstrap/dist/js/bootstrap.bundle.min.js';`)。",
+        "macOS": "1. **CDN 方式**：在 HTML 文件的 `<head>` 中引入 CSS：`<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">`，在 `</body>` 前引入 JS：`<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\"></script>`。\n2. **下载文件**：从官网下载编译好的 CSS 和 JS 文件，放到项目中并用 `<link>` 和 `<script>` 引入。\n3. **包管理器**：使用 npm 安装：`npm install bootstrap`，然后在项目中导入 CSS (`import 'bootstrap/dist/css/bootstrap.min.css';`) 和 JS (`import 'bootstrap/dist/js/bootstrap.bundle.min.js';`)。",
+        "Linux": "1. **CDN 方式**：在 HTML 文件的 `<head>` 中引入 CSS：`<link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\">`，在 `</body>` 前引入 JS：`<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\"></script>`。\n2. **下载文件**：从官网下载编译好的 CSS 和 JS 文件，放到项目中并用 `<link>` 和 `<script>` 引入。\n3. **包管理器**：使用 npm 安装：`npm install bootstrap`，然后在项目中导入 CSS (`import 'bootstrap/dist/css/bootstrap.min.css';`) 和 JS (`import 'bootstrap/dist/js/bootstrap.bundle.min.js';`)。"
+      },
+      "basicConfig": "Bootstrap 主要通过其预定义的 CSS 类来使用。可以在 HTML 元素上应用这些类来实现布局 (`container`, `row`, `col-*`)、组件样式 (`btn`, `card`, `nav`) 等。可以通过 Sass 变量和 mixins 进行深度定制。",
+      "chineseConfig": "Bootstrap 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "tailwindcss",
+      "name": "Tailwind CSS",
+      "description": "一个功能类优先的 CSS 框架，它不提供预设的组件，而是提供了一系列低级别的、原子化的 CSS 类，可以直接在 HTML 中组合使用来构建任何设计。",
+      "officialUrl": "https://tailwindcss.com/",
+      "downloadUrl": "https://tailwindcss.com/docs/installation",
+      "icon": "images/tailwindcss-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["CSS 框架"],
+      "languages": ["HTML", "CSS"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 在项目目录中初始化：`npm init -y`。\n3. 安装 Tailwind CSS：`npm install -D tailwindcss`。\n4. 生成配置文件：`npx tailwindcss init`。\n5. 配置 `tailwind.config.js` 中的 `content` 选项，指定模板文件路径。\n6. 创建或编辑 CSS 文件（如 `input.css`），加入 `@tailwind base; @tailwind components; @tailwind utilities;`。\n7. 使用 Tailwind CLI 构建 CSS：`npx tailwindcss -i ./input.css -o ./output.css --watch`。\n8. 在 HTML 中引入生成的 `output.css`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 在项目目录中初始化：`npm init -y`。\n3. 安装 Tailwind CSS：`npm install -D tailwindcss`。\n4. 生成配置文件：`npx tailwindcss init`。\n5. 配置 `tailwind.config.js` 中的 `content` 选项，指定模板文件路径。\n6. 创建或编辑 CSS 文件（如 `input.css`），加入 `@tailwind base; @tailwind components; @tailwind utilities;`。\n7. 使用 Tailwind CLI 构建 CSS：`npx tailwindcss -i ./input.css -o ./output.css --watch`。\n8. 在 HTML 中引入生成的 `output.css`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 在项目目录中初始化：`npm init -y`。\n3. 安装 Tailwind CSS：`npm install -D tailwindcss`。\n4. 生成配置文件：`npx tailwindcss init`。\n5. 配置 `tailwind.config.js` 中的 `content` 选项，指定模板文件路径。\n6. 创建或编辑 CSS 文件（如 `input.css`），加入 `@tailwind base; @tailwind components; @tailwind utilities;`。\n7. 使用 Tailwind CLI 构建 CSS：`npx tailwindcss -i ./input.css -o ./output.css --watch`。\n8. 在 HTML 中引入生成的 `output.css`。"
+      },
+      "basicConfig": "Tailwind 的核心是其 `tailwind.config.js` 配置文件，用于自定义颜色、间距、断点、主题等。通过在 HTML 元素上应用如 `text-center`, `bg-blue-500`, `p-4`, `md:w-1/2` 等类名来构建样式。",
+      "chineseConfig": "Tailwind CSS 框架本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "sass",
+      "name": "Sass",
+      "description": "世界上最成熟、最稳定、功能最强大的专业级 CSS 扩展语言。它为 CSS 添加了强大的功能，如变量、嵌套、混合 (mixins)、函数等，使 CSS 的编写更加简洁和易于维护。",
+      "officialUrl": "https://sass-lang.com/",
+      "downloadUrl": "https://sass-lang.com/install",
+      "icon": "images/sass-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["CSS 预处理器"],
+      "languages": ["CSS"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. **使用 npm 安装 Dart Sass（推荐）**：`npm install -g sass`。\n2. 或者下载 Windows 可执行文件 (.exe) 并将其路径添加到环境变量 PATH 中。\n3. 验证安装：`sass --version`。",
+        "macOS": "1. **使用 Homebrew 安装 Dart Sass（推荐）**：`brew install sass/sass/sass`。\n2. 或者使用 npm 安装：`npm install -g sass`。\n3. 验证安装：`sass --version`。",
+        "Linux": "1. **使用包管理器安装 Dart Sass（推荐，如果可用）**：`sudo apt install sass` (Debian/Ubuntu)。\n2. 或者使用 npm 安装：`npm install -g sass`。\n3. 验证安装：`sass --version`。"
+      },
+      "basicConfig": "Sass 有两种语法：`.scss` (SCSS - Sassy CSS，类似 CSS) 和 `.sass` (缩进语法)。使用 `sass input.scss output.css` 命令将 Sass 文件编译为 CSS。可以使用 `--watch` 选项监听文件变化自动编译。",
+      "chineseConfig": "Sass CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "less",
+      "name": "Less",
+      "description": "一门向后兼容的 CSS 扩展语言。它给 CSS 添加了编程语言的特性，如变量、混合（Mixins）、函数等，使 CSS 更易维护、主题化以及扩展。",
+      "officialUrl": "https://lesscss.org/",
+      "downloadUrl": "https://lesscss.org/#download-options",
+      "icon": "images/less-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["CSS 预处理器"],
+      "languages": ["CSS"],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Less：`npm install -g less`。\n3. 验证安装：`lessc --version`。",
+        "macOS": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Less：`npm install -g less`。\n3. 验证安装：`lessc --version`。",
+        "Linux": "1. 确保已安装 Node.js 和 npm。\n2. 全局安装 Less：`npm install -g less`。\n3. 验证安装：`lessc --version`。"
+      },
+      "basicConfig": "Less 文件使用 `.less` 扩展名。使用 `lessc styles.less styles.css` 命令将 Less 文件编译为 CSS。可以使用 `--watch` 选项配合其他工具监听文件变化。",
+      "chineseConfig": "Less CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "description": "一个强大的开源对象关系型数据库系统。它以其可靠性、功能健壮性和性能而闻名，支持复杂查询、外键、触发器、视图、事务完整性以及多版本并发控制 (MVCC)。",
+      "officialUrl": "https://www.postgresql.org/",
+      "downloadUrl": "https://www.postgresql.org/download/",
+      "icon": "images/postgresql-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["数据库"],
+      "languages": [],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 从官网下载 Windows 安装包 (.exe)。\n2. 运行安装程序，按照向导完成安装。安装过程中会提示设置 postgres 用户密码。\n3. 安装完成后，可以通过 pgAdmin 或命令行工具 `psql` 连接数据库。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install postgresql`。\n2. 启动服务：`brew services start postgresql`。\n3. 初始化数据库（Homebrew 通常会自动处理）。\n4. 使用 `psql postgres` 连接。",
+        "Linux": "1. 使用包管理器安装（推荐）：\n   - Ubuntu/Debian: `sudo apt update && sudo apt install postgresql postgresql-contrib`\n   - CentOS/RHEL/Fedora: `sudo dnf install postgresql-server postgresql-contrib`\n2. 初始化数据库（某些发行版需要）：`sudo postgresql-setup initdb` (CentOS/RHEL)。\n3. 启动并启用服务：`sudo systemctl start postgresql` 和 `sudo systemctl enable postgresql`。\n4. 切换到 postgres 用户并连接：`sudo -u postgres psql`。"
+      },
+      "basicConfig": "PostgreSQL 的主要配置文件是 `postgresql.conf`（通常在数据目录下），用于设置连接、资源、日志等。认证配置在 `pg_hba.conf` 文件中。默认管理员用户是 `postgres`。",
+      "chineseConfig": "PostgreSQL 数据库系统本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "description": "一个基于分布式文件存储的开源数据库系统。它介于关系数据库和非关系数据库之间，是非关系数据库当中功能最丰富、最像关系数据库的。它支持动态查询、索引、聚合、副本集、分片等功能。",
+      "officialUrl": "https://www.mongodb.com/",
+      "downloadUrl": "https://www.mongodb.com/try/download/community",
+      "icon": "images/mongodb-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["数据库", "NoSQL"],
+      "languages": [],
+      "pricing": "社区版 (免费), 企业版 (付费)",
+      "installationGuide": {
+        "Windows": "1. 从官网下载 MongoDB Community Server 的 Windows 版本 (.msi)。\n2. 运行安装程序，按照向导完成安装。\n3. 默认情况下，MongoDB 不会自动启动为服务。可以通过服务管理器启动 `MongoDB Server` 服务，或者手动运行 `mongod` 命令。\n4. 使用 `mongo` 或 `mongosh` 命令行客户端连接。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew tap mongodb/brew && brew install mongodb-community`。\n2. 启动服务：`brew services start mongodb-community`。\n3. 使用 `mongosh` 命令行客户端连接。",
+        "Linux": "1. 根据具体的 Linux 发行版，按照官网指南添加 MongoDB 官方仓库。\n2. 使用包管理器安装：\n   - Ubuntu/Debian: `sudo apt update && sudo apt install -y mongodb-org`\n3. 启动并启用服务：`sudo systemctl start mongod` 和 `sudo systemctl enable mongod`。\n4. 使用 `mongosh` 命令行客户端连接。"
+      },
+      "basicConfig": "MongoDB 的主要配置文件是 `mongod.conf`（通常在 `/etc/` 或安装目录下），用于配置数据目录、日志、网络端口、安全认证等。默认端口是 27017。",
+      "chineseConfig": "MongoDB 数据库系统本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "sqlite",
+      "name": "SQLite",
+      "description": "一个 C 语言库，实现了自给自足的、无服务器的、零配置的、事务性的 SQL 数据库引擎。它的设计目标是嵌入到应用程序中，成为应用程序的一部分。",
+      "officialUrl": "https://www.sqlite.org/",
+      "downloadUrl": "https://www.sqlite.org/download.html",
+      "icon": "images/sqlite-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["数据库"],
+      "languages": [],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. **对于大多数用户**：Windows 10/11 通常已经预装了 SQLite 命令行工具 (`sqlite3.exe`)。\n2. 如果没有，可以从官网下载预编译的二进制文件 (.zip)。\n3. 解压并将 `sqlite3.exe` 所在目录添加到 PATH 环境变量中。\n4. 打开命令提示符，输入 `sqlite3` 验证并进入交互模式。",
+        "macOS": "1. macOS 通常预装了 SQLite 命令行工具。\n2. 在终端运行 `sqlite3` 验证。\n3. 如果需要最新版，可以使用 Homebrew 安装：`brew install sqlite`。",
+        "Linux": "1. 大多数 Linux 发行版默认包含 SQLite 命令行工具。\n2. 在终端运行 `sqlite3 --version` 验证。\n3. 如果未安装，使用包管理器安装：`sudo apt install sqlite3` (Ubuntu/Debian) 或 `sudo dnf install sqlite` (Fedora)。"
+      },
+      "basicConfig": "SQLite 不需要复杂的配置。数据库就是一个单独的 `.db` 或 `.sqlite` 文件。使用 `sqlite3 database.db` 命令打开或创建数据库文件。通过 SQL 命令进行操作。",
+      "chineseConfig": "SQLite CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "elasticsearch",
+      "name": "Elasticsearch",
+      "description": "一个基于 Lucene 库构建的分布式、RESTful 搜索和分析引擎。它能够水平扩展，处理 PB 级别的数据，常用于全文搜索、日志分析、指标监控等场景。",
+      "officialUrl": "https://www.elastic.co/elasticsearch/",
+      "downloadUrl": "https://www.elastic.co/start",
+      "icon": "images/elasticsearch-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["搜索引擎", "数据分析"],
+      "languages": [],
+      "pricing": "开源, Elastic Stack (商业支持)",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Java 8u40+ 或 Java 11。\n2. 从官网下载 Elasticsearch 的 Windows ZIP 包。\n3. 解压到目标目录。\n4. 打开命令提示符，进入解压目录的 `bin` 子目录，运行 `elasticsearch.bat` 启动服务。\n5. 通过浏览器访问 `http://localhost:9200` 验证。",
+        "macOS": "1. 确保已安装 Java 8u40+ 或 Java 11。\n2. 使用 Homebrew 安装（推荐）：`brew install elasticsearch`。\n3. 启动服务：`brew services start elasticsearch`。\n4. 通过浏览器访问 `http://localhost:9200` 验证。",
+        "Linux": "1. 确保已安装 Java 8u40+ 或 Java 11。\n2. 根据官网指南添加 Elastic APT/YUM 仓库。\n3. 使用包管理器安装：`sudo apt install elasticsearch` (Debian/Ubuntu) 或 `sudo dnf install elasticsearch` (Fedora)。\n4. 启动并启用服务：`sudo systemctl start elasticsearch` 和 `sudo systemctl enable elasticsearch`。\n5. 通过浏览器访问 `http://localhost:9200` 验证。"
+      },
+      "basicConfig": "Elasticsearch 的主要配置文件是 `elasticsearch.yml`（通常在 `config/` 目录下），用于设置集群名称、节点名称、网络绑定、路径等。日志配置在 `log4j2.properties` 中。REST API 是其主要交互方式。",
+      "chineseConfig": "Elasticsearch 服务本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "kibana",
+      "name": "Kibana",
+      "description": "一个开源的数据可视化仪表板，用于 Elasticsearch。它提供了直方图、线状图、饼图、地图等多种图表类型，使用户能够通过友好的界面探索和可视化 Elasticsearch 索引中的数据。",
+      "officialUrl": "https://www.elastic.co/kibana/",
+      "downloadUrl": "https://www.elastic.co/start",
+      "icon": "images/kibana-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["数据分析", "可视化"],
+      "languages": [],
+      "pricing": "开源, Elastic Stack (商业支持)",
+      "installationGuide": {
+        "Windows": "1. 确保已安装 Kibana 对应版本的 Elasticsearch 并正在运行。\n2. 从官网下载 Kibana 的 Windows ZIP 包。\n3. 解压到目标目录。\n4. 打开命令提示符，进入解压目录的 `bin` 子目录，运行 `kibana.bat` 启动服务。\n5. 通过浏览器访问 `http://localhost:5601` 打开 Kibana 界面。",
+        "macOS": "1. 确保已安装 Kibana 对应版本的 Elasticsearch 并正在运行。\n2. 使用 Homebrew 安装（推荐）：`brew install kibana`。\n3. 启动服务：`brew services start kibana`。\n4. 通过浏览器访问 `http://localhost:5601` 打开 Kibana 界面。",
+        "Linux": "1. 确保已安装 Kibana 对应版本的 Elasticsearch 并正在运行。\n2. 根据官网指南添加 Elastic APT/YUM 仓库。\n3. 使用包管理器安装：`sudo apt install kibana` (Debian/Ubuntu) 或 `sudo dnf install kibana` (Fedora)。\n4. 启动并启用服务：`sudo systemctl start kibana` 和 `sudo systemctl enable kibana`。\n5. 通过浏览器访问 `http://localhost:5601` 打开 Kibana 界面。"
+      },
+      "basicConfig": "Kibana 的主要配置文件是 `kibana.yml`（通常在 `config/` 目录下），用于设置 Elasticsearch 地址 (`elasticsearch.hosts`)、服务器端口 (`server.port`)、主机 (`server.host`) 等。启动后通过 Web UI 进行大部分配置。",
+      "chineseConfig": "Kibana 界面本身支持国际化。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "grafana",
+      "name": "Grafana",
+      "description": "一个开源的度量分析和可视化套件，常用于可视化时间序列数据。它可以查询、可视化、告警和探索来自不同数据源（如 Prometheus, Graphite, Elasticsearch, InfluxDB 等）的指标。",
+      "officialUrl": "https://grafana.com/oss/grafana/",
+      "downloadUrl": "https://grafana.com/grafana/download",
+      "icon": "images/grafana-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["监控", "可视化"],
+      "languages": [],
+      "pricing": "开源, 企业版 (付费)",
+      "installationGuide": {
+        "Windows": "1. 从官网下载 Windows ZIP 包。\n2. 解压到目标目录。\n3. 打开命令提示符，进入解压目录的 `bin` 子目录，运行 `grafana-server.exe` 启动服务。\n4. 通过浏览器访问 `http://localhost:3000` 打开 Grafana 界面。默认用户名和密码都是 `admin`。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install grafana`。\n2. 启动服务：`brew services start grafana`。\n3. 通过浏览器访问 `http://localhost:3000` 打开 Grafana 界面。默认用户名和密码都是 `admin`。",
+        "Linux": "1. 根据官网指南添加 Grafana APT/YUM 仓库。\n2. 使用包管理器安装：`sudo apt install grafana` (Debian/Ubuntu) 或 `sudo dnf install grafana` (Fedora)。\n3. 启动并启用服务：`sudo systemctl start grafana-server` 和 `sudo systemctl enable grafana-server`。\n4. 通过浏览器访问 `http://localhost:3000` 打开 Grafana 界面。默认用户名和密码都是 `admin`。"
+      },
+      "basicConfig": "Grafana 的主要配置文件是 `defaults.ini` 和 `custom.ini`（通常在 `/etc/grafana/` 或 `conf/` 目录下）。可以配置数据库、认证、安全、日志、服务器地址等。启动后通过 Web UI 进行数据源配置和仪表板创建。",
+      "chineseConfig": "Grafana 界面本身支持国际化。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "prometheus",
+      "name": "Prometheus",
+      "description": "一个开源的系统监控和告警工具包。它通过 HTTP 拉取（pull）模式收集时间序列数据，并将其存储在其本地的时间序列数据库中。它有一个强大的查询语言 PromQL。",
+      "officialUrl": "https://prometheus.io/",
+      "downloadUrl": "https://prometheus.io/download/",
+      "icon": "images/prometheus-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["监控"],
+      "languages": [],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. 从官网下载 Windows 版本的压缩包 (.tar.gz 或 .zip)。\n2. 解压到目标目录。\n3. 编辑 `prometheus.yml` 配置文件，添加或修改监控目标。\n4. 打开命令提示符，进入解压目录，运行 `prometheus.exe` 启动服务。\n5. 通过浏览器访问 `http://localhost:9090` 打开 Prometheus 表达式浏览器。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install prometheus`。\n2. 编辑配置文件（通常在 `/usr/local/etc/prometheus.yml` 或通过 `brew info prometheus` 查找）。\n3. 启动服务：`brew services start prometheus`。\n4. 通过浏览器访问 `http://localhost:9090`。",
+        "Linux": "1. 使用包管理器安装：`sudo apt install prometheus` (Debian/Ubuntu) 或 `sudo dnf install prometheus` (Fedora)。\n2. 或者从官网下载 Linux 版本的压缩包，解压并放置在合适位置。\n3. 编辑配置文件（通常在 `/etc/prometheus/prometheus.yml`）。\n4. 启动并启用服务：`sudo systemctl start prometheus` 和 `sudo systemctl enable prometheus`。\n5. 通过浏览器访问 `http://localhost:9090`。"
+      },
+      "basicConfig": "Prometheus 的核心配置文件是 `prometheus.yml`，用于定义全局配置、规则文件、告警管理器和 scrape_configs（拉取目标）。指标通过 HTTP 端点暴露，Prometheus 定期去抓取。",
+      "chineseConfig": "Prometheus Web UI 和 CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "rabbitmq",
+      "name": "RabbitMQ",
+      "description": "一个开源的消息代理和队列服务器，为应用程序提供了一个通用的消息传递协议中枢。它支持多种消息协议，最著名的是 AMQP 0-9-1。它易于部署在云环境或本地。",
+      "officialUrl": "https://www.rabbitmq.com/",
+      "downloadUrl": "https://www.rabbitmq.com/download.html",
+      "icon": "images/rabbitmq-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["消息队列"],
+      "languages": [],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. RabbitMQ 需要 Erlang 运行时。首先从 Erlang 官网下载并安装适用于 Windows 的 Erlang。\n2. 从 RabbitMQ 官网下载 Windows Installer (.exe)。\n3. 运行安装程序，按照向导完成安装。它会被安装为 Windows 服务并自动启动。\n4. 通过浏览器访问 `http://localhost:15672` 打开管理界面。默认用户名和密码都是 `guest` (仅限 localhost)。",
+        "macOS": "1. 使用 Homebrew 安装（推荐）：`brew install rabbitmq`。\n2. 启动服务：`brew services start rabbitmq`。\n3. 或者手动启动：`/usr/local/sbin/rabbitmq-server`。\n4. 通过浏览器访问 `http://localhost:15672` 打开管理界面。默认用户名和密码都是 `guest`。",
+        "Linux": "1. 确保已安装 Erlang。\n2. 根据官网指南添加 RabbitMQ APT/YUM 仓库。\n3. 使用包管理器安装：`sudo apt install rabbitmq-server` (Debian/Ubuntu) 或 `sudo dnf install rabbitmq-server` (Fedora)。\n4. 启动并启用服务：`sudo systemctl start rabbitmq-server` 和 `sudo systemctl enable rabbitmq-server`。\n5. 启用管理插件：`sudo rabbitmq-plugins enable rabbitmq_management`。\n6. 通过浏览器访问 `http://localhost:15672` 打开管理界面。默认用户名和密码都是 `guest`。"
+      },
+      "basicConfig": "RabbitMQ 的主要配置文件是 `rabbitmq.conf`（通常在 `/etc/rabbitmq/` 或安装目录下）。可以通过配置文件或运行时命令 (`rabbitmqctl`) 管理用户、虚拟主机、权限、队列、交换机等。管理界面提供图形化操作。",
+      "chineseConfig": "RabbitMQ 服务和管理界面本身为英文。其文档和社区有大量中文资源。"
+    },
+    {
+      "id": "kafka",
+      "name": "Apache Kafka",
+      "description": "一个分布式流处理平台，由 LinkedIn 开发并于 2011 年开源，后来成为 Apache 顶级项目。它被设计为一个统一的、高吞吐量、低延迟的平台，用于处理实时数据 feeds。",
+      "officialUrl": "https://kafka.apache.org/",
+      "downloadUrl": "https://kafka.apache.org/downloads",
+      "icon": "images/kafka-icon.png",
+      "os": ["Windows", "macOS", "Linux"],
+      "category": ["消息队列", "流处理"],
+      "languages": [],
+      "pricing": "开源",
+      "installationGuide": {
+        "Windows": "1. Kafka 需要 Java 8+ 运行时。确保已安装并设置 `JAVA_HOME`。\n2. 从官网下载二进制文件 (.tgz)。\n3. 解压到目标目录。\n4. 启动 Zookeeper（Kafka 依赖）：打开命令提示符，进入解压目录，运行 `bin\\windows\\zookeeper-server-start.bat config\\zookeeper.properties`。\n5. 打开另一个命令提示符窗口，启动 Kafka：`bin\\windows\\kafka-server-start.bat config\\server.properties`。",
+        "macOS": "1. Kafka 需要 Java 8+ 运行时。确保已安装。\n2. 使用 Homebrew 安装（推荐）：`brew install kafka`。这通常也会安装 Zookeeper。\n3. 启动 Zookeeper：`brew services start zookeeper` 或 `zkServer start`。\n4. 启动 Kafka：`brew services start kafka` 或 `kafka-server-start /usr/local/etc/kafka/server.properties`。",
+        "Linux": "1. Kafka 需要 Java 8+ 运行时。确保已安装。\n2. 从官网下载二进制文件 (.tgz)。\n3. 解压到目标目录。\n4. 启动 Zookeeper：`bin/zookeeper-server-start.sh config/zookeeper.properties`。\n5. 打开另一个终端窗口，启动 Kafka：`bin/kafka-server-start.sh config/server.properties`。"
+      },
+      "basicConfig": "Kafka 的核心配置文件是 `config/server.properties`。重要配置包括 `broker.id`、`listeners`、`log.dirs`、`zookeeper.connect` 等。通过 `kafka-topics.sh` (或 `.bat`) 等脚本创建主题、生产/消费消息。",
+      "chineseConfig": "Kafka CLI 工具本身界面为英文。其文档和社区有大量中文资源。"
+    }
+]

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>编程工具导航站</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 极简滚动提示栏 */
+        .scroll-tip {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background: #f8f8f8;
+            overflow: hidden;
+        }
+        .scroll-tip-inner {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll 15s linear infinite;
+            padding-left: 100%;
+        }
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+<!-- 滚动提示栏 -->
+<div class="scroll-tip">
+    <div class="scroll-tip-inner">
+        合规声明：本站坚决拥护中华人民共和国宪法和法律，严格遵守《网络安全法》《数据安全法》等相关规定，维护网络安全与秩序；     访问优化提示：若遇网站访问缓慢、克隆失败等问题，请通过合法合规方式解决，切勿使用违规代理 / 节点工具，共同遵守网络监管要求。
+    </div>
+</div>
+
+<header>
+    <div class="container">
+        <h1><a href="index.html">CodeStart Hub</a></h1>
+        <!-- 在这里添加全局搜索表单 -->
+        <form id="global-search-form" action="software.html" method="GET" style="margin-left: auto;">
+            <input type="text" name="q" placeholder="全局搜索..." style="padding: 5px; border: 1px solid #ccc; border-radius: 3px;">
+            <button type="submit" style="padding: 5px 10px; background-color: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">搜索</button>
+        </form>
+        <nav>
+            <ul>
+                <li><a href="software.html">软件库</a></li>
+                <li><a href="commands.html">命令行助手</a></li>
+                <li><a href="resources.html">学习资源</a></li>
+                <li><a href="donate.html">捐赠</a></li>
+                <li><a href="about.html">关于</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <section id="hero">
+        <h2>欢迎</h2>
+        <p>一站式查找、了解和获取你需要的编程工具。</p>
+        <a href="software.html" class="btn btn-primary">浏览软件</a>
+    </section>
+
+    <section id="featured-tools">
+        <h2>热门工具</h2>
+        <div id="tools-grid">
+            <!-- 工具卡片将由 JS 动态插入 -->
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 <strong>CodeStart Hub</strong>. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="js/data-loader.js"></script>
+<script src="js/main.js"></script>
+<script>
+    // 页面加载完成后执行
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTools().then(tools => {
+            const featuredGrid = document.getElementById('tools-grid');
+            // 显示前两个作为示例
+            const featuredTools = tools.slice(0, 100);
+            featuredTools.forEach(tool => {
+                const toolCard = createToolCard(tool);
+                featuredGrid.appendChild(toolCard);
+            });
+        }).catch(error => console.error('加载工具失败:', error));
+    });
+</script>
+</body>
+</html>

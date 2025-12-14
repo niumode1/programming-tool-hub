@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命令行助手 - CodeStart Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html">软件库</a></li>
+                    <li><a href="commands.html" class="active">命令行助手</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="donate.html">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>命令行助手</h1>
+        
+        <div class="tabs">
+            <button class="tab-button active" data-type="windows" onclick="showCommands('windows')">Windows</button>
+            <button class="tab-button" data-type="macos" onclick="showCommands('macos')">macOS</button>
+            <button class="tab-button" data-type="linux" onclick="showCommands('linux')">Linux</button>
+            <button class="tab-button" data-type="git" onclick="showCommands('git')">Git</button>
+            <button class="tab-button" data-type="python" onclick="showCommands('python')">Python</button>
+            <button class="tab-button" data-type="nodejs" onclick="showCommands('nodejs')">Node.js</button>
+            <button class="tab-button" data-type="docker" onclick="showCommands('docker')">Docker</button>
+        </div>
+
+        <div id="commands-content">
+            <!-- 命令内容将由 JS 动态插入 -->
+        </div>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data-loader.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 初始化显示加载状态
+            const contentDiv = document.getElementById('commands-content');
+            contentDiv.innerHTML = '<p>正在加载命令数据...</p>';
+
+            loadCommands().then(commandsData => {
+                window.commandsData = commandsData;
+                showCommands('windows'); // 默认显示 Windows 命令
+            }).catch(error => {
+                console.error('加载命令失败:', error);
+                contentDiv.innerHTML = '<p>加载命令失败，请稍后重试。</p>';
+            });
+        });
+
+        function showCommands(type) {
+            const contentDiv = document.getElementById('commands-content');
+            const buttons = document.querySelectorAll('.tab-button');
+
+            // 更新激活状态（使用data属性更可靠）
+            buttons.forEach(btn => {
+                if (btn.dataset.type === type) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            // 检查数据是否加载完成
+            if (!window.commandsData) {
+                contentDiv.innerHTML = '<p>数据正在加载中...</p>';
+                return;
+            }
+
+            // 根据类型获取对应数据
+            let data;
+            if (['windows', 'macos', 'linux'].includes(type)) {
+                data = window.commandsData?.operating_systems?.[type];
+            } else {
+                data = window.commandsData?.tools?.[type];
+            }
+
+            // 处理数据不存在的情况
+            if (!data || (Array.isArray(data) && data.length === 0) || 
+                (!Array.isArray(data) && Object.keys(data).length === 0)) {
+                contentDiv.innerHTML = `<p>暂无 ${type} 命令数据。</p>`;
+                return;
+            }
+
+            let htmlContent = '';
+            if (Array.isArray(data)) {
+                // 工具类命令（git、python等）是数组结构
+                const typeName = type.charAt(0).toUpperCase() + type.slice(1);
+                htmlContent = `<h3>${typeName} 常用命令</h3><ul>`;
+                data.forEach(cmd => {
+                    // 确保命令和描述存在
+                    const command = cmd.command || '未知命令';
+                    const description = cmd.description || '无描述';
+                    htmlContent += `<li><code>${command}</code>: ${description}</li>`;
+                });
+                htmlContent += '</ul>';
+            } else {
+                // 系统类命令是对象结构（包含分类）
+                for (const [category, cmds] of Object.entries(data)) {
+                    htmlContent += `<h3>${category}</h3><ul>`;
+                    cmds.forEach(cmd => {
+                        const command = cmd.command || '未知命令';
+                        const description = cmd.description || '无描述';
+                        htmlContent += `<li><code>${command}</code>: ${description}</li>`;
+                    });
+                    htmlContent += '</ul>';
+                }
+            }
+            contentDiv.innerHTML = htmlContent;
+        }
+    </script>
+</body>
+</html>

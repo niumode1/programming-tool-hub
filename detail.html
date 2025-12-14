@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件详情 - CodeStart Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- 引入 Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html">软件库</a></li>
+                    <li><a href="commands.html">命令行助手</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="donate.html">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="tool-detail">
+            <!-- 详情内容将由 JS 动态插入 -->
+        </div>
+    </main>
+
+    <footer>
+         <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/data-loader.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const toolId = urlParams.get('id');
+
+            if (!toolId) {
+                document.getElementById('tool-detail').innerHTML = '<p>未指定软件ID。</p>';
+                return;
+            }
+
+            // 假设 loadTools 是在 data-loader.js 或 main.js 中定义的全局函数
+            if (typeof loadTools !== 'function') {
+                 console.error('loadTools 函数未定义。请确保 js/data-loader.js 已正确加载。');
+                 document.getElementById('tool-detail').innerHTML = '<p>页面初始化错误。</p>';
+                 return;
+            }
+
+            loadTools().then(tools => {
+                const tool = tools.find(t => t.id === toolId);
+                if (!tool) {
+                     document.getElementById('tool-detail').innerHTML = '<p>未找到该软件。</p>';
+                     return;
+                }
+                displayToolDetail(tool);
+            }).catch(error => {
+                 console.error('加载工具详情失败:', error);
+                 document.getElementById('tool-detail').innerHTML = '<p>加载失败。</p>';
+            });
+
+            /**
+             * 展示软件详细信息
+             * @param {Object} tool - 软件对象
+             */
+            function displayToolDetail(tool) {
+                const detailContainer = document.getElementById('tool-detail');
+
+                // 处理图标，默认值
+                const iconSrc = tool.icon && tool.icon.trim() !== '' ? tool.icon : 'images/default-icon.png';
+
+                // 生成兼容性徽章HTML
+                const osBadgesHtml = tool.os.map(os => `<span class="badge badge-${os.toLowerCase()}">${os}</span>`).join(' ');
+
+                // 生成类别标签HTML
+                const categoryTagsHtml = tool.category && tool.category.length > 0 ?
+                    tool.category.map(cat => `<span class="tag tag-category">${cat}</span>`).join(' ') : '未分类';
+
+                // 生成语言标签HTML
+                const languageTagsHtml = tool.languages && tool.languages.length > 0 ?
+                    tool.languages.map(lang => `<span class="tag tag-language">${lang}</span>`).join(' ') : '通用';
+
+                // 安全处理可能不存在的字段
+                const basicConfigContent = tool.basicConfig || '暂无基础配置说明。';
+                const chineseConfigContent = tool.chineseConfig || '暂无中文配置说明。';
+
+                detailContainer.innerHTML = `
+                    <div class="tool-header">
+                        <img src="${iconSrc}" alt="${tool.name} Icon" class="tool-icon">
+                        <div class="tool-info">
+                            <h1>${tool.name}</h1>
+                            <p class="tool-description">${tool.description}</p>
+                            <div class="tool-meta">
+                                <div><strong>类别:</strong> ${categoryTagsHtml}</div>
+                                <div><strong>语言:</strong> ${languageTagsHtml}</div>
+                                <div><strong>兼容系统:</strong> ${osBadgesHtml}</div>
+                                <div><strong>价格:</strong> <span class="price-tag">${tool.pricing}</span></div>
+                            </div>
+                            <div class="tool-actions">
+                                <a href="${tool.officialUrl}" target="_blank" class="btn btn-secondary">官网</a>
+                                <a href="${tool.downloadUrl}" target="_blank" class="btn btn-primary">下载</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tool-sections">
+                        <div class="tool-section">
+                            <h2>安装教程</h2>
+                            ${
+                                tool.installationGuide && Object.keys(tool.installationGuide).length > 0 ?
+                                `<div class="accordion">
+                                    ${Object.entries(tool.installationGuide).map(([os, guide]) =>
+                                        `<div class="accordion-item">
+                                            <button class="accordion-header">${os}</button>
+                                            <div class="accordion-content">
+                                                <pre>${guide}</pre>
+                                            </div>
+                                        </div>`
+                                    ).join('')}
+                                </div>` :
+                                '<p>暂无安装教程。</p>'
+                            }
+                        </div>
+
+                        <div class="tool-section">
+                            <h2>基础配置</h2>
+                            <pre>${basicConfigContent}</pre>
+                        </div>
+
+                        <div class="tool-section">
+                            <h2>中文配置</h2>
+                            <pre>${chineseConfigContent}</pre>
+                        </div>
+                    </div>
+                `;
+
+                // --- 添加手风琴交互 ---
+                const accHeaders = document.querySelectorAll(".accordion-header");
+                accHeaders.forEach(header => {
+                    header.addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        const panel = this.nextElementSibling;
+                        // 使用 classList.toggle 更符合现代做法，但需要 CSS 配合
+                        // 这里保留原始的 display 切换逻辑
+                        if (panel.style.display === "block") {
+                            panel.style.display = "none";
+                        } else {
+                            panel.style.display = "block";
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1459 @@
+{
+  "operating_systems": {
+    "windows": {
+      "文件和目录操作": [
+        {
+          "command": "dir",
+          "description": "列出当前目录下的文件和子目录。可以配合 `/A` 参数显示隐藏文件（如 `dir /A:H`），`/S` 递归显示子目录内容。"
+        },
+        {
+          "command": "cd [path]",
+          "description": "更改当前目录到指定路径。例如：`cd Documents` 进入 Documents 文件夹；`cd ..` 返回上级目录；`cd \\` 切换到根目录。路径可以用绝对路径或相对路径。"
+        },
+        {
+          "command": "mkdir [dirname]",
+          "description": "创建一个名为 dirname 的新目录。例如：`mkdir NewFolder`。如果路径不存在，会报错，需要确保父目录存在。"
+        },
+        {
+          "command": "rmdir [dirname]",
+          "description": "删除一个空目录。例如：`rmdir EmptyFolder`。如果目录非空，则无法删除，需先清空内容。使用 `/S` 参数可递归删除目录及其内容（例如 `rmdir /S FolderToDelete`），但操作不可逆，请谨慎使用。"
+        },
+        {
+          "command": "del [filename]",
+          "description": "删除一个或多个文件。例如：`del oldfile.txt` 删除单个文件；`del *.log` 删除当前目录下所有.log文件。使用时请小心，因为它不会将文件放入回收站而是直接删除。"
+        },
+        {
+          "command": "copy [source] [destination]",
+          "description": "复制文件。例如：`copy file1.txt file2.txt` 将 file1.txt 复制为 file2.txt。也可以复制多个文件到一个目录：`copy file1.txt + file2.txt combined.txt` 合并两个文件；`copy *.txt destination_folder` 复制当前目录所有.txt文件到指定文件夹。"
+        },
+        {
+          "command": "move [source] [destination]",
+          "description": "移动文件或重命名文件/目录。例如：`move oldname.txt newname.txt` 重命名文件；`move file.txt D:\\Backup` 将文件移动到D盘的Backup文件夹。"
+        },
+        {
+          "command": "ren [oldname] [newname]",
+          "description": "重命名文件或目录。例如：`ren oldfolder newfolder`。注意，旧名字和新名字之间只有一个空格。"
+        },
+        {
+          "command": "type [filename]",
+          "description": "显示文本文件的内容。例如：`type readme.txt`。对于大文件，建议结合 `more` 命令分页显示：`type largefile.txt | more`。"
+        },
+        {
+          "command": "xcopy [source] [destination] [/options]",
+          "description": "更强大的文件和目录复制命令，支持复制整个目录树。例如：`xcopy C:\\SourceDir D:\\DestDir /E /I` 复制 SourceDir 及其所有子目录（包括空目录）到 DestDir。"
+        }
+      ],
+      "系统信息": [
+        {
+          "command": "systeminfo",
+          "description": "显示详细的 Windows 系统配置信息，包括操作系统版本、系统启动时间、已安装的热修补程序、网络统计信息等。"
+        },
+        {
+          "command": "ver",
+          "description": "显示 Windows 版本号。"
+        },
+        {
+          "command": "hostname",
+          "description": "显示计算机的主机名。"
+        },
+        {
+          "command": "whoami",
+          "description": "显示当前用户的用户名以及所属的用户组。"
+        },
+        {
+          "command": "wmic os get Caption, Version, BuildNumber",
+          "description": "使用 Windows Management Instrumentation Command-line 获取更具体的 OS 信息，如版本和构建号。"
+        }
+      ],
+      "网络": [
+        {
+          "command": "ipconfig",
+          "description": "显示 TCP/IP 网络配置信息，包括 IP 地址、子网掩码、默认网关和 DNS 服务器。"
+        },
+        {
+          "command": "ipconfig /all",
+          "description": "显示所有 TCP/IP 配置的详细信息，包括物理地址(MAC)、DHCP 和 WINS 服务器等。"
+        },
+        {
+          "command": "ipconfig /flushdns",
+          "description": "刷新并重置 DNS 解析缓存。当遇到网站访问问题时可能有用。"
+        },
+        {
+          "command": "ipconfig /release && ipconfig /renew",
+          "description": "释放当前的 IP 地址并通过 DHCP 重新获取一个新的。常用于解决网络连接问题。"
+        },
+        {
+          "command": "ping [host]",
+          "description": "测试与目标主机的网络连通性。例如：`ping google.com`。可以通过 `-n count` 指定发送的数据包数量，通过 `-t` 持续 ping 直到手动停止（按 Ctrl+C）。"
+        },
+        {
+          "command": "tracert [host]",
+          "description": "跟踪数据包到达目标主机所经过的路由路径。例如：`tracert www.google.com`。有助于诊断网络延迟或中断发生在哪个节点。"
+        },
+        {
+          "command": "nslookup [domain]",
+          "description": "查询域名系统的记录，获取域名对应的 IP 地址或其他 DNS 记录信息。例如：`nslookup github.com`。"
+        },
+        {
+          "command": "netstat",
+          "description": "显示活动的 TCP 连接、计算机正在侦听的端口、以太网统计信息、IP 路由表、IPv4 统计信息 (IP、ICMP、TCP 和 UDP 协议)、IPv6 统计信息 (IPv6、ICMPv6、TCP over IPv6 和 UDP over IPv6 协议)以及网络适配器统计信息。"
+        },
+        {
+          "command": "netstat -an",
+          "description": "显示所有连接和监听端口，并以数字形式显示地址和端口号。"
+        },
+        {
+          "command": "arp -a",
+          "description": "显示和修改“地址解析协议 (ARP)”缓存中的条目。ARP 缓存包含一个或多个表，它们包含 IP 地址及其经过解析的以太网或令牌环物理地址的一个映射列表。"
+        }
+      ],
+      "进程和服务": [
+        {
+          "command": "tasklist",
+          "description": "列出当前运行的所有进程及其 PID、内存使用情况等。可以使用 `/FI` 过滤器进行筛选，如 `tasklist /FI \"IMAGENAME eq notepad.exe\"`。"
+        },
+        {
+          "command": "taskkill /PID [pid] /F",
+          "description": "强制终止指定 PID 的进程。例如：`taskkill /PID 1234 /F`。PID 可以通过 `tasklist` 命令找到。"
+        },
+        {
+          "command": "taskkill /IM [imagename] /F",
+          "description": "强制终止指定映像名称（即进程名）的所有实例。例如：`taskkill /IM notepad.exe /F`。"
+        },
+        {
+          "command": "sc query",
+          "description": "查询服务的状态。可以指定特定服务名称，如 `sc query Spooler` 查询打印后台处理服务状态。"
+        },
+        {
+          "command": "sc start [servicename]",
+          "description": "启动一个服务。例如：`sc start Themes` 启动主题服务。需要管理员权限。"
+        },
+        {
+          "command": "sc stop [servicename]",
+          "description": "停止一个服务。例如：`sc stop Themes` 停止主题服务。需要管理员权限。"
+        },
+        {
+          "command": "net start",
+          "description": "列出当前启动的服务。"
+        },
+        {
+          "command": "net stop [servicename]",
+          "description": "停止一个服务。需要管理员权限。例如：`net stop \"Print Spooler\"`。注意服务名如果有空格需要用双引号括起来。"
+        },
+        {
+          "command": "net start [servicename]",
+          "description": "启动一个服务。需要管理员权限。例如：`net start \"Print Spooler\"`。"
+        }
+      ],
+      "磁盘和文件系统": [
+        {
+          "command": "diskpart",
+          "description": "启动磁盘分区工具。这是一个交互式命令行工具，用于管理磁盘、分区和卷。需要管理员权限。常见的子命令包括 `list disk`, `select disk X`, `create partition primary`, `assign letter=Y` 等。"
+        },
+        {
+          "command": "chkdsk [drive:] [parameters]",
+          "description": "检查磁盘错误并恢复扇区信息。例如：`chkdsk C: /f` 检查 C 盘并修复错误；`chkdsk D: /f /r` 检查 D 盘，修复错误并定位坏扇区。需要管理员权限或在下次启动时运行（系统提示时按 Y）。"
+        },
+        {
+          "command": "format [drive:] /FS:[filesystem]",
+          "description": "格式化磁盘驱动器。例如：`format D: /FS:NTFS` 将 D 盘格式化为 NTFS 文件系统。此操作会清除磁盘上的所有数据，请务必小心。"
+        },
+        {
+          "command": "defrag [drive:]",
+          "description": "对指定驱动器进行碎片整理。例如：`defrag C:` 整理 C 盘碎片，提高性能。"
+        }
+      ],
+      "其他常用": [
+        {
+          "command": "cls",
+          "description": "清除屏幕上的内容，使窗口回到顶部。"
+        },
+        {
+          "command": "echo [text]",
+          "description": "显示指定的文本，或打开/关闭命令回显。例如：`echo Hello World` 显示文本；`echo off` 关闭后续命令的回显；`echo on` 开启回显。"
+        },
+        {
+          "command": "set",
+          "description": "显示或设置环境变量。例如：`set PATH` 显示 PATH 环境变量；`set MYVAR=MyValue` 设置一个新的环境变量 MYVAR。这些变量只在当前 CMD 会话中有效。"
+        },
+        {
+          "command": "path",
+          "description": "显示或设置可执行文件的搜索路径。例如：`path` 显示当前路径；`path %PATH%;C:\\MyTools` 将 C:\\MyTools 添加到搜索路径末尾。"
+        },
+        {
+          "command": "shutdown [/s | /r | /l] [/t seconds] [/c \"comment\"]",
+          "description": "关闭、重启或注销计算机。例如：`shutdown /s /t 60` 表示 60 秒后关机；`shutdown /r /t 0` 立即重启；`shutdown /l` 注销当前用户；`shutdown /s /c \"Maintenance\"` 关机并附加注释。"
+        },
+        {
+          "command": "sfc /scannow",
+          "description": "扫描所有受保护的系统文件的完整性，并尽可能修复有问题的文件。需要管理员权限。"
+        },
+        {
+          "command": "powercfg /hibernate on/off",
+          "description": "启用或禁用休眠功能。例如：`powercfg /hibernate off` 禁用休眠，这可以节省磁盘空间（因为不需要 hiberfil.sys 文件）。"
+        }
+      ],
+      "快捷键": [
+        {
+          "command": "Win",
+          "description": "打开或关闭开始菜单。"
+        },
+        {
+          "command": "Win + A",
+          "description": "打开快速设置面板（Windows 11）或操作中心（Windows 10）。"
+        },
+        {
+          "command": "Win + C",
+          "description": "打开 Microsoft Teams 聊天（如果已安装并固定）或 Cortana（Windows 10，部分版本）。"
+        },
+        {
+          "command": "Win + D",
+          "description": "显示桌面（最小化所有窗口），再次按下可还原窗口。"
+        },
+        {
+          "command": "Win + E",
+          "description": "打开文件资源管理器。"
+        },
+        {
+          "command": "Win + G",
+          "description": "打开 Xbox Game Bar（如果游戏或支持的应用正在运行）。"
+        },
+        {
+          "command": "Win + H",
+          "description": "打开语音输入（听写）。"
+        },
+        {
+          "command": "Win + I",
+          "description": "打开设置应用。"
+        },
+        {
+          "command": "Win + K",
+          "description": "打开投射（Cast）面板，用于连接无线显示器或音频设备。"
+        },
+        {
+          "command": "Win + L",
+          "description": "锁定计算机或切换用户。"
+        },
+        {
+          "command": "Win + M",
+          "description": "最小化所有窗口。"
+        },
+        {
+          "command": "Win + P",
+          "description": "选择演示显示模式（投影）。"
+        },
+        {
+          "command": "Win + R",
+          "description": "打开运行对话框。"
+        },
+        {
+          "command": "Win + S",
+          "description": "打开搜索（Windows 10）或同时打开搜索和 Cortana（Windows 10，部分版本）。"
+        },
+        {
+          "command": "Win + T",
+          "description": "循环浏览任务栏上的应用。"
+        },
+        {
+          "command": "Win + U",
+          "description": "打开辅助功能设置（轻松使用设置）。"
+        },
+        {
+          "command": "Win + V",
+          "description": "打开剪贴板历史记录（需先在设置中启用）。"
+        },
+        {
+          "command": "Win + W",
+          "description": "打开小组件面板（Widgets，Windows 11）。"
+        },
+        {
+          "command": "Win + X",
+          "description": "打开快速链接菜单（位于屏幕左下角）。"
+        },
+        {
+          "command": "Win + Z",
+          "description": "打开贴靠布局菜单（Snap Layouts，Windows 11）。"
+        },
+        {
+          "command": "Win + , (逗号)",
+          "description": "临时预览桌面（Peek at desktop）。"
+        },
+        {
+          "command": "Win + . (句号)",
+          "description": "打开表情符号面板。"
+        },
+        {
+          "command": "Win + = (等号)",
+          "description": "打开表情符号面板（Windows 10，部分版本）。"
+        },
+        {
+          "command": "Win + + (加号)",
+          "description": "启动放大镜并放大。"
+        },
+        {
+          "command": "Win + - (减号)",
+          "description": "启动放大镜并缩小。"
+        },
+        {
+          "command": "Win + Shift + M",
+          "description": "还原最小化的所有窗口。"
+        },
+        {
+          "command": "Win + Shift + S",
+          "description": "打开截图工具（截取屏幕的一部分）。"
+        },
+        {
+          "command": "Win + Shift + N",
+          "description": "在文件资源管理器中创建新的文件夹。"
+        },
+        {
+          "command": "Win + Tab",
+          "description": "打开任务视图（Task View）。"
+        },
+        {
+          "command": "Alt + Tab",
+          "description": "在打开的应用和窗口间切换。"
+        },
+        {
+          "command": "Alt + F4",
+          "description": "关闭当前活动窗口或程序，如果在桌面上则打开关机/重启选项。"
+        },
+        {
+          "command": "Ctrl + Shift + Esc",
+          "description": "直接打开任务管理器。"
+        },
+        {
+          "command": "Ctrl + Alt + Del",
+          "description": "打开安全选项屏幕（锁定计算机、切换用户、注销、更改密码、启动任务管理器）。"
+        }
+      ]
+    },
+    "macos": {
+      "文件和目录操作": [
+        {
+          "command": "ls [-options]",
+          "description": "列出目录内容。常用选项 `-l` (长格式，显示权限、链接数、所有者、组、大小、修改时间), `-a` (包括隐藏文件，以点开头), `-h` (配合 `-l` 使用，以人类可读的方式显示文件大小，如 KB, MB)。例如：`ls -lah` 显示详细信息，包括隐藏文件，并以易读方式显示大小。"
+        },
+        {
+          "command": "cd [path]",
+          "description": "更改当前工作目录。例如：`cd ~/Documents` 切换到用户 Documents 目录；`cd ..` 返回上级目录；`cd -` 切换到上次所在的目录；`cd` 或 `cd ~` 切换到用户主目录。"
+        },
+        {
+          "command": "pwd",
+          "description": "打印当前工作目录的完整路径。"
+        },
+        {
+          "command": "mkdir [dirname]",
+          "description": "创建新目录。例如：`mkdir NewProject`。可以使用 `-p` 参数创建多层嵌套目录，即使父目录不存在也不会出错：`mkdir -p Projects/WebApp/src`。"
+        },
+        {
+          "command": "rmdir [dirname]",
+          "description": "删除空目录。例如：`rmdir OldProject`。如果目录非空则失败。"
+        },
+        {
+          "command": "rm [filename]",
+          "description": "删除文件。例如：`rm unwanted_file.txt`。使用时请非常小心，因为它不会将文件放入废纸篓而是直接删除。"
+        },
+        {
+          "command": "rm -rf [dirname]",
+          "description": "递归强制删除目录及其所有内容。`-r` 表示递归删除目录树，`-f` 表示强制删除，不询问确认。极其危险，请谨慎使用！例如：`rm -rf ~/Trash/MyOldApp`。"
+        },
+        {
+          "command": "cp [source] [destination]",
+          "description": "复制文件或目录。复制目录需加 `-r` 选项。例如：`cp file1.txt backup/file1_backup.txt`；`cp -r folder1 backup/folder1_copy` 复制整个文件夹。"
+        },
+        {
+          "command": "mv [source] [destination]",
+          "description": "移动文件/目录或重命名。例如：`mv old_name.txt new_name.txt` 重命名文件；`mv file.txt ~/Documents` 将文件移动到文档目录。"
+        },
+        {
+          "command": "touch [filename]",
+          "description": "创建空文件或更新已有文件的时间戳（访问时间和修改时间）。例如：`touch newfile.txt`。"
+        },
+        {
+          "command": "cat [filename]",
+          "description": "连接文件并打印到标准输出。常用于查看小文件内容。例如：`cat readme.txt`。也可用于合并文件：`cat file1.txt file2.txt > combined.txt`。"
+        },
+        {
+          "command": "more [filename]",
+          "description": "分页查看文件内容。按空格键翻页，按 q 键退出。例如：`more largefile.txt`。"
+        },
+        {
+          "command": "less [filename]",
+          "description": "更强大的分页查看器，允许向前和向后滚动。例如：`less large_log.txt`。按 q 键退出。"
+        },
+        {
+          "command": "nano [filename]",
+          "description": "一个简单的命令行文本编辑器。例如：`nano config.ini`。Ctrl+O 保存，Ctrl+X 退出。"
+        }
+      ],
+      "系统信息": [
+        {
+          "command": "uname -a",
+          "description": "显示所有系统相关信息，包括内核名称、网络节点名、内核版本、机器硬件名称等。"
+        },
+        {
+          "command": "sw_vers",
+          "description": "显示 macOS 版本信息，包括产品名称、版本号和构建号。"
+        },
+        {
+          "command": "hostname",
+          "description": "显示计算机的网络主机名。"
+        },
+        {
+          "command": "whoami",
+          "description": "显示当前有效的用户名。"
+        },
+        {
+          "command": "uptime",
+          "description": "显示系统运行时间和平均负载。"
+        },
+        {
+          "command": "arch",
+          "description": "显示处理器架构，如 x86_64 或 arm64。"
+        },
+        {
+          "command": "system_profiler SPHardwareDataType",
+          "description": "提供详细的硬件规格报告，类似于 Windows 的 systeminfo。"
+        }
+      ],
+      "网络": [
+        {
+          "command": "ifconfig",
+          "description": "配置和显示网络接口参数。例如：`ifconfig en0` 显示第一个以太网接口的信息。"
+        },
+        {
+          "command": "networksetup",
+          "description": "用于配置网络设置的强大工具。例如：`networksetup -listallhardwareports` 列出所有网络端口；`networksetup -getairportnetwork en0` 获取 Wi-Fi 网络名称。"
+        },
+        {
+          "command": "ping [host]",
+          "description": "向目标主机发送 ICMP ECHO_REQUEST 包以测试连通性。例如：`ping google.com`。按 Ctrl+C 停止。"
+        },
+        {
+          "command": "dig [domain]",
+          "description": "DNS 查询工具，比 nslookup 更强大且灵活。例如：`dig github.com` 查询 A 记录；`dig github.com MX` 查询邮件交换记录。"
+        },
+        {
+          "command": "nslookup [domain]",
+          "description": "查询域名系统的记录。例如：`nslookup github.com`。"
+        },
+        {
+          "command": "netstat",
+          "description": "显示网络连接、路由表、接口统计等信息。例如：`netstat -an` 显示所有连接和监听端口。"
+        },
+        {
+          "command": "traceroute [host]",
+          "description": "追踪数据包到目标主机的路由路径。例如：`traceroute www.google.com`。"
+        }
+      ],
+      "进程": [
+        {
+          "command": "ps aux",
+          "description": "报告当前系统所有的进程状态快照。`a` 表示所有用户的进程，`u` 表示以用户友好的格式显示，`x` 表示也显示没有控制终端的进程。"
+        },
+        {
+          "command": "top",
+          "description": "实时显示系统中 CPU 和内存使用率最高的进程。按 q 键退出。"
+        },
+        {
+          "command": "htop",
+          "description": "交互式进程查看器，提供了比 top 更丰富的功能和界面 (通常需要先安装 `brew install htop`)。"
+        },
+        {
+          "command": "kill [pid]",
+          "description": "终止指定 PID 的进程。例如：`kill 9876`。可以使用不同的信号，如 `kill -9 9876` 强制杀死进程（SIGKILL）。"
+        },
+        {
+          "command": "killall [process_name]",
+          "description": "终止所有同名的进程。例如：`killall Safari`。"
+        },
+        {
+          "command": "launchctl list",
+          "description": "列出由 launchd 管理的守护进程和服务。"
+        }
+      ],
+      "磁盘和文件系统": [
+        {
+          "command": "df -h",
+          "description": "以人类可读的格式（KB, MB, GB）显示文件系统磁盘空间使用情况。"
+        },
+        {
+          "command": "du -sh [directory]",
+          "description": "估算目录的总大小。`-s` 总结总计大小，`-h` 以人类可读方式显示。例如：`du -sh ~/Movies`。"
+        },
+        {
+          "command": "diskutil list",
+          "description": "列出所有磁盘及其分区的信息。"
+        },
+        {
+          "command": "diskutil info [disk_identifier]",
+          "description": "显示指定磁盘或卷的详细信息。例如：`diskutil info /dev/disk0s2`。"
+        }
+      ],
+      "其他常用": [
+        {
+          "command": "clear",
+          "description": "清除终端屏幕。快捷键 Cmd+K 在 Terminal.app 中也有同样效果。"
+        },
+        {
+          "command": "echo [text]",
+          "description": "打印文本或变量值。例如：`echo $HOME` 显示家目录路径。"
+        },
+        {
+          "command": "which [command]",
+          "description": "显示可执行命令的位置。例如：`which python3`。它会在 PATH 中查找。"
+        },
+        {
+          "command": "whereis [command]",
+          "description": "查找二进制文件、源代码文件和手册页文件的位置。例如：`whereis gcc`。"
+        },
+        {
+          "command": "man [command]",
+          "description": "显示命令的手册页。例如：`man ls`。按 q 键退出。"
+        },
+        {
+          "command": "history",
+          "description": "显示最近执行过的命令历史。可以通过 `!number` 重新执行历史命令。"
+        },
+        {
+          "command": "open [file|directory|URL]",
+          "description": "使用默认应用程序打开文件、目录或 URL。例如：`open .` 打开当前目录，`open https://www.google.com`，`open document.pdf`。"
+        },
+        {
+          "command": "say [text]",
+          "description": "让 Mac 说出指定的文本。例如：`say \"Hello, World!\"`。"
+        }
+      ],
+      "快捷键": [
+        {
+          "command": "Cmd + C",
+          "description": "拷贝所选内容。"
+        },
+        {
+          "command": "Cmd + X",
+          "description": "剪切所选内容。"
+        },
+        {
+          "command": "Cmd + V",
+          "description": "粘贴剪贴板内容。"
+        },
+        {
+          "command": "Cmd + Z",
+          "description": "撤销上一步操作。"
+        },
+        {
+          "command": "Cmd + Shift + Z",
+          "description": "重做上一步撤销的操作。"
+        },
+        {
+          "command": "Cmd + A",
+          "description": "全选。"
+        },
+        {
+          "command": "Cmd + F",
+          "description": "在当前文档或窗口中查找。"
+        },
+        {
+          "command": "Cmd + G",
+          "description": "查找下一个匹配项。"
+        },
+        {
+          "command": "Cmd + Shift + G",
+          "description": "查找上一个匹配项。"
+        },
+        {
+          "command": "Cmd + H",
+          "description": "隐藏当前应用程序窗口。"
+        },
+        {
+          "command": "Cmd + M",
+          "description": "将当前窗口最小化到 Dock。"
+        },
+        {
+          "command": "Cmd + N",
+          "description": "新建文档或窗口（取决于当前应用）。"
+        },
+        {
+          "command": "Cmd + O",
+          "description": "打开所选文件或对话框。"
+        },
+        {
+          "command": "Cmd + P",
+          "description": "打印当前文档。"
+        },
+        {
+          "command": "Cmd + S",
+          "description": "保存当前文档。"
+        },
+        {
+          "command": "Cmd + W",
+          "description": "关闭当前窗口。"
+        },
+        {
+          "command": "Cmd + Q",
+          "description": "退出当前应用程序。"
+        },
+        {
+          "command": "Cmd + Space",
+          "description": "打开 Spotlight 搜索。"
+        },
+        {
+          "command": "Cmd + Tab",
+          "description": "在打开的应用程序间切换。"
+        },
+        {
+          "command": "Cmd + ` (反引号)",
+          "description": "在同一应用程序的窗口间切换。"
+        },
+        {
+          "command": "Cmd + Shift + 3",
+          "description": "截取整个屏幕的屏幕快照。"
+        },
+        {
+          "command": "Cmd + Shift + 4",
+          "description": "截取屏幕选定区域的屏幕快照。"
+        },
+        {
+          "command": "Cmd + Shift + 5",
+          "description": "打开屏幕快照和屏幕录制选项。"
+        },
+        {
+          "command": "Cmd + Shift + N",
+          "description": "在 Finder 中创建新文件夹。"
+        },
+        {
+          "command": "Cmd + Delete",
+          "description": "将所选项目移到废纸篓。"
+        },
+        {
+          "command": "Cmd + Shift + Delete",
+          "description": "清倒废纸篓（弹出确认框）。"
+        },
+        {
+          "command": "Cmd + Option + Esc",
+          "description": "打开“强制退出”应用程序窗口。"
+        },
+        {
+          "command": "Control + Cmd + Q",
+          "description": "立即锁定屏幕。"
+        },
+        {
+          "command": "Control + 上箭头",
+          "description": "打开 Mission Control（任务控制）。"
+        },
+        {
+          "command": "Control + 下箭头",
+          "description": "显示当前应用的所有窗口（应用程序窗口）。"
+        },
+        {
+          "command": "Control + 左/右箭头",
+          "description": "在全屏应用间切换（Mission Control 中）。"
+        },
+        {
+          "command": "F11",
+          "description": "显示桌面（隐藏所有窗口）。"
+        },
+        {
+          "command": "F12",
+          "description": "显示 Dashboard（如果已启用）。"
+        }
+      ]
+    },
+    "linux": {
+      "文件和目录操作": [
+        {
+          "command": "ls [-options]",
+          "description": "列出目录内容。常用选项 `-l` (长格式), `-a` (包括隐藏文件), `-h` (人类可读大小), `-R` (递归列出子目录)。例如：`ls -lah`。"
+        },
+        {
+          "command": "cd [path]",
+          "description": "更改当前工作目录。例如：`cd /home/user` 切换到用户主目录；`cd ..` 返回上级目录；`cd -` 切换到上次所在目录；`cd` 或 `cd ~` 切换到家目录。"
+        },
+        {
+          "command": "pwd",
+          "description": "打印当前工作目录的完整路径。"
+        },
+        {
+          "command": "mkdir [dirname]",
+          "description": "创建新目录。例如：`mkdir MyProject`。可以使用 `-p` 参数创建多层嵌套目录：`mkdir -p projects/web_app/src`。"
+        },
+        {
+          "command": "rmdir [dirname]",
+          "description": "删除空目录。例如：`rmdir EmptyDir`。"
+        },
+        {
+          "command": "rm [filename]",
+          "description": "删除文件。例如：`rm temp_file.txt`。使用时请非常小心。"
+        },
+        {
+          "command": "rm -rf [dirname]",
+          "description": "递归强制删除目录及其所有内容。极其危险，请谨慎使用！例如：`rm -rf /tmp/my_old_stuff`。"
+        },
+        {
+          "command": "cp [source] [destination]",
+          "description": "复制文件或目录。复制目录需加 `-r` 选项。例如：`cp report.docx backup/`；`cp -r dir1 dir2` 复制目录。"
+        },
+        {
+          "command": "mv [source] [destination]",
+          "description": "移动文件/目录或重命名。例如：`mv old_script.py new_script.py`；`mv file.txt /home/user/docs`。"
+        },
+        {
+          "command": "touch [filename]",
+          "description": "创建空文件或更新已有文件的时间戳。例如：`touch newfile.txt`。"
+        },
+        {
+          "command": "cat [filename]",
+          "description": "连接文件并打印到标准输出。常用于查看小文件内容。例如：`cat readme.txt`。也可合并文件：`cat file1.txt file2.txt > combined.txt`。"
+        },
+        {
+          "command": "less [filename]",
+          "description": "分页查看文件内容，比 `more` 更强大。例如：`less large_log.txt`。按 q 键退出。"
+        },
+        {
+          "command": "head [-n number] [filename]",
+          "description": "显示文件开头几行（默认是10行）。例如：`head -n 20 logfile.txt` 显示前20行。"
+        },
+        {
+          "command": "tail [-n number] [filename]",
+          "description": "显示文件末尾几行（默认是10行）。例如：`tail -n 20 logfile.txt` 显示后20行。使用 `-f` 参数可以实时监控文件更新：`tail -f /var/log/syslog`。"
+        },
+        {
+          "command": "nano [filename]",
+          "description": "一个简单的命令行文本编辑器。例如：`nano config.ini`。Ctrl+O 保存，Ctrl+X 退出。"
+        },
+        {
+          "command": "vim [filename]",
+          "description": "一个功能强大的命令行文本编辑器，学习曲线较陡峭。例如：`vim script.py`。"
+        }
+      ],
+      "系统信息": [
+        {
+          "command": "uname -a",
+          "description": "显示所有系统相关信息，包括内核名称、网络节点名、内核版本、机器硬件名称等。"
+        },
+        {
+          "command": "lsb_release -a",
+          "description": "显示 Linux 标准规范 (LSB) 的发行版信息 (某些发行版需要安装 lsb-release 包)。"
+        },
+        {
+          "command": "hostname",
+          "description": "显示或设置系统的主机名。"
+        },
+        {
+          "command": "whoami",
+          "description": "打印当前有效的用户名。"
+        },
+        {
+          "command": "uptime",
+          "description": "显示系统运行时间、用户数量和负载平均值。"
+        },
+        {
+          "command": "date",
+          "description": "显示或设置系统日期和时间。例如：`date '+%Y-%m-%d %H:%M:%S'` 自定义格式输出。"
+        },
+        {
+          "command": "free -h",
+          "description": "显示系统内存使用情况，包括物理内存和交换空间，以人类可读方式呈现。"
+        },
+        {
+          "command": "lscpu",
+          "description": "显示 CPU 架构的详细信息。"
+        }
+      ],
+      "网络": [
+        {
+          "command": "ip addr show",
+          "description": "显示/操作路由、网络设备、接口和隧道。现代替代 `ifconfig`。例如：`ip addr show eth0` 显示特定接口信息。"
+        },
+        {
+          "command": "ping [host]",
+          "description": "向目标主机发送 ICMP ECHO_REQUEST 包以测试连通性。例如：`ping 8.8.8.8`。按 Ctrl+C 停止。"
+        },
+        {
+          "command": "ss -tuln",
+          "description": "另一个 socket 统计工具，用于调查 sockets。现代替代 `netstat`。`-t` 显示 TCP sockets，`-u` 显示 UDP sockets，`-l` 显示监听状态的 sockets，`-n` 不解析服务名称。"
+        },
+        {
+          "command": "wget [URL]",
+          "description": "非交互式的网络文件下载工具。例如：`wget https://example.com/file.zip`。支持断点续传、限速等功能。"
+        },
+        {
+          "command": "curl [URL]",
+          "description": "传输数据的命令行工具，支持多种协议（HTTP, HTTPS, FTP 等）。例如：`curl -O https://api.github.com/users/octocat` 下载文件并保持原名；`curl -X POST -d 'data=value' http://example.com/api` 发送 POST 请求。"
+        },
+        {
+          "command": "traceroute [host]",
+          "description": "追踪数据包到目标主机的路由路径。"
+        },
+        {
+          "command": "nmap [target]",
+          "description": "网络探索和安全审计工具，用于发现主机和服务。例如：`nmap scanme.nmap.org`。"
+        }
+      ],
+      "进程": [
+        {
+          "command": "ps aux",
+          "description": "报告当前系统所有的进程状态快照。"
+        },
+        {
+          "command": "top",
+          "description": "实时显示系统中 CPU 使用率最高的进程。按 q 键退出。"
+        },
+        {
+          "command": "htop",
+          "description": "交互式进程查看器 (通常需要先安装)。"
+        },
+        {
+          "command": "kill [pid]",
+          "description": "终止指定 PID 的进程。例如：`kill 5432`。可以指定信号，如 `kill -9 5432` (SIGKILL)。"
+        },
+        {
+          "command": "killall [process_name]",
+          "description": "终止所有同名的进程。例如：`killall firefox`。"
+        },
+        {
+          "command": "nohup [command] &",
+          "description": "运行命令使其忽略挂起信号 (SIGHUP)，常用于后台运行程序。例如：`nohup python3 my_script.py &`。输出通常被重定向到 nohup.out 文件。"
+        },
+        {
+          "command": "jobs",
+          "description": "列出当前 shell 会话中的作业。"
+        },
+        {
+          "command": "fg [%job_number]",
+          "description": "将后台作业调至前台。例如：`fg %1`。"
+        },
+        {
+          "command": "bg [%job_number]",
+          "description": "让暂停的作业在后台继续运行。例如：`bg %1`。"
+        }
+      ],
+      "包管理 (以 Ubuntu/Debian 为例)": [
+        {
+          "command": "apt update",
+          "description": "更新可用软件包列表索引。这是安装或升级软件前必须执行的步骤。"
+        },
+        {
+          "command": "apt upgrade",
+          "description": "升级所有可升级的已安装软件包。"
+        },
+        {
+          "command": "apt full-upgrade",
+          "description": "执行完整的升级，可能会移除一些包以满足依赖关系。"
+        },
+        {
+          "command": "apt install [package_name]",
+          "description": "安装或升级指定的软件包。例如：`apt install git`。"
+        },
+        {
+          "command": "apt remove [package_name]",
+          "description": "移除指定的软件包（但保留配置文件）。例如：`apt remove firefox`。"
+        },
+        {
+          "command": "apt purge [package_name]",
+          "description": "彻底移除软件包及其配置文件。例如：`apt purge apache2`。"
+        },
+        {
+          "command": "apt autoremove",
+          "description": "自动移除不再需要的依赖包。"
+        },
+        {
+          "command": "apt search [keyword]",
+          "description": "搜索包含关键字的软件包。例如：`apt search editor`。"
+        },
+        {
+          "command": "apt show [package_name]",
+          "description": "显示软件包的详细信息。例如：`apt show curl`。"
+        }
+      ],
+      "磁盘和文件系统": [
+        {
+          "command": "df -h",
+          "description": "以人类可读的格式显示文件系统磁盘空间使用情况。"
+        },
+        {
+          "command": "du -sh [directory]",
+          "description": "估算目录的总大小。例如：`du -sh /var/log`。"
+        },
+        {
+          "command": "find [path] -name [pattern]",
+          "description": "在指定路径下按名称查找文件。例如：`find /home -name \"*.txt\"` 查找所有 .txt 文件。"
+        },
+        {
+          "command": "locate [filename]",
+          "description": "快速查找文件。它使用一个预建的数据库，可能不是最新的。可以使用 `updatedb` 命令更新数据库（通常需要 root 权限）。"
+        },
+        {
+          "command": "mount [device] [mount_point]",
+          "description": "挂载文件系统。例如：`sudo mount /dev/sdb1 /mnt/usb` 将 USB 设备挂载到 /mnt/usb 目录。"
+        },
+        {
+          "command": "umount [device|mount_point]",
+          "description": "卸载文件系统。例如：`sudo umount /mnt/usb`。"
+        }
+      ],
+      "权限": [
+        {
+          "command": "chmod [permissions] [file]",
+          "description": "改变文件或目录的访问权限。可以使用数字表示法（如 `chmod 755 script.sh`）或符号表示法（如 `chmod u+x script.sh` 允许文件所有者执行该文件）。"
+        },
+        {
+          "command": "chown [owner][:group] [file]",
+          "description": "改变文件或目录的用户和组所有权。例如：`chown user:group file.txt`；`chown -R user:group directory/` 递归更改目录及其内容的所有权。"
+        },
+        {
+          "command": "chgrp [group] [file]",
+          "description": "改变文件或目录的所属组。例如：`chgrp developers project_folder`。"
+        }
+      ],
+      "其他常用": [
+        {
+          "command": "clear",
+          "description": "清除终端屏幕。快捷键 Ctrl+L 通常也有同样效果。"
+        },
+        {
+          "command": "echo [text]",
+          "description": "打印文本或变量值。例如：`echo $PATH`。"
+        },
+        {
+          "command": "which [command]",
+          "description": "显示可执行命令的位置。例如：`which gcc`。"
+        },
+        {
+          "command": "whereis [command]",
+          "description": "查找二进制文件、源代码文件和手册页文件的位置。例如：`whereis python`。"
+        },
+        {
+          "command": "man [command]",
+          "description": "显示命令的手册页。例如：`man grep`。按 q 键退出。"
+        },
+        {
+          "command": "history",
+          "description": "显示最近执行过的命令历史。"
+        },
+        {
+          "command": "grep [pattern] [file]",
+          "description": "在文件中搜索包含指定模式的行。例如：`grep 'error' logfile.txt`。支持正则表达式，常用选项 `-i` 忽略大小写，`-r` 递归搜索目录。"
+        },
+        {
+          "command": "sudo [command]",
+          "description": "以超级用户 (root) 或其他用户权限执行命令。例如：`sudo apt update`。首次使用需要输入当前用户的密码。"
+        },
+        {
+          "command": "su - [username]",
+          "description": "切换用户身份。例如：`su - root` 切换到 root 用户。`su -` 或 `su -l` 切换到 root 并加载其环境变量。"
+        },
+        {
+          "command": "alias [name]='[command]'",
+          "description": "创建命令别名。例如：`alias ll='ls -al'`。要永久生效，需要将其添加到 shell 配置文件（如 ~/.bashrc 或 ~/.zshrc）中。"
+        },
+        {
+          "command": "export [variable]=[value]",
+          "description": "设置环境变量。例如：`export MY_VAR=hello`。要永久生效，也需要添加到 shell 配置文件中。"
+        }
+      ],
+      "快捷键": [
+        {
+          "command": "Ctrl + A",
+          "description": "将光标移动到命令行的开头。"
+        },
+        {
+          "command": "Ctrl + E",
+          "description": "将光标移动到命令行的结尾。"
+        },
+        {
+          "command": "Ctrl + B",
+          "description": "向后（左）移动一个字符。"
+        },
+        {
+          "command": "Ctrl + F",
+          "description": "向前（右）移动一个字符。"
+        },
+        {
+          "command": "Alt + B",
+          "description": "向后（左）移动一个单词。"
+        },
+        {
+          "command": "Alt + F",
+          "description": "向前（右）移动一个单词。"
+        },
+        {
+          "command": "Ctrl + L",
+          "description": "清除屏幕（等同于 `clear` 命令）。"
+        },
+        {
+          "command": "Ctrl + U",
+          "description": "从光标位置删除到命令行开头的所有内容。"
+        },
+        {
+          "command": "Ctrl + K",
+          "description": "从光标位置删除到命令行结尾的所有内容。"
+        },
+        {
+          "command": "Ctrl + W",
+          "description": "删除光标前的一个单词。"
+        },
+        {
+          "command": "Ctrl + Y",
+          "description": "粘贴最近被 `Ctrl + U`, `Ctrl + K` 或 `Ctrl + W` 删除的文本。"
+        },
+        {
+          "command": "Ctrl + C",
+          "description": "终止当前正在运行的命令（发送 SIGINT 信号）。"
+        },
+        {
+          "command": "Ctrl + Z",
+          "description": "暂停当前正在运行的命令（发送 SIGTSTP 信号），可以使用 `fg` 恢复到前台或 `bg` 放到后台。"
+        },
+        {
+          "command": "Ctrl + D",
+          "description": "退出当前 shell 会话（如果命令行为空）或删除光标后的字符。"
+        },
+        {
+          "command": "Ctrl + R",
+          "description": "反向搜索命令历史记录。输入部分命令即可查找匹配的历史命令。"
+        },
+        {
+          "command": "↑ / ↓ 箭头",
+          "description": "浏览命令历史记录。"
+        },
+        {
+          "command": "Tab",
+          "description": "自动补全文件名、目录名或命令名。连续按两次可显示所有可能的补全选项。"
+        },
+        {
+          "command": "Shift + Page Up",
+          "description": "在终端中向上滚动（查看之前输出的内容）。"
+        },
+        {
+          "command": "Shift + Page Down",
+          "description": "在终端中向下滚动。"
+        }
+      ]
+    }
+  },
+  "tools": {
+    "git": [
+      {
+        "command": "git init",
+        "description": "在当前目录初始化一个新的 Git 仓库。会在当前目录下创建一个 `.git` 子目录。"
+      },
+      {
+        "command": "git clone <url>",
+        "description": "克隆一个远程仓库到本地。例如：`git clone https://github.com/user/repo.git`。这会创建一个名为 `repo` 的新目录。"
+      },
+      {
+        "command": "git status",
+        "description": "显示工作区和暂存区的状态，列出已修改、新增、删除的文件。是日常工作中最常用的命令之一。"
+      },
+      {
+        "command": "git add <file>",
+        "description": "将文件从工作区添加到暂存区。例如：`git add README.md`。"
+      },
+      {
+        "command": "git add .",
+        "description": "将所有修改和新增的文件添加到暂存区。请注意，这也会添加未被 `.gitignore` 忽略的文件。"
+      },
+      {
+        "command": "git commit -m \"message\"",
+        "description": "将暂存区的更改提交到本地仓库，并附带提交信息。例如：`git commit -m \"Fix typo in introduction\"`。"
+      },
+      {
+        "command": "git commit -am \"message\"",
+        "description": "将所有已跟踪文件的修改直接提交，跳过 `git add` 步骤。不适用于新添加的文件。例如：`git commit -am \"Update config\"`。"
+      },
+      {
+        "command": "git log",
+        "description": "显示提交历史记录。默认按时间倒序排列。"
+      },
+      {
+        "command": "git log --oneline",
+        "description": "以简洁的一行格式显示提交历史。"
+      },
+      {
+        "command": "git log --graph",
+        "description": "以图形化方式显示提交历史，特别适合查看分支合并情况。"
+      },
+      {
+        "command": "git diff",
+        "description": "显示工作区与暂存区之间的差异。"
+      },
+      {
+        "command": "git diff --cached",
+        "description": "显示暂存区与最后一次提交之间的差异。"
+      },
+      {
+        "command": "git diff HEAD",
+        "description": "显示工作区与最后一次提交（HEAD）之间的差异，无论文件是否已暂存。"
+      },
+      {
+        "command": "git checkout <branch>",
+        "description": "切换到指定分支。例如：`git checkout feature-login`。"
+      },
+      {
+        "command": "git checkout -b <new_branch>",
+        "description": "创建并切换到一个新分支。例如：`git checkout -b bugfix-header`。"
+      },
+      {
+        "command": "git switch <branch>",
+        "description": "Git 2.23 引入的新命令，专门用于切换分支。例如：`git switch main`。"
+      },
+      {
+        "command": "git switch -c <new_branch>",
+        "description": "Git 2.23 引入的新命令，创建并切换到一个新分支。例如：`git switch -c new-feature`。"
+      },
+      {
+        "command": "git branch",
+        "description": "列出、创建或删除分支。单独使用列出所有本地分支。"
+      },
+      {
+        "command": "git branch -r",
+        "description": "列出所有远程分支。"
+      },
+      {
+        "command": "git branch -a",
+        "description": "列出所有本地和远程分支。"
+      },
+      {
+        "command": "git branch <branch_name>",
+        "description": "创建一个新分支，但不切换过去。例如：`git branch hotfix`。"
+      },
+      {
+        "command": "git branch -d <branch_name>",
+        "description": "删除一个已合并的分支。例如：`git branch -d old_feature`。"
+      },
+      {
+        "command": "git branch -D <branch_name>",
+        "description": "强制删除一个分支，无论是否已合并。例如：`git branch -D experimental`。"
+      },
+      {
+        "command": "git merge <branch>",
+        "description": "将指定分支合并到当前分支。例如：`git merge feature-login`。"
+      },
+      {
+        "command": "git rebase <branch>",
+        "description": "将当前分支的提交变基到指定分支之上。可以使历史记录更线性，但在共享分支上使用需谨慎。例如：`git rebase main` 将当前分支的更改应用到最新的 main 分支上。"
+      },
+      {
+        "command": "git push",
+        "description": "将本地提交推送到关联的远程仓库。"
+      },
+      {
+        "command": "git push origin <branch>",
+        "description": "将本地指定分支推送到远程仓库的同名分支。例如：`git push origin main`。"
+      },
+      {
+        "command": "git push -u origin <branch>",
+        "description": "推送分支并在远程仓库上建立追踪关系（upstream），之后可以直接使用 `git push` 和 `git pull`。"
+      },
+      {
+        "command": "git pull",
+        "description": "从关联的远程仓库拉取最新更改并合并到当前分支。通常是 `git fetch` 加上 `git merge` 的组合。"
+      },
+      {
+        "command": "git fetch",
+        "description": "从远程仓库下载对象和引用 (如分支、标签)，但不自动合并到当前工作分支。之后可以使用 `git merge` 或 `git rebase` 手动合并。"
+      },
+      {
+        "command": "git remote -v",
+        "description": "列出已配置的远程仓库及其 URL。"
+      },
+      {
+        "command": "git remote add <remote_name> <url>",
+        "description": "添加一个新的远程仓库。例如：`git remote add upstream https://github.com/original/repo.git`。"
+      },
+      {
+        "command": "git stash",
+        "description": "暂存当前工作区的更改（已跟踪文件的修改和暂存），当你需要切换分支又不想提交半成品时很有用。"
+      },
+      {
+        "command": "git stash push -m \"WIP on feature\"",
+        "description": "暂存更改并添加描述信息。"
+      },
+      {
+        "command": "git stash list",
+        "description": "列出所有已暂存的更改。"
+      },
+      {
+        "command": "git stash pop",
+        "description": "恢复最近一次暂存的更改，并将其从 stash 列表中移除。"
+      },
+      {
+        "command": "git stash apply",
+        "description": "恢复最近一次暂存的更改，但保留在 stash 列表中。"
+      },
+      {
+        "command": "git reset [--soft|--mixed|--hard] <commit>",
+        "description": "重置当前 HEAD 到指定状态。`--soft`: 保留工作区和暂存区；`--mixed` (默认): 保留工作区，重置暂存区；`--hard`: 丢弃工作区和暂存区的更改。例如：`git reset --hard HEAD~1` 撤销上一次提交。"
+      },
+      {
+        "command": "git revert <commit>",
+        "description": "创建一个新提交来撤销指定提交的更改。推荐用于公共分支，因为它不会改写历史。"
+      },
+      {
+        "command": "git tag <tagname>",
+        "description": "创建一个轻量级标签。例如：`git tag v1.0.0`。"
+      },
+      {
+        "command": "git tag -a <tagname> -m \"message\"",
+        "description": "创建一个带有注释的标签。例如：`git tag -a v1.0.0 -m \"Release version 1.0.0\"`。"
+      },
+      {
+        "command": "git show <tagname>",
+        "description": "显示标签信息和对应的提交内容。"
+      },
+      {
+        "command": "git config --global user.name \"Your Name\"",
+        "description": "设置全局用户名。"
+      },
+      {
+        "command": "git config --global user.email \"you@example.com\"",
+        "description": "设置全局用户邮箱。"
+      },
+      {
+        "command": "git config --global core.editor \"code\"",
+        "description": "设置全局默认编辑器为 VS Code。"
+      },
+      {
+        "command": "git config --list",
+        "description": "列出所有 Git 配置。"
+      }
+    ],
+    "python": [
+      {
+        "command": "python --version",
+        "description": "检查 Python 版本。"
+      },
+      {
+        "command": "python3 --version",
+        "description": "检查 Python 3 的版本（在某些系统上 `python` 默认指向 Python 2）。"
+      },
+      {
+        "command": "python script.py",
+        "description": "运行 Python 脚本。例如：`python app.py`。"
+      },
+      {
+        "command": "python -m module_name [args]",
+        "description": "将任何模块作为脚本运行。例如：`python -m http.server 8000` 启动一个简单的 HTTP 服务器；`python -m pip install package` 使用模块运行 pip。"
+      },
+      {
+        "command": "pip install package_name",
+        "description": "使用 pip 安装 Python 包。例如：`pip install requests`。"
+      },
+      {
+        "command": "pip install -r requirements.txt",
+        "description": "安装 `requirements.txt` 文件中列出的所有包。"
+      },
+      {
+        "command": "pip list",
+        "description": "列出已安装的 Python 包。"
+      },
+      {
+        "command": "pip show package_name",
+        "description": "显示已安装包的详细信息。例如：`pip show numpy`。"
+      },
+      {
+        "command": "pip freeze",
+        "description": "以 requirements.txt 格式输出已安装的包及其版本，方便生成依赖列表。"
+      },
+      {
+        "command": "pip uninstall package_name",
+        "description": "卸载 Python 包。例如：`pip uninstall matplotlib`。"
+      },
+      {
+        "command": "pip search package_name",
+        "description": "在 PyPI 上搜索包（此功能已在较新版 pip 中移除，可使用 `pip index versions package_name` 或在线搜索）。"
+      },
+      {
+        "command": "python -m venv myenv",
+        "description": "创建一个名为 `myenv` 的虚拟环境。"
+      },
+      {
+        "command": "myenv\\Scripts\\activate.bat (Windows)",
+        "description": "激活虚拟环境 (Windows)。"
+      },
+      {
+        "command": "source myenv/bin/activate (macOS/Linux)",
+        "description": "激活虚拟环境 (macOS/Linux)。"
+      },
+      {
+        "command": "deactivate",
+        "description": "停用当前激活的虚拟环境。"
+      },
+      {
+        "command": "jupyter notebook",
+        "description": "启动 Jupyter Notebook 服务器（需要先安装 jupyter 包）。"
+      }
+    ],
+    "nodejs": [
+      {
+        "command": "node --version",
+        "description": "检查 Node.js 版本。"
+      },
+      {
+        "command": "npm --version",
+        "description": "检查 npm (Node Package Manager) 版本。"
+      },
+      {
+        "command": "node script.js",
+        "description": "运行 Node.js 脚本。例如：`node server.js`。"
+      },
+      {
+        "command": "npm init",
+        "description": "初始化一个新的 Node.js 项目，创建 `package.json` 文件。使用 `npm init -y` 可以快速生成默认配置。"
+      },
+      {
+        "command": "npm install package_name",
+        "description": "安装一个 Node.js 包到本地项目 (`node_modules` 目录)，并将其添加到 `dependencies`。例如：`npm install express`。"
+      },
+      {
+        "command": "npm install package_name --save-dev",
+        "description": "安装开发依赖包，并将其添加到 `devDependencies`。例如：`npm install jest --save-dev`。"
+      },
+      {
+        "command": "npm install -g package_name",
+        "description": "全局安装一个 Node.js 包。例如：`npm install -g nodemon`。全局包通常是一些 CLI 工具。"
+      },
+      {
+        "command": "npm install",
+        "description": "根据 `package.json` 或 `package-lock.json` 文件安装所有依赖项。"
+      },
+      {
+        "command": "npm list",
+        "description": "列出当前项目的已安装依赖。使用 `npm list -g` 列出全局安装的包。"
+      },
+      {
+        "command": "npm outdated",
+        "description": "检查哪些已安装的包有更新版本。"
+      },
+      {
+        "command": "npm update package_name",
+        "description": "更新指定的包到最新兼容版本（遵循 semver 规则）。例如：`npm update lodash`。"
+      },
+      {
+        "command": "npm update",
+        "description": "更新所有顶层依赖到最新兼容版本。"
+      },
+      {
+        "command": "npm uninstall package_name",
+        "description": "卸载一个已安装的包。例如：`npm uninstall jquery`。"
+      },
+      {
+        "command": "npm run script_name",
+        "description": "运行在 `package.json` 的 `scripts` 字段中定义的脚本。例如：`npm run dev`。"
+      },
+      {
+        "command": "npx [command]",
+        "description": "执行本地安装的 node_modules/.bin 中的命令，或者临时下载并执行来自 npm 的包，而无需全局安装。例如：`npx create-react-app my-app`。"
+      }
+    ],
+    "docker": [
+      {
+        "command": "docker --version",
+        "description": "显示 Docker 版本信息。"
+      },
+      {
+        "command": "docker info",
+        "description": "显示 Docker 系统范围的信息，包括镜像和容器的数量、存储驱动、基本配置等。"
+      },
+      {
+        "command": "docker pull image_name[:tag]",
+        "description": "从 Docker Hub 或其他注册表拉取镜像。例如：`docker pull nginx` 或 `docker pull python:3.9`。如果不指定标签，默认拉取 latest 标签。"
+      },
+      {
+        "command": "docker images",
+        "description": "列出本地已有的镜像。"
+      },
+      {
+        "command": "docker run [OPTIONS] IMAGE [COMMAND] [ARG...]",
+        "description": "创建并运行一个新容器。常用选项 `-it` (交互式TTY), `-d` (后台运行), `-p host_port:container_port` (端口映射), `--name container_name` (指定容器名), `-v host_path:container_path` (挂载卷)。例如：`docker run -d -p 8080:80 --name my-nginx nginx`。"
+      },
+      {
+        "command": "docker run --rm [OPTIONS] IMAGE [COMMAND] [ARG...]",
+        "description": "运行一个容器，在容器停止后自动删除它。非常适合运行一次性任务。"
+      },
+      {
+        "command": "docker ps",
+        "description": "列出正在运行的容器。"
+      },
+      {
+        "command": "docker ps -a",
+        "description": "列出所有容器（包括已停止的）。"
+      },
+      {
+        "command": "docker exec -it container_name_or_id command",
+        "description": "在运行的容器中执行命令。常用于进入容器内部调试。例如：`docker exec -it my-nginx bash`。"
+      },
+      {
+        "command": "docker stop container_name_or_id",
+        "description": "向容器发送 SIGTERM 信号，请求其优雅停止。如果容器在超时后仍未停止，会发送 SIGKILL。例如：`docker stop my-nginx`。"
+      },
+      {
+        "command": "docker kill container_name_or_id",
+        "description": "立即强制停止容器（发送 SIGKILL 信号）。例如：`docker kill my-unresponsive-container`。"
+      },
+      {
+        "command": "docker start container_name_or_id",
+        "description": "启动一个已停止的容器。例如：`docker start my-nginx`。"
+      },
+      {
+        "command": "docker restart container_name_or_id",
+        "description": "重启一个正在运行或已停止的容器。例如：`docker restart my-nginx`。"
+      },
+      {
+        "command": "docker rm container_name_or_id",
+        "description": "删除一个或多个已停止的容器。例如：`docker rm my-old-container`。"
+      },
+      {
+        "command": "docker rm -f container_name_or_id",
+        "description": "强制删除一个正在运行或已停止的容器。例如：`docker rm -f still-running-container`。"
+      },
+      {
+        "command": "docker rmi image_name_or_id",
+        "description": "删除一个或多个镜像。例如：`docker rmi old-image`。只有当没有基于该镜像的容器存在时才能成功删除。"
+      },
+      {
+        "command": "docker rmi -f image_name_or_id",
+        "description": "强制删除镜像，即使有容器在使用它（会先删除容器）。"
+      },
+      {
+        "command": "docker logs container_name_or_id",
+        "description": "获取容器的日志输出。例如：`docker logs my-nginx`。使用 `-f` 参数可以实时跟踪日志。"
+      },
+      {
+        "command": "docker build -t image_name[:tag] path_to_dockerfile",
+        "description": "使用 Dockerfile 构建镜像。例如：`docker build -t my-app:latest .`。`.` 表示 Dockerfile 在当前目录。"
+      },
+      {
+        "command": "docker build -t image_name[:tag] -f CustomDockerfile .",
+        "description": "使用指定的 Dockerfile 文件构建镜像。例如：`docker build -t my-app:v2 -f Dockerfile.prod .`。"
+      },
+      {
+        "command": "docker-compose up",
+        "description": "根据 `docker-compose.yml` 文件创建并启动所有服务。使用 `-d` 参数可以在后台运行。"
+      },
+      {
+        "command": "docker-compose down",
+        "description": "停止并移除由 `docker-compose up` 创建的容器、网络、卷和镜像（除非另有定义）。"
+      },
+      {
+        "command": "docker-compose ps",
+        "description": "列出 compose 项目中的容器。"
+      },
+      {
+        "command": "docker-compose logs [service_name]",
+        "description": "查看 compose 项目中服务的日志。例如：`docker-compose logs web`。"
+      },
+      {
+        "command": "docker volume ls",
+        "description": "列出所有 Docker 卷。"
+      },
+      {
+        "command": "docker network ls",
+        "description": "列出所有 Docker 网络。"
+      }
+    ]
+
+  }
+}
