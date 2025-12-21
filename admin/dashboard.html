@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理后台 - CodeStart Hub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .admin-nav {
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap; /* 适配小屏幕换行 */
+    }
+    .btn {
+      padding: 0.8rem 1.5rem;
+      text-decoration: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: #007bff;
+      color: white;
+      border: none;
+    }
+    .btn-secondary {
+      background: #6c757d;
+      color: white;
+      border: none;
+    }
+    .btn-danger {
+      background: #dc3545;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><a href="../index.html">CodeStart Hub</a></h1>
+      <div id="admin-info"></div>
+    </div>
+  </header>
+
+  <main class="container">
+    <h2>管理后台</h2>
+    <div class="admin-nav">
+      <a href="software-review.html" class="btn btn-primary">软件推荐审核</a>
+      <!-- 新增：已审核的软件按钮 -->
+      <a href="approved-software.html" class="btn btn-primary">已审核的软件</a>
+      <a href="user-management.html" class="btn btn-secondary">用户管理</a>
+      <button id="logout-btn" class="btn btn-secondary">退出登录</button>
+    </div>
+  </main>
+
+  <script>
+    // 验证管理员登录状态
+    const admin = JSON.parse(localStorage.getItem('admin'));
+    if (!admin || admin.role !== 'admin') {
+      window.location.href = 'login.html';
+    }
+    // 显示管理员信息
+    document.getElementById('admin-info').textContent = `当前管理员: ${admin.email}`;
+    // 退出登录
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      localStorage.removeItem('admin');
+      window.location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>软件审核 - CodeStart Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth-style.css">
+    <style>
+        .review-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .tool-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+        .tool-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .action-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1><a href="../index.html">CodeStart Hub</a></h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">管理员首页</a></li>
+                <li><a href="software-review.html">软件审核</a></li>
+                <li><a href="approved-software.html" class="active">已审核软件</a></li>
+                <li><a href="user-management.html">用户管理</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="review-container">
+        <h2>待审核软件推荐</h2>
+        <div id="pending-tools-list">
+            <!-- 待审核列表将由JS动态加载 -->
+            <p>加载中...</p>
+        </div>
+    </div>
+</main>
+
+<!-- 先引入api.js -->
+<script src="../js/api.js"></script>
+<script>
+    // 管理员登录状态验证
+    document.addEventListener('DOMContentLoaded', async () => {
+        // ============ 新增：OS解析容错函数（解决JSON报错） ============
+        const parseOs = (osStr) => {
+            try {
+                // 尝试解析JSON数组
+                const osArr = JSON.parse(osStr);
+                return Array.isArray(osArr) ? osArr.join('、') : osStr;
+            } catch (err) {
+                // 解析失败（旧数据），直接返回原始字符串
+                return osStr || '未知系统';
+            }
+        };
+
+        const admin = JSON.parse(localStorage.getItem('admin'));
+        if (!admin || !admin.token || admin.role !== 'admin') {
+            alert('请以管理员身份登录');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // 加载待审核推荐
+        try {
+            // 1. 调用接口获取数据
+            const response = await api.getPendingTools(admin.token);
+            
+            // ============ 核心修复：强制转成数组 ============
+            // 不管后端返回啥，都变成数组，避免map报错
+            let pendingTools = [];
+            // 如果后端返回的是 {data: [...]} 这种格式，就取 data
+            if (response && response.data && Array.isArray(response.data)) {
+                pendingTools = response.data;
+            }
+            // 如果后端直接返回数组，就用这个数组
+            else if (Array.isArray(response)) {
+                pendingTools = response;
+            }
+            // ==============================================
+
+            const listContainer = document.getElementById('pending-tools-list');
+            
+            // 没有数据时的提示
+            if (pendingTools.length === 0) {
+                listContainer.innerHTML = '<p style="color:#666;">暂无待审核推荐</p>';
+                return;
+            }
+
+            // 渲染列表（这里map就不会报错了）
+            listContainer.innerHTML = pendingTools.map(tool => `
+                <div class="tool-item" data-id="${tool.id}">
+                    <h3>${tool.name || '未命名软件'}</h3>
+                    <p><strong>官方链接：</strong><a href="${tool.url}" target="_blank">${tool.url}</a></p>
+                    <p><strong>描述：</strong>${tool.description || '无描述'}</p>
+                    <!-- ============ 关键修改：用parseOs替换JSON.parse ============ -->
+                    <p><strong>支持系统：</strong>${parseOs(tool.os)}</p>
+                    <p><strong>推荐用户ID：</strong>${tool.recommender_id || '未知'}</p>
+                    <p><strong>提交时间：</strong>${tool.created_at ? new Date(tool.created_at).toLocaleString() : '未知'}</p>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary approve-btn">通过</button>
+                        <button class="btn btn-secondary reject-btn">驳回</button>
+                    </div>
+                </div>
+            `).join('');
+
+            // 绑定“通过”按钮事件
+            document.querySelectorAll('.approve-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const toolId = btn.closest('.tool-item').dataset.id;
+                    if (confirm('确认通过该推荐吗？通过后将加入软件库')) {
+                        try {
+                            await api.approveTool(toolId, admin.token);
+                            alert('审核通过');
+                            location.reload();
+                        } catch (err) {
+                            alert('操作失败：' + err.message);
+                        }
+                    }
+                });
+            });
+
+            // 绑定“驳回”按钮事件
+            document.querySelectorAll('.reject-btn').forEach(btn => {
+                btn.addEventListener('click', async () => {
+                    const toolId = btn.closest('.tool-item').dataset.id;
+                    const reason = prompt('请输入驳回理由：');
+                    if (!reason) return;
+
+                    try {
+                        await api.rejectTool(toolId, reason, admin.token);
+                        alert('已驳回该推荐');
+                        location.reload();
+                    } catch (err) {
+                        alert('操作失败：' + err.message);
+                    }
+                });
+            });
+
+        } catch (err) {
+            document.getElementById('pending-tools-list').innerHTML = `<p style="color: red;">加载失败：${err.message}</p>`;
+            console.error('加载失败详情：', err);
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>已审核软件 - CodeStart Hub</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/auth-style.css">
+    <style>
+        .review-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .tool-item {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+            background: #f9f9f9;
+        }
+        .tool-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .action-buttons {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .search-bar {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1><a href="../index.html">CodeStart Hub</a></h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">管理员首页</a></li>
+                <li><a href="software-review.html">软件审核</a></li>
+                <li><a href="approved-software.html" class="active">已审核软件</a></li>
+                <li><a href="user-management.html">用户管理</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="review-container">
+        <h2>已审核软件列表</h2>
+        <!-- 搜索框 -->
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="搜索软件名称/分类...">
+            <button class="btn btn-primary" id="search-btn">搜索</button>
+            <button class="btn btn-secondary" id="reset-btn">重置</button>
+        </div>
+        <!-- 已审核列表 -->
+        <div id="approved-tools-list">
+            <!-- 动态加载 -->
+            <p>加载中...</p>
+        </div>
+    </div>
+</main>
+
+<!-- 引入api.js -->
+<script src="../js/api.js"></script>
+<script>
+    // OS解析容错函数（复用已有逻辑）
+    const parseOs = (osStr) => {
+        try {
+            const osArr = JSON.parse(osStr);
+            return Array.isArray(osArr) ? osArr.join('、') : osStr;
+        } catch (err) {
+            return osStr || '未知系统';
+        }
+    };
+
+    // 分类解析容错函数
+    const parseCategory = (categoryStr) => {
+        try {
+            const categoryArr = JSON.parse(categoryStr);
+            return Array.isArray(categoryArr) ? categoryArr.join('、') : categoryStr;
+        } catch (err) {
+            return categoryStr || '未分类';
+        }
+    };
+
+    // 页面加载后执行
+    document.addEventListener('DOMContentLoaded', async () => {
+        // 验证管理员登录状态
+        const admin = JSON.parse(localStorage.getItem('admin'));
+        if (!admin || !admin.token || admin.role !== 'admin') {
+            alert('请以管理员身份登录');
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // 加载已审核软件列表
+        const loadApprovedTools = async (searchKeyword = '') => {
+            const listContainer = document.getElementById('approved-tools-list');
+            try {
+                // 调用接口获取所有已审核工具（支持搜索）
+                const params = searchKeyword ? { keyword: searchKeyword } : null;
+                const response = await api.getAllTools(params, admin.token);
+                
+                // 处理接口返回数据
+                let approvedTools = [];
+                if (response && response.tools && Array.isArray(response.tools)) {
+                    approvedTools = response.tools;
+                } else if (Array.isArray(response)) {
+                    approvedTools = response;
+                }
+
+                // 无数据提示
+                if (approvedTools.length === 0) {
+                    listContainer.innerHTML = '<p style="color:#666;">暂无已审核软件</p>';
+                    return;
+                }
+
+                // 渲染已审核软件列表
+                listContainer.innerHTML = approvedTools.map(tool => `
+                    <div class="tool-item" data-id="${tool.id}">
+                        <h3>${tool.name || '未命名软件'}</h3>
+                        <p><strong>官方链接：</strong><a href="${tool.officialUrl || tool.downloadUrl}" target="_blank">${tool.officialUrl || tool.downloadUrl || '无'}</a></p>
+                        <p><strong>下载链接：</strong><a href="${tool.downloadUrl || tool.officialUrl}" target="_blank">${tool.downloadUrl || tool.officialUrl || '无'}</a></p>
+                        <p><strong>描述：</strong>${tool.description || '无描述'}</p>
+                        <p><strong>支持系统：</strong>${parseOs(tool.os)}</p>
+                        <p><strong>分类：</strong>${parseCategory(tool.category)}</p>
+                        <p><strong>录入时间：</strong>${tool.created_at ? new Date(tool.created_at).toLocaleString() : '未知'}</p>
+                        <div class="action-buttons">
+                            <button class="btn btn-secondary edit-btn">编辑</button>
+                            <button class="btn btn-danger delete-btn">删除</button>
+                        </div>
+                    </div>
+                `).join('');
+
+                // 绑定编辑按钮事件
+                document.querySelectorAll('.edit-btn').forEach(btn => {
+                    btn.addEventListener('click', async () => {
+                        const toolId = btn.closest('.tool-item').dataset.id;
+                        // 这里可扩展编辑功能，先做提示+跳转（也可弹窗编辑）
+                        alert(`即将编辑软件ID：${toolId}（可扩展弹窗编辑逻辑）`);
+                        // 示例：跳转到编辑页面（可新建edit-tool.html）
+                        // window.location.href = `edit-tool.html?id=${toolId}`;
+                    });
+                });
+
+                // 绑定删除按钮事件
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', async () => {
+                        const toolItem = btn.closest('.tool-item');
+                        const toolId = toolItem.dataset.id;
+                        const toolName = toolItem.querySelector('h3').textContent;
+                        
+                        if (!confirm(`确认删除【${toolName}】吗？该操作不可恢复！`)) {
+                            return;
+                        }
+
+                        try {
+                            await api.deleteTool(toolId, admin.token);
+                            alert('删除成功');
+                            loadApprovedTools(); // 重新加载列表
+                        } catch (err) {
+                            alert('删除失败：' + err.message);
+                        }
+                    });
+                });
+
+            } catch (err) {
+                listContainer.innerHTML = `<p style="color: red;">加载失败：${err.message}</p>`;
+                console.error('加载已审核软件失败：', err);
+            }
+        };
+
+        // 初始加载列表
+        loadApprovedTools();
+
+        // 绑定搜索按钮事件
+        document.getElementById('search-btn').addEventListener('click', () => {
+            const keyword = document.getElementById('search-input').value.trim();
+            loadApprovedTools(keyword);
+        });
+
+        // 绑定重置按钮事件
+        document.getElementById('reset-btn').addEventListener('click', () => {
+            document.getElementById('search-input').value = '';
+            loadApprovedTools();
+        });
+
+        // 搜索框回车触发搜索
+        document.getElementById('search-input').addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const keyword = e.target.value.trim();
+                loadApprovedTools(keyword);
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

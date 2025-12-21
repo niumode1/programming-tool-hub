@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>用户管理 - CodeStart Hub</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .user-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .search-bar {
+      margin: 1rem 0;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 0.5rem;
+      max-width: 300px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .user-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    .user-table th, .user-table td {
+      border: 1px solid #ddd;
+      padding: 0.8rem;
+      text-align: left;
+    }
+    .user-table th {
+      background-color: #f5f5f5;
+    }
+    .role-select {
+      padding: 0.3rem 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+    .btn-sm {
+      padding: 0.3rem 0.8rem;
+      font-size: 0.9rem;
+    }
+    .btn-danger {
+      background-color: #dc3545;
+      margin-left: 0.5rem;
+    }
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .loading {
+      color: #666;
+    }
+    .error {
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1><a href="../index.html">CodeStart Hub</a></h1>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html">管理员首页</a></li>
+                <li><a href="software-review.html">软件审核</a></li>
+                <li><a href="approved-software.html" class="active">已审核软件</a></li>
+                <li><a href="user-management.html">用户管理</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+  <main class="container">
+    <div class="user-container">
+      <h2>用户管理</h2>
+      
+      <!-- 搜索栏 -->
+      <div class="search-bar">
+        <input type="text" id="user-search" placeholder="搜索用户邮箱...">
+        <button class="btn btn-primary" id="search-btn">搜索</button>
+        <button class="btn btn-primary" id="reset-btn">重置</button>
+      </div>
+      
+      <!-- 用户列表表格 -->
+      <table class="user-table" id="user-list">
+        <thead>
+          <tr>
+            <th>用户ID</th>
+            <th>邮箱</th>
+            <th>角色</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 数据将通过JavaScript动态渲染 -->
+          <tr>
+            <td colspan="4" style="text-align: center;" class="loading">加载中...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <!-- 引入API和工具脚本 -->
+  <script src="../js/api.js"></script>
+  <script>
+    // 页面加载时获取用户列表
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadUserList();
+      
+      // 搜索按钮事件
+      document.getElementById('search-btn').addEventListener('click', async () => {
+        const keyword = document.getElementById('user-search').value.trim();
+        await loadUserList(keyword);
+      });
+
+      // 重置按钮事件
+      document.getElementById('reset-btn').addEventListener('click', async () => {
+        document.getElementById('user-search').value = '';
+        await loadUserList();
+      });
+
+      // 回车搜索
+      document.getElementById('user-search').addEventListener('keydown', async (e) => {
+        if (e.key === 'Enter') {
+          const keyword = e.target.value.trim();
+          await loadUserList(keyword);
+        }
+      });
+    });
+
+    // 加载用户列表（支持搜索）- 改用api.js封装的方法
+    async function loadUserList(keyword = '') {
+      const tableBody = document.getElementById('user-list').querySelector('tbody');
+      // 重置加载状态
+      tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center;" class="loading">加载中...</td></tr>`;
+      
+      try {
+        // 获取当前管理员的token
+        const admin = JSON.parse(localStorage.getItem('admin')) || JSON.parse(localStorage.getItem('user'));
+        if (!admin || !admin.token) {
+          alert('请先登录管理员账号');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        // 改用api.js的getAdminUserList方法，无需手动拼接URL
+        const data = await api.getAdminUserList(keyword, admin.token);
+        if (!data.success) throw new Error(data.message || '获取用户列表失败');
+
+        // 渲染用户列表
+        if (data.users.length === 0) {
+          tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center;">暂无用户数据</td></tr>`;
+          return;
+        }
+
+        tableBody.innerHTML = data.users.map(user => `
+          <tr>
+            <td>${user.id}</td>
+            <td>${user.email}</td>
+            <td>
+              <select class="role-select" data-old-role="${user.role}" data-user-id="${user.id}">
+                <option value="user" ${user.role === 'user' ? 'selected' : ''}>普通用户</option>
+                <option value="admin" ${user.role === 'admin' ? 'selected' : ''}>管理员</option>
+              </select>
+            </td>
+            <td>
+              <button class="btn btn-sm" onclick="updateUserRole(${user.id}, this)">保存</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteUser(${user.id})">删除</button>
+            </td>
+          </tr>
+        `).join('');
+
+      } catch (err) {
+        console.error('加载用户列表失败:', err);
+        tableBody.innerHTML = `<tr><td colspan="4" style="text-align: center;" class="error">${err.message}</td></tr>`;
+      }
+    }
+
+    // 更新用户角色 - 改用api.js封装的方法
+    async function updateUserRole(userId, btn) {
+      const selectEl = btn.closest('tr').querySelector('.role-select');
+      const newRole = selectEl.value;
+      const oldRole = selectEl.dataset.oldRole;
+
+      // 角色未变化时直接返回
+      if (newRole === oldRole) {
+        alert('角色未发生变化');
+        return;
+      }
+
+      try {
+        const admin = JSON.parse(localStorage.getItem('admin')) || JSON.parse(localStorage.getItem('user'));
+        if (!admin || !admin.token) {
+          alert('请先登录管理员账号');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        // 改用api.js的updateUserRole方法
+        const data = await api.updateUserRole(userId, newRole, admin.token);
+        if (data.success) {
+          alert('角色更新成功');
+          // 更新本地存储的角色标识
+          selectEl.dataset.oldRole = newRole;
+          // 重新加载列表（可选，确保数据最新）
+          await loadUserList(document.getElementById('user-search').value.trim());
+        } else {
+          throw new Error(data.message || '角色更新失败');
+        }
+      } catch (err) {
+        alert('更新失败: ' + err.message);
+        // 回滚选择框
+        selectEl.value = oldRole;
+      }
+    }
+
+    // 新增：删除用户 - 改用api.js封装的deleteUser方法
+    async function deleteUser(userId) {
+      // 二次确认，防止误删
+      const confirmDelete = confirm(`确认删除ID为 ${userId} 的用户吗？此操作不可恢复！`);
+      if (!confirmDelete) return;
+
+      try {
+        const admin = JSON.parse(localStorage.getItem('admin')) || JSON.parse(localStorage.getItem('user'));
+        if (!admin || !admin.token) {
+          alert('请先登录管理员账号');
+          window.location.href = 'login.html';
+          return;
+        }
+
+        // 改用api.js的deleteUser方法
+        const data = await api.deleteUser(userId, admin.token);
+        if (data.success) {
+          alert('用户删除成功');
+          // 重新加载用户列表
+          await loadUserList(document.getElementById('user-search').value.trim());
+        } else {
+          throw new Error(data.message || '用户删除失败');
+        }
+      } catch (err) {
+        alert('删除失败: ' + err.message);
+      }
+    }
+  </script>
+</body>
+</html>

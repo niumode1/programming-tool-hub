@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - CodeStart Hub</title>
+    <!-- 引入全局样式 + 统一认证样式 -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth-style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><a href="index.html">CodeStart Hub</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="software.html">软件库</a></li>
+                    <li><a href="commands.html">命令行助手</a></li>
+                    <li><a href="resources.html">学习资源</a></li>
+                    <li><a href="donate.html">捐赠</a></li>
+                    <li><a href="about.html">关于</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="auth-container">
+            <h2>用户注册</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="reg-email">邮箱</label>
+                    <input type="email" id="reg-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">密码（至少6位）</label>
+                    <input type="password" id="reg-password" minlength="6" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-confirm">确认密码</label>
+                    <input type="password" id="reg-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary">注册</button>
+                <p>已有账号？<a href="login.html">立即登录</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 CodeStart Hub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 引入API封装文件 -->
+    <script src="js/api.js"></script>
+    <script>
+        // 注册表单提交逻辑（完全保留原有逻辑）
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); // 阻止表单默认提交
+            
+            // 1. 获取表单数据并去除首尾空格
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value.trim();
+            const confirmPwd = document.getElementById('reg-confirm').value.trim();
+            
+            // 2. 前端验证（增强版）
+            if (!email) {
+                alert('请输入邮箱！');
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('请输入有效的邮箱格式！');
+                return;
+            }
+            if (password !== confirmPwd) {
+                alert('两次输入的密码不一致！');
+                return;
+            }
+            if (password.length < 6) {
+                alert('密码长度不能少于6位！');
+                return;
+            }
+            
+            // 3. 调用注册接口
+            try {
+                const res = await api.register({ email, password });
+                // 适配后端返回的success字段
+                if (res.success) {
+                    alert('注册成功！即将跳转到登录页');
+                    window.location.href = 'login.html'; // 注册成功跳转登录页
+                } else {
+                    alert('注册失败：' + res.message);
+                }
+            } catch (err) {
+                // 处理网络错误/服务器错误等异常
+                alert('注册失败：' + err.message);
+            }
+        });
+    </script>
+</body>
+</html>

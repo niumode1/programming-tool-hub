@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户中心 - CodeStart Hub</title>
+<!-- 根目录下引入样式文件 -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth-style.css">
+<style>
+    /* 用户中心专属样式，适配表单布局 */
+    #recommend-tool {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+    #recommend-tool h3 {
+        margin-bottom: 1.5rem;
+        color: #333;
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    /* 复用auth-style的form-group样式，适配textarea */
+    .form-group textarea {
+        width: 100%;
+        padding: 0.8rem 0.6rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        box-sizing: border-box;
+        transition: border-color 0.2s;
+        min-height: 120px;
+        resize: vertical;
+        font-family: inherit;
+    }
+    .form-group textarea:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    }
+    /* 复选框样式优化 */
+    .form-group div {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        margin-top: 0.5rem;
+    }
+    .form-group input[type="checkbox"] {
+        width: auto;
+        margin-right: 0.3rem;
+    }
+    /* 用户中心标题样式统一 */
+    main h2 {
+        text-align: center;
+        margin-top: 2rem;
+        color: #333;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+</style>
+</head>
+<body>
+<header>
+  <div class="container">
+    <!-- 根目录下指向首页 -->
+    <h1><a href="index.html">CodeStart Hub</a></h1>
+    <!-- 和登录页完全一致的导航栏 -->
+    <nav>
+      <ul>
+        <li><a href="software.html">软件库</a></li>
+        <li><a href="commands.html">命令行助手</a></li>
+        <li><a href="resources.html">学习资源</a></li>
+        <li><a href="donate.html">捐赠</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+    <h2>用户中心</h2>
+    <section id="recommend-tool">
+        <h3>推荐新软件</h3>
+        <form id="recommend-form">
+            <div class="form-group">
+                <label for="tool-name">软件名称</label>
+                <input type="text" id="tool-name" required placeholder="请输入软件全称">
+            </div>
+            <div class="form-group">
+                <label for="tool-url">官方链接</label>
+                <input type="url" id="tool-url" required placeholder="如：https://xxx.com">
+            </div>
+            <div class="form-group">
+                <label for="tool-description">描述</label>
+                <textarea id="tool-description" required placeholder="请简要描述软件功能、特点（不少于20字）"></textarea>
+            </div>
+            <div class="form-group">
+                <label>支持系统</label>
+                <div>
+                    <input type="checkbox" id="os-win" value="Windows"> <label for="os-win">Windows</label>
+                    <input type="checkbox" id="os-mac" value="macOS"> <label for="os-mac">macOS</label>
+                    <input type="checkbox" id="os-linux" value="Linux"> <label for="os-linux">Linux</label>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">提交推荐</button>
+        </form>
+    </section>
+</main>
+
+<!-- 页脚和全站统一 -->
+<footer>
+    <div class="container">
+        <p>Copyright (c) 2025 <strong>Xiao shouzheng</strong>.</p>
+    </div>
+</footer>
+
+<!-- 先引入api.js（关键：必须在业务逻辑前加载） -->
+<script src="js/api.js"></script>
+<script>
+    // --- 登录状态验证（根目录路径） ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // 从localStorage获取用户信息
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user || !user.token) {
+            alert('请先登录后再提交推荐');
+            window.location.href = 'login.html'; // 根目录登录页
+            return;
+        }
+
+        // 表单提交逻辑
+        const recommendForm = document.getElementById('recommend-form');
+        recommendForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // 阻止默认提交
+
+            // 获取表单数据
+            const toolName = document.getElementById('tool-name').value.trim();
+            const toolUrl = document.getElementById('tool-url').value.trim();
+            const toolDesc = document.getElementById('tool-description').value.trim();
+            const osList = [];
+            if (document.getElementById('os-win').checked) osList.push('Windows');
+            if (document.getElementById('os-mac').checked) osList.push('macOS');
+            if (document.getElementById('os-linux').checked) osList.push('Linux');
+
+            // 前端二次验证
+            if (!toolName) {
+                alert('请输入软件名称');
+                return;
+            }
+            if (!toolUrl) {
+                alert('请输入官方链接');
+                return;
+            }
+            if (toolDesc.length < 20) {
+                alert('描述不少于20字');
+                return;
+            }
+            if (osList.length === 0) {
+                alert('请选择至少一个支持的系统');
+                return;
+            }
+
+            // 构造提交数据
+            const submitData = {
+                name: toolName,
+                url: toolUrl,
+                description: toolDesc,
+                os: osList
+            };
+
+            // 获取提交按钮，添加加载状态
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '提交中...';
+
+            try {
+                // 调用api.js中的recommendTool方法（匹配/api/recommend-tool路径）
+                const result = await api.recommendTool(submitData, user.token);
+                alert(result.message || '推荐提交成功，等待管理员审核');
+                recommendForm.reset(); // 清空表单
+            } catch (error) {
+                // 捕获apiRequest抛出的错误
+                alert('提交失败：' + error.message);
+                console.error('推荐失败详情：', error);
+            } finally {
+                // 恢复按钮状态
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
