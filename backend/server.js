@@ -10,11 +10,12 @@ require('dotenv').config();
 const app = express();
 
 // 跨域配置
+// 跨域配置（允许所有域名访问）
 app.use(cors({
-  origin: ['http://127.0.0.1:8848', 'http://localhost:8848'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: '*',        // 核心：允许所有域名跨域访问
+  credentials: true,  // 允许携带 Cookie/Token
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // 允许的请求方法
+  allowedHeaders: ['Content-Type', 'Authorization'] // 允许的请求头
 }));
 
 app.use(express.json());
@@ -319,7 +320,7 @@ app.use('/api/recommend-tool', recommendRouter);
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`✅ 后端服务已启动`);
-  console.log(`📡 服务地址：http://localhost:${PORT}`);
+  console.log(`📡 服务地址：http://115.190.234.119:${PORT}`);
   console.log(`🔑 JWT密钥：${process.env.JWT_SECRET ? '已配置' : '使用兜底密钥（生产环境请配置.env）'}`);
   console.log(`👥 用户管理接口已启用：/api/admin/users`);
   console.log(`🔧 工具管理接口已启用：/api/tools`); // 新增日志提示
