@@ -3,8 +3,8 @@
 const isProduction = false; 
 const API_BASE_URL = isProduction 
   ? '/api' // 生产环境：配合后端反向代理
-  : 'http://localhost:3001/api'; // 开发环境：后端地址（确认后端端口是3001！）
-
+ // : 'http://localhost:3001/api'; // 开发环境：后端地址（确认后端端口是3001！）
+ : 'http://115.190.234.119:3001/api';
 // ====================== 以下代码完全保留，无需修改 ======================
 async function apiRequest(url, method = 'GET', data = null, token = null, signal = null) {
   let requestUrl = `${API_BASE_URL}${url}`;
